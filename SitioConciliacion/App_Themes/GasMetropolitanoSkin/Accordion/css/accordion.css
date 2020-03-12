@@ -1,0 +1,26 @@
+/*  Estilo acordeon     */
+.accordion {
+	padding: 5px 5px 5px 5px;
+}
+
+.accordion-content {
+	padding: 5px 5px 5px 5px;
+    font-size: 0.88em;
+}
+
+.accordion-header {
+	vertical-align: middle; 
+	padding: 5px 5px 5px 5px;
+	margin-bottom: 5px;
+	background-color: #d1d0d0;
+	/*border: 1.5px solid #44A2A9;*/
+    font-size: 0.9em;
+}
+
+.accordion-selected {
+	vertical-align: middle; 
+	padding: 5px 5px 5px 5px;
+	background-color: #44A2A9;
+	color: white;
+    font-size: 0.9em;
+}

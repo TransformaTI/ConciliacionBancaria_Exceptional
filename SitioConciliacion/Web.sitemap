@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
+  <siteMapNode title="Conciliación" description="Conciliación" resourceKey="1" url="~/Inicio.aspx">
+
+    <siteMapNode title="Archivos" description="Consultar Archivos" resourceKey="4" url="~/Archivos/ConsultarArchivo.aspx">
+      <siteMapNode title="Importar" description="Importar Archivos" resourceKey="3" url="~/Archivos/ImportacionArchivos.aspx">
+      </siteMapNode>
+<!--
+      <siteMapNode title="Tranferencias Bancarias" description="Transferencia Bancaria" resourceKey="22" url="~/TransferenciasBancarias/TransferenciaBancaria.aspx">
+      </siteMapNode>
+-->
+      <!--
+      <siteMapNode title="Exportar" description="Consultar TRANSBAN" resourceKey="22" url="~/Conciliacion/Pagos/ConsultarTransban.aspx">
+      </siteMapNode>
+    </siteMapNode>
+    -->
+
+    <siteMapNode title="Plantillas" description="Plantillas" resourceKey="1" url="">
+      <siteMapNode title="Nueva plantilla" description="Agregar nueva platilla" resourceKey="5" url="">
+        <siteMapNode title="Fuente Informacion" description="Fuente Informacion" resourceKey="5" url="~/Plantillas/ImportacionArchivos/FuenteInformacion.aspx">
+        </siteMapNode>
+        <siteMapNode title="Mapeo" description="Mapeo" resourceKey="5" url="~/Plantillas/ImportacionArchivos/Mapeo.aspx">
+        </siteMapNode>
+      </siteMapNode>
+      <!--<siteMapNode title="Consultar plantillas" description="Consultar plantillas dadas de alta" resourceKey="6" url="~/Plantillas/ConsultarPlantilla.aspx">
+      </siteMapNode>-->
+    </siteMapNode>
+
+    <siteMapNode title="Catálogos" description="Catálogos " resourceKey="1" url="">
+
+      <siteMapNode title="Configuración" description="Catálogos para realizar diferentes configuraciones" resourceKey="23" url="">
+        <!--
+        <siteMapNode title="Cuenta para Transferencia" description="Acceso al catalogo de Cuentas para Transferencias" resourceKey="22" url="~/Catalogos/CuentaTransferencia_.aspx">
+        </siteMapNode>
+        -->
+        <siteMapNode title="Motivo No Concilidado" description="Motivo No Concilidado" resourceKey="7" url="~/Catalogos/MotivoNoConcilidado.aspx">
+        </siteMapNode>
+        <siteMapNode title="Referencias" description="Referencias a comparar" resourceKey="15" url="~/Catalogos/ReferenciaAComparar.aspx">
+        </siteMapNode>
+        <siteMapNode title="Status Concepto" description="Acceso al catalogo de Status Concepto" resourceKey="21" url="~/Catalogos/StatusConcepto.aspx">
+        </siteMapNode>
+        <siteMapNode title="Tipo de archivo por cuenta" description="Acceso al catalogo de Status Concepto" resourceKey="21" url="~/Catalogos/TipoMovimientoPorCuenta.aspx">
+        </siteMapNode>
+        <siteMapNode title="No. de documentos por TransBan" description="Acceso al catalogo de No. de documentos por TransBan" resourceKey="21" url="~/Catalogos/ConfiguracionEnDocumentosTransban.aspx">
+        </siteMapNode>
+        <siteMapNode title="Palabras Clave" description="Palabras Clave" url="~/EdoctaPalabrasClave.aspx " resourceKey="1">
+        </siteMapNode>
+
+      </siteMapNode>
+
+      <siteMapNode title="Importación" description="Catálogos para configurar la Importación" resourceKey="24" url="">
+        <siteMapNode title="Etiqueta" description="Acceso al catalogo de etiquetas" resourceKey="18" url="~/Catalogos/Etiqueta.aspx">
+        </siteMapNode>
+        <siteMapNode title="Separadores" description="Acceso al catalogo de separadores de las plantillas" resourceKey="16" url="~/Catalogos/Separadores.aspx">
+        </siteMapNode>
+        <siteMapNode title="Tipo de Archivo" description="Tipo de archivos para la Importaciòn" resourceKey="17" url="~/Catalogos/TipoArchivo.aspx">
+        </siteMapNode>
+      </siteMapNode>
+      <siteMapNode title="Seguridad" description="Catálogos de seguridad" resourceKey="25" url="">
+        <siteMapNode title="Grupo Conciliación" description="Grupo Conciliación" resourceKey="8" url="~/Catalogos/GrupoConciliacion.aspx">
+        </siteMapNode>
+        <siteMapNode title="Tipo Conciliaciòn/Usuario" description="Tipo de Conciliacion por Usuario" resourceKey="14" url="~/Catalogos/TipoConciliacionUsuario.aspx">
+        </siteMapNode>
+      </siteMapNode>
+
+
+      
+      <!--<siteMapNode title="Catalogo Cuentas Transferidas" description="Acceso al catalogo de Status Concepto" resourceKey="21" url="~/Catalogos/CuentaTransferencia_.aspx">
+			</siteMapNode>
+
+			<siteMapNode title="Catalogo Cuentas X" description="Acceso al catalogo de Status Concepto" resourceKey="21" url="~/TransferenciasBancarias/TransferenciaBancaria.aspx">
+			</siteMapNode>-->
+
+
+
+      <!--<siteMapNode title="Consulta Transferencia Bancaria" description="Acceso al catalogo de Status Concepto" resourceKey="22" url="~/TransferenciasBancarias/TransferenciaBancaria.aspx">
+			</siteMapNode>-->
+
+    </siteMapNode>
+    
+    <siteMapNode title="Reportes" description="Consultar Reportes" resourceKey="4" url="">
+<!--      <siteMapNode title="Libro Contabilidad I" description="Libro Contabilidad I" resourceKey="3" url="~/ReportesConciliacion/ReporteConciliacionI.aspx">
+      </siteMapNode> -->
+    <!--
+      <siteMapNode title="Cuenta Bancaria Saldo" description="Cuenta Bancaria Saldo" resourceKey="3" url="~/ReportesConciliacion/CuentaBancariaSaldo.aspx">
+      </siteMapNode> -->
+      
+      <!--<siteMapNode title="Flujo Proyectado" description="Flujo Proyectado" resourceKey="3" url="~/Conciliacion/FlujoEfectivo/FlujoEfectivoProyectado.aspx">
+      </siteMapNode>-->
+      <siteMapNode title="Depositos y facturas Complemento" description="Depositos y facturas Complemento" resourceKey="3" url="~/ReportesConciliacion/DepositoFacturaComp.aspx">
+      </siteMapNode>
+      <!--
+      <siteMapNode title="Consulta de saldos a favor" description="Consulta de saldos a favor" resourceKey="4" url="~/ReportesConciliacion/ConsultaSaldoAFavor.aspx">
+      </siteMapNode>
+      -->
+      <siteMapNode title="Informes" description="Informes" resourceKey="1" url="">
+        <siteMapNode title="Posición diaria de bancos" description="Reporte posición diaria de bancos" resourceKey="27" url="~/ReportesConciliacion/PosicionDiariaBancos.aspx">
+        </siteMapNode>
+        <siteMapNode title="Estado de cuenta" description="Reporte estado de cuenta" resourceKey="28" url="~/ReportesConciliacion/ReporteEstadoCuenta.aspx?Reporte=2">
+        </siteMapNode>
+        <siteMapNode title="Estado de cuenta por día" description="Reporte estado de cuenta por día" resourceKey="29" url="~/ReportesConciliacion/ReporteEstadoCuenta.aspx?Reporte=3">
+        </siteMapNode>
+        <siteMapNode title="Estado de cuenta conciliados" description="Reporte estado de cuenta conciliados" resourceKey="30" url="~/ReportesConciliacion/ReporteEstadoCuentaConciliados.aspx">
+        </siteMapNode>
+        <siteMapNode title="Saldos de Anticipos de Clientes" description="Saldos de Anticipos de Clientes" resourceKey="30" url="~/ReportesConciliacion/ReporteSaldoAnticiposxCliente.aspx">
+        </siteMapNode>
+        <siteMapNode title="Internos Conciliar Futuro" description="Internos Conciliar Futuro" resourceKey="30" url="~/ReportesConciliacion/ReporteEstadoCuenta.aspx?Reporte=4">
+        </siteMapNode>
+      </siteMapNode>
+      
+    </siteMapNode>
+
+    <siteMapNode title="Bloqueos" description="Gestión de bloqueos" url="~/Interbloqueo.aspx" resourceKey="1">
+    </siteMapNode>
+   
+    
+    <siteMapNode title="Cerrar" description="Cerrar sesión" url="~/Acceso/Acceso.aspx" resourceKey="1">
+    </siteMapNode>
+
+  </siteMapNode>
+</siteMap>

@@ -1,0 +1,14 @@
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\SitioConciliacion\bin\CatalogoConciliacion.dll
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\SitioConciliacion\bin\CatalogoConciliacion.pdb
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\CatalogoConciliacion\obj\Debug\CatalogoConciliacion.csprojAssemblyReference.cache
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\CatalogoConciliacion\obj\Debug\CatalogoConciliacion.csproj.CoreCompileInputs.cache
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\CatalogoConciliacion\obj\Debug\CatalogoConciliacion.csproj.CopyComplete
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\CatalogoConciliacion\obj\Debug\CatalogoConciliacion.dll
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\CatalogoConciliacion\obj\Debug\CatalogoConciliacion.pdb
+C:\Users\Ricardo Rojas\Source\Repos\CB\CatalogoConciliacion\obj\Debug\CatalogoConciliacion.csproj.CoreCompileInputs.cache
+C:\Users\Ricardo Rojas\Source\Repos\CB\CatalogoConciliacion\obj\Debug\CatalogoConciliacion.csprojAssemblyReference.cache
+C:\Users\Ricardo Rojas\Source\Repos\CB\SitioConciliacion\bin\CatalogoConciliacion.dll
+C:\Users\Ricardo Rojas\Source\Repos\CB\SitioConciliacion\bin\CatalogoConciliacion.pdb
+C:\Users\Ricardo Rojas\Source\Repos\CB\CatalogoConciliacion\obj\Debug\CatalogoConciliacion.csproj.CopyComplete
+C:\Users\Ricardo Rojas\Source\Repos\CB\CatalogoConciliacion\obj\Debug\CatalogoConciliacion.dll
+C:\Users\Ricardo Rojas\Source\Repos\CB\CatalogoConciliacion\obj\Debug\CatalogoConciliacion.pdb

@@ -1,0 +1,118 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SitioConciliacion", "SitioConciliacion\", "{7A5FA135-BF53-4A16-AC90-49DC4884C944}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{76a968e3-b770-48fa-b4e1-30eb653757e7}|Conciliacion.Migracion.Runtime.dll;{7124EB10-FCCD-40DD-90E3-3DFECA7EF535}|Conciliacion.RunTime.dll;{C924B2CB-B08E-4786-9E41-77F9278A8372}|SeguridadCB.dll;{3a19b75e-4312-4871-8368-72562fe91241}|SeguridadWeb.dll;{f77fcea1-5442-48a2-8fe4-43a655788cdd}|CatalogoConciliacion.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/SitioConciliacion"
+		Debug.AspNetCompiler.PhysicalPath = "SitioConciliacion\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\SitioConciliacion\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/SitioConciliacion"
+		Release.AspNetCompiler.PhysicalPath = "SitioConciliacion\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\SitioConciliacion\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "23664"
+		VWDVirtualPath = "/"
+		SlnRelativePath = "SitioConciliacion\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogoConciliacion", "CatalogoConciliacion\CatalogoConciliacion.csproj", "{F77FCEA1-5442-48A2-8FE4-43A655788CDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conciliacion.Migracion.Runtime", "Conciliacion.Migracio.Runtime\Conciliacion.Migracion.Runtime.csproj", "{76A968E3-B770-48FA-B4E1-30EB653757E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conciliacion.RunTime", "Conciliacion.RunTime\Conciliacion.RunTime.csproj", "{7124EB10-FCCD-40DD-90E3-3DFECA7EF535}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeguridadCB", "SeguridadCB\SeguridadCB.csproj", "{C924B2CB-B08E-4786-9E41-77F9278A8372}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeguridadWeb", "SeguridadWeb\SeguridadWeb.csproj", "{3A19B75E-4312-4871-8368-72562FE91241}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conciliacion.RunTimeTests1", "Conciliacion.RunTimeTests1\Conciliacion.RunTimeTests1.csproj", "{A372446E-7335-474D-BBE4-4A56AB81132C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locker", "Locker\Locker.csproj", "{FF1A3892-58A9-416F-80F7-DD4FC02EDDC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A5FA135-BF53-4A16-AC90-49DC4884C944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A5FA135-BF53-4A16-AC90-49DC4884C944}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A5FA135-BF53-4A16-AC90-49DC4884C944}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7A5FA135-BF53-4A16-AC90-49DC4884C944}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A5FA135-BF53-4A16-AC90-49DC4884C944}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{7A5FA135-BF53-4A16-AC90-49DC4884C944}.Release|x86.ActiveCfg = Debug|Any CPU
+		{F77FCEA1-5442-48A2-8FE4-43A655788CDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F77FCEA1-5442-48A2-8FE4-43A655788CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F77FCEA1-5442-48A2-8FE4-43A655788CDD}.Debug|x86.ActiveCfg = Debug|x86
+		{F77FCEA1-5442-48A2-8FE4-43A655788CDD}.Debug|x86.Build.0 = Debug|x86
+		{F77FCEA1-5442-48A2-8FE4-43A655788CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F77FCEA1-5442-48A2-8FE4-43A655788CDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F77FCEA1-5442-48A2-8FE4-43A655788CDD}.Release|x86.ActiveCfg = Release|x86
+		{F77FCEA1-5442-48A2-8FE4-43A655788CDD}.Release|x86.Build.0 = Release|x86
+		{76A968E3-B770-48FA-B4E1-30EB653757E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76A968E3-B770-48FA-B4E1-30EB653757E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76A968E3-B770-48FA-B4E1-30EB653757E7}.Debug|x86.ActiveCfg = Debug|x86
+		{76A968E3-B770-48FA-B4E1-30EB653757E7}.Debug|x86.Build.0 = Debug|x86
+		{76A968E3-B770-48FA-B4E1-30EB653757E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76A968E3-B770-48FA-B4E1-30EB653757E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76A968E3-B770-48FA-B4E1-30EB653757E7}.Release|x86.ActiveCfg = Release|x86
+		{76A968E3-B770-48FA-B4E1-30EB653757E7}.Release|x86.Build.0 = Release|x86
+		{7124EB10-FCCD-40DD-90E3-3DFECA7EF535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7124EB10-FCCD-40DD-90E3-3DFECA7EF535}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7124EB10-FCCD-40DD-90E3-3DFECA7EF535}.Debug|x86.ActiveCfg = Debug|x86
+		{7124EB10-FCCD-40DD-90E3-3DFECA7EF535}.Debug|x86.Build.0 = Debug|x86
+		{7124EB10-FCCD-40DD-90E3-3DFECA7EF535}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7124EB10-FCCD-40DD-90E3-3DFECA7EF535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7124EB10-FCCD-40DD-90E3-3DFECA7EF535}.Release|x86.ActiveCfg = Release|x86
+		{7124EB10-FCCD-40DD-90E3-3DFECA7EF535}.Release|x86.Build.0 = Release|x86
+		{C924B2CB-B08E-4786-9E41-77F9278A8372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C924B2CB-B08E-4786-9E41-77F9278A8372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C924B2CB-B08E-4786-9E41-77F9278A8372}.Debug|x86.ActiveCfg = Debug|x86
+		{C924B2CB-B08E-4786-9E41-77F9278A8372}.Debug|x86.Build.0 = Debug|x86
+		{C924B2CB-B08E-4786-9E41-77F9278A8372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C924B2CB-B08E-4786-9E41-77F9278A8372}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C924B2CB-B08E-4786-9E41-77F9278A8372}.Release|x86.ActiveCfg = Release|x86
+		{C924B2CB-B08E-4786-9E41-77F9278A8372}.Release|x86.Build.0 = Release|x86
+		{3A19B75E-4312-4871-8368-72562FE91241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A19B75E-4312-4871-8368-72562FE91241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A19B75E-4312-4871-8368-72562FE91241}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3A19B75E-4312-4871-8368-72562FE91241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A19B75E-4312-4871-8368-72562FE91241}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A19B75E-4312-4871-8368-72562FE91241}.Release|x86.ActiveCfg = Release|Any CPU
+		{A372446E-7335-474D-BBE4-4A56AB81132C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A372446E-7335-474D-BBE4-4A56AB81132C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A372446E-7335-474D-BBE4-4A56AB81132C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A372446E-7335-474D-BBE4-4A56AB81132C}.Debug|x86.Build.0 = Debug|Any CPU
+		{A372446E-7335-474D-BBE4-4A56AB81132C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A372446E-7335-474D-BBE4-4A56AB81132C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A372446E-7335-474D-BBE4-4A56AB81132C}.Release|x86.ActiveCfg = Release|Any CPU
+		{A372446E-7335-474D-BBE4-4A56AB81132C}.Release|x86.Build.0 = Release|Any CPU
+		{FF1A3892-58A9-416F-80F7-DD4FC02EDDC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF1A3892-58A9-416F-80F7-DD4FC02EDDC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF1A3892-58A9-416F-80F7-DD4FC02EDDC2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FF1A3892-58A9-416F-80F7-DD4FC02EDDC2}.Debug|x86.Build.0 = Debug|Any CPU
+		{FF1A3892-58A9-416F-80F7-DD4FC02EDDC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF1A3892-58A9-416F-80F7-DD4FC02EDDC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF1A3892-58A9-416F-80F7-DD4FC02EDDC2}.Release|x86.ActiveCfg = Release|Any CPU
+		{FF1A3892-58A9-416F-80F7-DD4FC02EDDC2}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C920633C-5C51-4207-A3BC-8B2FE4AB54BA}
+	EndGlobalSection
+EndGlobal

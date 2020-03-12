@@ -1,0 +1,29 @@
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\bin\Debug\Conciliacion.RunTime.dll
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\bin\Debug\Conciliacion.RunTime.pdb
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\bin\Debug\EPPlus.dll
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\bin\Debug\Locker.dll
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\bin\Debug\RTGMGateway.dll
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\bin\Debug\SeguridadCB.dll
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\bin\Debug\log4net.dll
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\bin\Debug\SeguridadCB.pdb
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\bin\Debug\EPPlus.xml
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\bin\Debug\Locker.pdb
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\bin\Debug\RTGMGateway.pdb
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\bin\Debug\RTGMGateway.dll.config
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\bin\Debug\log4net.xml
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\obj\Debug\Conciliacion.RunTime.csprojAssemblyReference.cache
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\obj\Debug\Conciliacion.RunTime.csproj.CoreCompileInputs.cache
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\obj\Debug\Conciliacion.RunTime.csproj.CopyComplete
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\obj\Debug\Conciliacion.RunTime.dll
+C:\Users\Ricardo Rojas\Source\Repos\conciliacionbancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Conciliacion.RunTime\obj\Debug\Conciliacion.RunTime.pdb
+C:\Users\Ricardo Rojas\Source\Repos\CB\Conciliacion.RunTime\obj\Debug\Conciliacion.RunTime.csprojAssemblyReference.cache
+C:\Users\Ricardo Rojas\Source\Repos\CB\Conciliacion.RunTime\obj\Debug\Conciliacion.RunTime.csproj.CoreCompileInputs.cache
+C:\Users\Ricardo Rojas\Source\Repos\CB\Conciliacion.RunTime\bin\Debug\Conciliacion.RunTime.dll
+C:\Users\Ricardo Rojas\Source\Repos\CB\Conciliacion.RunTime\bin\Debug\Conciliacion.RunTime.pdb
+C:\Users\Ricardo Rojas\Source\Repos\CB\Conciliacion.RunTime\bin\Debug\EPPlus.dll
+C:\Users\Ricardo Rojas\Source\Repos\CB\Conciliacion.RunTime\bin\Debug\SeguridadCB.dll
+C:\Users\Ricardo Rojas\Source\Repos\CB\Conciliacion.RunTime\bin\Debug\SeguridadCB.pdb
+C:\Users\Ricardo Rojas\Source\Repos\CB\Conciliacion.RunTime\bin\Debug\EPPlus.xml
+C:\Users\Ricardo Rojas\Source\Repos\CB\Conciliacion.RunTime\obj\Debug\Conciliacion.RunTime.csproj.CopyComplete
+C:\Users\Ricardo Rojas\Source\Repos\CB\Conciliacion.RunTime\obj\Debug\Conciliacion.RunTime.dll
+C:\Users\Ricardo Rojas\Source\Repos\CB\Conciliacion.RunTime\obj\Debug\Conciliacion.RunTime.pdb

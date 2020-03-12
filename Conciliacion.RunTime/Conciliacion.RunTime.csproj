@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7124EB10-FCCD-40DD-90E3-3DFECA7EF535}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Conciliacion.RunTime</RootNamespace>
+    <AssemblyName>Conciliacion.RunTime</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Locker">
+      <HintPath>..\..\..\..\..\ConciliacionBancaria\Conciliacion\App_Web\Sitio Conicliacion 07-07-2017\Locker\bin\Debug\Locker.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.cs" />
+    <Compile Include="DatosSQL\BusquedaClienteDatosBancariosDatos.cs" />
+    <Compile Include="DatosSQL\ClienteDatos.cs" />
+    <Compile Include="DatosSQL\ConciliacionReferenciaDatos.cs" />
+    <Compile Include="DatosSQL\ConsultarMultiplesDocumentosTransBanDatos.cs" />
+    <Compile Include="DatosSQL\DetallePagareDatos.cs" />
+    <Compile Include="DatosSQL\DispersorPagoDatos.cs" />
+    <Compile Include="DatosSQL\ExportadorInformeInternosAFuturoDatos.cs" />
+    <Compile Include="DatosSQL\FacturaManualDatos.cs" />
+    <Compile Include="DatosSQL\FacturasComplementoDatos.cs" />
+    <Compile Include="DatosSQL\InformeBancarioDatos.cs" />
+    <Compile Include="DatosSQL\MovimientoCajaConciliacionDatos.cs" />
+    <Compile Include="DatosSQL\PagareDatos.cs" />
+    <Compile Include="DatosSQL\PagoAnticipadoDatos.cs" />
+    <Compile Include="DatosSQL\PagoAreasComunesDatos.cs" />
+    <Compile Include="DatosSQL\RelacionCobranzaDatos.cs" />
+    <Compile Include="DatosSQL\SaldoAFavorDatos.cs" />
+    <Compile Include="DatosSQL\ValidacionArchivosConciliacionDatos.cs" />
+    <Compile Include="DatosSQL\CobranzaDatos.cs" />
+    <Compile Include="DatosSQL\CobroDatos.cs" />
+    <Compile Include="DatosSQL\ConciliacionDatos.cs" />
+    <Compile Include="DatosSQL\Conexion.cs" />
+    <Compile Include="DatosSQL\ConsultaDatos.cs" />
+    <Compile Include="DatosSQL\DatosArchivoDatos.cs" />
+    <Compile Include="DatosSQL\DatosArchivoDetalleDatos.cs" />
+    <Compile Include="DatosSQL\FlujoProyectadoDatos.cs" />
+    <Compile Include="DatosSQL\FuenteInformacionDatos.cs" />
+    <Compile Include="DatosSQL\GrupoConciliacionDiasDiferenciaDatos.cs" />
+    <Compile Include="DatosSQL\MovimientoCajaDatos.cs" />
+    <Compile Include="DatosSQL\PedidoCobranzaDatos.cs" />
+    <Compile Include="DatosSQL\ReferenciaConciliadaCompartidaDatos.cs" />
+    <Compile Include="DatosSQL\ReferenciaConciliadaDatos.cs" />
+    <Compile Include="DatosSQL\ReferenciaConciliadaPedidoDatos.cs" />
+    <Compile Include="DatosSQL\ReferenciaNoConciliadaDatos.cs" />
+    <Compile Include="DatosSQL\ReferenciaNoConciliadaPedidoDatos.cs" />
+    <Compile Include="DatosSQL\TransferenciaBancariaOrigenDatos.cs" />
+    <Compile Include="DatosSQL\TransferenciaBancariasDatos.cs" />
+    <Compile Include="DatosSQL\TransferenciaBancariasDetalleDatos.cs" />
+    <Compile Include="DetalleValidacion.cs" />
+    <Compile Include="EmisorMensajes.cs" />
+    <Compile Include="ExportadorInformeInternosAFuturo.cs" />
+    <Compile Include="MensajeImplementacionWeb.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReglasDeNegocio\BusquedaClienteDatosBancarios.cs" />
+    <Compile Include="ReglasDeNegocio\Caja.cs" />
+    <Compile Include="ReglasDeNegocio\Cliente.cs" />
+    <Compile Include="ReglasDeNegocio\ClienteException.cs" />
+    <Compile Include="ReglasDeNegocio\Cobranza.cs" />
+    <Compile Include="ReglasDeNegocio\Cobro.cs" />
+    <Compile Include="ReglasDeNegocio\Conciliacion.cs" />
+    <Compile Include="ReglasDeNegocio\ConciliacionReferencia.cs" />
+    <Compile Include="ReglasDeNegocio\ConsultarMultiplesDocumentosTransBan.cs" />
+    <Compile Include="ReglasDeNegocio\Consultas.cs" />
+    <Compile Include="ReglasDeNegocio\Cuenta.cs" />
+    <Compile Include="ReglasDeNegocio\DatosArchivo.cs" />
+    <Compile Include="ReglasDeNegocio\DatosArchivoDetalle.cs" />
+    <Compile Include="ReglasDeNegocio\DetallePagare.cs" />
+    <Compile Include="ReglasDeNegocio\DispersorPago.cs" />
+    <Compile Include="ReglasDeNegocio\DispersorPagoException.cs" />
+    <Compile Include="ReglasDeNegocio\Enrutador.cs" />
+    <Compile Include="ReglasDeNegocio\EstadoDeCuenta.cs" />
+    <Compile Include="ReglasDeNegocio\ExportadorInformeBancario.cs" />
+    <Compile Include="ReglasDeNegocio\ExportadorInformeEstadoCuentaDia.cs" />
+    <Compile Include="ReglasDeNegocio\ExportadorInformeEstadoCuenta.cs" />
+    <Compile Include="ReglasDeNegocio\ExportadorInformeEstadoCuentaConciliado.cs" />
+    <Compile Include="ReglasDeNegocio\FacturaManual.cs" />
+    <Compile Include="ReglasDeNegocio\FlujoProyectado.cs" />
+    <Compile Include="ReglasDeNegocio\FacturasComplemento.cs" />
+    <Compile Include="ReglasDeNegocio\FuenteInformacion.cs" />
+    <Compile Include="ReglasDeNegocio\GrupoConciliacionDiasDiferencia.cs" />
+    <Compile Include="ReglasDeNegocio\IConciliacion.cs" />
+    <Compile Include="ReglasDeNegocio\ImportacionAplicacion.cs" />
+    <Compile Include="ReglasDeNegocio\InformeBancario.cs" />
+    <Compile Include="ReglasDeNegocio\ListaCombo.cs" />
+    <Compile Include="ReglasDeNegocio\MovimientoCaja.cs" />
+    <Compile Include="ReglasDeNegocio\MovimientoCajaConciliacion.cs" />
+    <Compile Include="ReglasDeNegocio\Pagare.cs" />
+    <Compile Include="ReglasDeNegocio\PagoAnticipado.cs" />
+    <Compile Include="ReglasDeNegocio\PagoAreasComunes.cs" />
+    <Compile Include="ReglasDeNegocio\PagoPropuesto.cs" />
+    <Compile Include="ReglasDeNegocio\PalabraClaveTipoCobro.cs" />
+    <Compile Include="ReglasDeNegocio\PedidoCobranza.cs" />
+    <Compile Include="ReglasDeNegocio\Referencia.cs" />
+    <Compile Include="ReglasDeNegocio\ReferenciaConciliada.cs" />
+    <Compile Include="ReglasDeNegocio\ReferenciaConciliadaCompartida.cs" />
+    <Compile Include="ReglasDeNegocio\ReferenciaConciliadaPedido.cs" />
+    <Compile Include="ReglasDeNegocio\ReferenciaNoConciliada.cs" />
+    <Compile Include="ReglasDeNegocio\ReferenciaNoConciliadaPedido.cs" />
+    <Compile Include="ReglasDeNegocio\RelacionCobranza.cs" />
+    <Compile Include="ReglasDeNegocio\RelacionCobranzaException.cs" />
+    <Compile Include="ReglasDeNegocio\SaldoAFavor.cs" />
+    <Compile Include="ReglasDeNegocio\TransBan.cs" />
+    <Compile Include="ReglasDeNegocio\TransBanException.cs" />
+    <Compile Include="ReglasDeNegocio\TransferenciaBancariaOrigen.cs" />
+    <Compile Include="ReglasDeNegocio\TransferenciaBancarias.cs" />
+    <Compile Include="ReglasDeNegocio\TransferenciaBancariasDetalle.cs" />
+    <Compile Include="ReglasDeNegocio\ValidacionArchivosConciliacion.cs" />
+    <Compile Include="ReglasDeNegocio\VerificadorRemanentes.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SeguridadCB\SeguridadCB.csproj">
+      <Project>{C924B2CB-B08E-4786-9E41-77F9278A8372}</Project>
+      <Name>SeguridadCB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
