@@ -1110,7 +1110,7 @@
                         <!--    FIN POPUP CARGA ARCHIVO    -->
                         <div style="overflow: auto;">
                             <asp:GridView ID="grvPedidos" runat="server" AllowSorting="True" AutoGenerateColumns="False"
-                            CssClass="grvResultadoConsultaCss" DataKeyNames="Celula,Pedido,AñoPed,Cliente"
+                            CssClass="grvResultadoConsultaCss" DataKeyNames="IdCargo,AñoCargo,IdCliente"
                             AllowPaging="False" PageSize="200" OnPageIndexChanging="grvPedidos_PageIndexChanging"
                             OnRowCreated="grvPedidos_RowCreated" OnSorting="grvPedidos_Sorting" ShowHeader="True"
                             ShowHeaderWhenEmpty="True" Width="100%">
@@ -1389,7 +1389,7 @@
                             </asp:GridView>
                             <asp:GridView ID="grvDetallePedidoInterno" runat="server" AutoGenerateColumns="False"
                                 AllowPaging="True" ShowHeader="True" Width="100%" CssClass="grvResultadoConsultaCss"
-                                PageSize="15" ShowHeaderWhenEmpty="True" DataKeyNames="Celula,Pedido,AñoPed">
+                                PageSize="15" ShowHeaderWhenEmpty="True" DataKeyNames="IdCargo,AñoCargo">
                                 <HeaderStyle HorizontalAlign="Center" />
                                 <Columns>
                                     <asp:TemplateField>
@@ -1401,24 +1401,24 @@
                                             BackColor="#ebecec" Width="30px"></ItemStyle>
                                         <HeaderStyle HorizontalAlign="Center" Width="30px"></HeaderStyle>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Ped." SortExpression="Pedido">
+                                    <asp:TemplateField HeaderText="Cargo" SortExpression="IdCargo">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblPedido" runat="server" Text='<%# resaltarBusqueda(Eval("Pedido").ToString()) %>' />
+                                            <asp:Label ID="lblCargo" runat="server" Text='<%# resaltarBusqueda(Eval("IdCargo").ToString()) %>' />
                                         </ItemTemplate>
                                         <ControlStyle CssClass="centradoMedio" />
                                         <ItemStyle HorizontalAlign="Center" BackColor="#d9b335" ForeColor="White" Width="50px">
                                         </ItemStyle>
                                         <HeaderStyle HorizontalAlign="Center" Width="50px"></HeaderStyle>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Celula" SortExpression="Celula">
+<%--                                    <asp:TemplateField HeaderText="Celula" SortExpression="Celula">
                                         <ItemTemplate>
                                             <asp:Label ID="lblCelula" runat="server" Text='<%# resaltarBusqueda(Eval("Celula").ToString()) %>' />
                                         </ItemTemplate>
                                         <ControlStyle CssClass="centradoMedio" />
                                         <ItemStyle HorizontalAlign="Center" Width="40px"></ItemStyle>
                                         <HeaderStyle HorizontalAlign="Center" Width="40px"></HeaderStyle>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Total Pedido" SortExpression="Total">
+                                    </asp:TemplateField>--%>
+                                    <asp:TemplateField HeaderText="Total Cargo" SortExpression="Total">
                                         <ItemTemplate>
                                             <asp:Label ID="lblMontoPedido" runat="server" Text='<%# resaltarBusqueda(Eval("Total","{0:c2}").ToString()) %>'></asp:Label>
                                         </ItemTemplate>

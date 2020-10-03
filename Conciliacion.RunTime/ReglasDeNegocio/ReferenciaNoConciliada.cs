@@ -108,6 +108,13 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
 
         private string usuario;
 
+        //private DateTime ffactura;
+        //private int añocargo;
+        //private int idcargo;
+        //private int foliofactura;
+        //private string seriefactura;
+        ////private string tipocargo;
+
         #region Constructores
 
         public ReferenciaNoConciliada(int corporativo, int sucursal, string sucursaldes, int añoconciliacion, int folio, int secuencia,
@@ -627,7 +634,7 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
         public abstract bool CancelarExternoInterno();
         public abstract bool CancelarInterno();
 
-        public abstract string ValidaPedido(string PedidoReferencia);
+        public abstract string ValidaCargos(string PedidoReferencia);
 
         public abstract ReferenciaNoConciliada CrearObjeto();
 
@@ -798,16 +805,6 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
                 return montoconciliado;
             }
         }
-        //public decimal MontoConciliado
-        //{
-        //    get
-        //    {
-        //        const decimal montoconciliado = 0;
-        //        return this.ConInterno
-        //            ? this.listareferenciaconciliada.Cast<ReferenciaConciliada>().Aggregate(montoconciliado, (current, referen) => current + referen.MontoInterno)
-        //            : this.listareferenciaconciliada.Cast<ReferenciaConciliadaPedido>().Aggregate(montoconciliado, (current, referen) => current + referen.Total);
-        //    }
-        //}
         public decimal MontoPedido
         {
             get
@@ -998,6 +995,27 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             set { tipoCobroAnterior = value; }
         }
 
+        //public int IdContrato
+        //{
+        //    get { return idcontrato; }
+        //    set { idcontrato = value; }
+        //}
+        //public int FolioFactura
+        //{
+        //    get { return foliofactura; }
+        //    set { foliofactura = value; }
+        //}
+        //public string SerieFactura
+        //{
+        //    get { return seriefactura; }
+        //    set { seriefactura = value; }
+        //}
+        //public DateTime Ffacturacion
+        //{
+        //    get { return ffacturacion; }
+        //    set { ffacturacion = value; }
+        //}
+
         public Color ColorTraspaso
         {
             get
@@ -1155,7 +1173,7 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             {
                 if ((this.MontoConciliado + referencia.Total > this.monto + this.Diferencia) & (this.MismoClienteM(referencia.Cliente) == false))
                 {
-                    this.ImplementadorMensajes.MostrarMensaje("El pedido " + referencia.Pedido + " supera el monto a conciliar: " + this.monto);
+                    this.ImplementadorMensajes.MostrarMensaje("El pedido " + referencia.IdCargo + " supera el monto a conciliar: " + this.monto);
                     return false;
                 }
                 else if (this.MontoConciliado == this.Monto)
@@ -1172,9 +1190,9 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
                 RefConciliada.FolioConciliacion = this.folioconciliacion; //Folio de la conciliacion
 
                 RefConciliada.SucursalPedido = referencia.Sucursal;//Sucursa del interno
-                RefConciliada.CelulaPedido = referencia.CelulaPedido; //Folio del interno
-                RefConciliada.AñoPedido = referencia.AñoPedido;//Secuencia del interno
-                RefConciliada.Pedido = referencia.Pedido;
+                //RefConciliada.CelulaPedido = referencia.CelulaPedido; //Folio del interno
+                RefConciliada.AñoCargo = referencia.AñoCargo;//Secuencia del interno
+                RefConciliada.IdCargo = referencia.IdCargo;
                 RefConciliada.ConceptoPedido = referencia.Concepto;
 
 
@@ -1228,9 +1246,9 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
                 RefConciliada.FolioConciliacion = this.folioconciliacion; //Folio de la conciliacion
 
                 RefConciliada.SucursalPedido = referencia.Sucursal;//Sucursa del interno
-                RefConciliada.CelulaPedido = referencia.CelulaPedido; //Folio del interno
-                RefConciliada.AñoPedido = referencia.AñoPedido;//Secuencia del interno
-                RefConciliada.Pedido = referencia.Pedido;
+                //RefConciliada.CelulaPedido = referencia.CelulaPedido; //Folio del interno
+                RefConciliada.AñoCargo = referencia.AñoCargo;//Secuencia del interno
+                RefConciliada.IdCargo = referencia.IdCargo;
                 RefConciliada.ConceptoPedido = referencia.Concepto;
 
 
@@ -1298,7 +1316,7 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             return resultado;
         }
 
-        public bool QuitarReferenciaConciliada(int pedido, int celulapedido, int añopedido)
+        public bool QuitarReferenciaConciliada(int pedido, int añopedido)
         {
             bool resultado = true;
             try
@@ -1306,8 +1324,8 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
                 List<ReferenciaConciliadaPedido> listareferencia = new List<ReferenciaConciliadaPedido>();//crar una nueva pero de ReferenciaConciliadaPedido
                 this.listareferenciaconciliada.ForEach(c => listareferencia.Add(c as ReferenciaConciliadaPedido));
                 listareferencia.RemoveAll(x => //x.Sucursal == referencia.Sucursal && 
-                                        x.AñoPedido == añopedido && x.CelulaPedido == celulapedido &&
-                                        x.Pedido == pedido);
+                                        x.AñoCargo == añopedido && //x.CelulaPedido == celulapedido &&
+                                        x.IdCargo == pedido);
                 this.listareferenciaconciliada.Clear();
                 listareferencia.ForEach(x => this.listareferenciaconciliada.Add(x as cReferencia));
 
@@ -1613,7 +1631,7 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
 
         }
 
-        public bool ExisteReferenciaConciliadaPedido(int pedido, int celulapedido, int añopedido)
+        public bool ExisteReferenciaConciliadaPedido(int pedido, int añopedido)
         {
             try
             {
@@ -1621,8 +1639,8 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
                 this.listareferenciaconciliada.ForEach(c => listareferencia.Add(c as ReferenciaConciliadaPedido));
 
                 return listareferencia.Exists(x =>
-                                        x.AñoPedido == añopedido && x.CelulaPedido == celulapedido &&
-                                        x.Pedido == pedido);
+                                        x.AñoCargo == añopedido && //x.CelulaPedido == celulapedido &&
+                                        x.IdCargo == pedido);
             }
             catch (Exception ex)
             {
@@ -1643,14 +1661,11 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             return this.listareferenciaconciliada.Cast<ReferenciaConciliadaPedido>().All(x => cliente == x.Cliente);
         }
 
-
-
-
         //ConsultarPedidosCorrespondientes por Movimiento Externo
-        public abstract List<ReferenciaConciliadaPedido> ConciliarPedidoCantidadYReferenciaMovExternoEdificios(
-          decimal centavos, short statusconcepto, string campoexterno, string campopedido);
+        //public abstract List<ReferenciaConciliadaPedido> ConciliarPedidoCantidadYReferenciaMovExternoEdificios(
+        //  decimal centavos, short statusconcepto, string campoexterno, string campopedido);
 
-        public abstract List<ReferenciaConciliadaPedido> ConciliarPedidoCantidadYReferenciaMovExterno(
+        public abstract List<ReferenciaConciliadaPedido> ObtieneDoctosPorReferenciaEnMovExterno(
           decimal centavos, short statusconcepto, string campoexterno, string campopedido);
 
         public virtual string CadenaConexion

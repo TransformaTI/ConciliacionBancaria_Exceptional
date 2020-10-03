@@ -234,9 +234,13 @@ public partial class ReportesConciliacion_ReporteEstadoCuentaConciliados : Syste
                     conexion.AbrirConexion(false);
                     string banco = WUCListadoCuentasBancarias1.CuentasSeleccionadas[i].Descripcion.ToString().Substring(0, 20).TrimEnd();
                     string numerocuenta = WUCListadoCuentasBancarias1.CuentasSeleccionadas[i].Descripcion.ToString().Substring(WUCListadoCuentasBancarias1.CuentasSeleccionadas[i].Descripcion.ToString().Length - 20).TrimStart();
+                    //if (numerocuenta == string.Empty) numerocuenta = "TODAS";
+                    numerocuenta = "TODAS";
                     lstDetalle = informeBancario.consultaReporteEstadoCuentaConciliado(conexion, fechaInicio, fechaFin, banco, numerocuenta, DrpEstatusConcepto.SelectedValue == "0" ? "" : DrpEstatusConcepto.SelectedValue, DrpEstatus.SelectedValue == "0" ? "" : DrpEstatus.SelectedValue);
+                    string nombreReporte = "EdoCtaCon" + cero + fechaInicio.Month.ToString() + fechaInicio.Year.ToString() + ".xlsx";
+
                     ExportadorInformeEstadoCuentaConciliado obExportador = new ExportadorInformeEstadoCuentaConciliado(lstDetalle,
-                    HttpRuntime.AppDomainAppPath + @"InformesExcel\", "EdoCtaCon" + cero + fechaInicio.Month + fechaInicio.Year + ".xlsx", numerocuenta, banco, esfinal, "");
+                    HttpRuntime.AppDomainAppPath + @"InformesExcel\", nombreReporte, numerocuenta, banco, esfinal, "");
                     obExportador.FechaMesEncabezado = fechaInicio.ToString();
                     obExportador.generarInforme();
 

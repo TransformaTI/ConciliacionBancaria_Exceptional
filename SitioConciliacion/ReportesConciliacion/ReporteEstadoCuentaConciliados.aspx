@@ -23,9 +23,9 @@
     <link rel="stylesheet" href="../App_Themes/GasMetropolitanoSkin/Accordion/css/accordion.css" />
 
     <!-- Script se utiliza para el Scroll del GridView-->
-    <link href="../App_Scripts/ScrollGridView/GridviewScroll.css" rel="stylesheet" type="text/css" />
-    <script src="../App_Scripts/ScrollGridView/gridviewScroll.min.js" type="text/javascript"></script>
-    <script src="../App_Scripts/Common.js" type="text/javascript"></script>
+    <%--<link href="../App_Scripts/ScrollGridView/GridviewScroll.css" rel="stylesheet" type="text/css" />
+    <script src="../App_Scripts/ScrollGridView/gridviewScroll.min.js" type="text/javascript"></script>--%>
+ <%--   <script src="../App_Scripts/Common.js" type="text/javascript"></script>--%>
 
     <script type="text/javascript">
          $(document).ready(function () {

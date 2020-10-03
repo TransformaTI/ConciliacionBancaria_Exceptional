@@ -153,22 +153,25 @@ public partial class Conciliacion_ConsultarDocumentos : System.Web.UI.Page
 
         ConsultarMultiplesDocumentosTransBan dato = lista.Find(x => x.Clave.Equals(clave));
 
-        string strReporte = Server.MapPath("~/") + settings.GetValue("RutaComprobanteDeCaja", typeof(string));
+        string strReporte = Server.MapPath("~/") + settings.GetValue("RutaComprobanteDeCaja", typeof(string));//RutaComprobanteDeCaja
+        //string strReporte = Server.MapPath("~/") + "CBReportes\\ComprobanteDeCajaExceptional.rpt";
         if (!File.Exists(strReporte)) return;
         try
         {
             string strServer = settings.GetValue("Servidor", typeof(string)).ToString();
             string strDatabase = settings.GetValue("Base", typeof(string)).ToString();
             usuario = (SeguridadCB.Public.Usuario)HttpContext.Current.Session["Usuario"];
-
             string strUsuario = usuario.IdUsuario.Trim();
+
             string strPW = usuario.ClaveDesencriptada;
             ArrayList Par = new ArrayList();
 
             Par.Add("@Consecutivo=" + dato.Consecutivo);
             Par.Add("@Folio=" + dato.Folio);
             Par.Add("@Caja=" + dato.Caja);
-            Par.Add("@FOperacion=" + dato.FOperacion.ToString("dd/MM/yyyy HH:mm:ss"));
+            Par.Add("@FOperacion=" + dato.FOperacion.ToString("MM/dd/yyyy HH:mm:ss"));
+            //Par.Add("@FOperacion=" + dato.FOperacion.ToString());
+            //Par.Add("@FOperacion=" + dato.FOperacion.ToString("yyyy-MM-dd HH:mm:ss"));
 
             ClaseReporte Reporte = new ClaseReporte(strReporte, Par, strServer, strDatabase, strUsuario, strPW);
             HttpContext.Current.Session["RepDoc"] = Reporte.RepDoc;

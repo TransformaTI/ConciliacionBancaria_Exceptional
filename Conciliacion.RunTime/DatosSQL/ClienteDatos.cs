@@ -24,7 +24,7 @@ namespace Conciliacion.RunTime.DatosSQL
         }
 
         public ClienteDatos(int cliente,
-            byte celula,
+            //byte celula,
             Int16 digitoverificador,
             string nombre,
             string referencia,
@@ -38,7 +38,7 @@ namespace Conciliacion.RunTime.DatosSQL
             string email,
             string direccion,
             string tipo, MensajesImplementacion implementadorMensajes)
-            : base(celula,
+            : base(//celula,
             digitoverificador,
             nombre,
             referencia,
@@ -81,7 +81,7 @@ namespace Conciliacion.RunTime.DatosSQL
                         this.NumCliente = rdCliente.GetInt32(0);
                         this.Nombre = rdCliente.GetString(1);
                         this.RazonSocial = rdCliente.GetString(2);
-                        this.Celula = rdCliente.GetByte(3);
+                        //this.Celula = rdCliente.GetByte(3);
                         this.Ruta = rdCliente.GetInt16(4);
 
                         if (rdCliente.GetBoolean(5))
@@ -128,7 +128,7 @@ namespace Conciliacion.RunTime.DatosSQL
             SeguridadCB.Public.Parametros parametros;
             parametros = (SeguridadCB.Public.Parametros)HttpContext.Current.Session["Parametros"];
             AppSettingsReader settings = new AppSettingsReader();
-            string PedidoMultiple = parametros.ValorParametro(Convert.ToSByte(settings.GetValue("Modulo", typeof(sbyte))), "ConcPedidoMultiple");
+            string PedidoMultiple = "1"; //parametros.ValorParametro(Convert.ToSByte(settings.GetValue("Modulo", typeof(sbyte))), "ConcPedidoMultiple");
             try
             {
                 _conexion.Comando.CommandType = CommandType.StoredProcedure;
@@ -145,9 +145,9 @@ namespace Conciliacion.RunTime.DatosSQL
                 _conexion.Comando.Parameters.Add(new SqlParameter("@FolioConciliacion", System.Data.SqlDbType.Int)).Value = Conciliacion.Folio;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@Folio", System.Data.SqlDbType.Int)).Value = Conciliacion.Folio;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@Secuencia", System.Data.SqlDbType.Int)).Value = 1;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.SmallInt)).Value = this.Celula;
+                //_conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.SmallInt)).Value = this.Celula;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@ClienteSeleccion", System.Data.SqlDbType.Int)).Value = this.NumCliente;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@ClientePadre", System.Data.SqlDbType.Bit)).Value = 0;
+                //_conexion.Comando.Parameters.Add(new SqlParameter("@ClientePadre", System.Data.SqlDbType.Bit)).Value = 0;
                 SqlDataReader reader = _conexion.Comando.ExecuteReader();
                 List<ReferenciaNoConciliadaPedido> lstRefenciaNoConciliada = new List<ReferenciaNoConciliadaPedido>();
 
@@ -157,8 +157,10 @@ namespace Conciliacion.RunTime.DatosSQL
                     {
                         ReferenciaNoConciliadaPedido dato = new ReferenciaNoConciliadaPedidoDatos(
                                 Convert.ToInt16(reader["Corporativo"]), Convert.ToInt16(reader["Sucursal"]),
-                                Convert.ToString(reader["SucursalDes"]), Conciliacion.Año, Conciliacion.Folio, Conciliacion.Mes,
-                                Convert.ToInt32(reader["Celula"]), Convert.ToInt32(reader["AñoPed"]),
+                                Convert.ToString(reader["SucursalDes"]), Conciliacion.Año, Conciliacion.Folio, 
+                                Conciliacion.Mes,
+                                0,//Convert.ToInt32(reader["Celula"]), 
+                                Convert.ToInt32(reader["AñoPed"]),
                                 Convert.ToInt32(reader["Pedido"]), Convert.ToString(reader["PedidoReferencia"]),
                                 Convert.ToInt32(reader["Cliente"]), Convert.ToString(reader["Nombre"]),
                                 Convert.ToInt32(reader["RemisionPedido"]), Convert.ToString(reader["SeriePedido"]),
@@ -188,20 +190,20 @@ namespace Conciliacion.RunTime.DatosSQL
             }
         }
 
-        public override DataTable ObtienePedidosCliente(Int64 Cliente, int Corporativo, int Sucursal, int Mes, int Año, int FolioConciliacion, Conexion _conexion)
+        public override DataTable ObtieneCargosDeContratos(Int64 IdContrato, int Corporativo, int Sucursal, int Mes, int Año, int FolioConciliacion, Conexion _conexion)
         {
             DataTable dtRetorno = new DataTable();
             SeguridadCB.Public.Parametros parametros;
             parametros = (SeguridadCB.Public.Parametros)HttpContext.Current.Session["Parametros"];
             AppSettingsReader settings = new AppSettingsReader();
-            _URLGateway = parametros.ValorParametro(Convert.ToSByte(settings.GetValue("Modulo", typeof(sbyte))), "URLGateway");
-            string PedidoMultiple = parametros.ValorParametro(Convert.ToSByte(settings.GetValue("Modulo", typeof(sbyte))), "ConcPedidoMultiple");
+            //_URLGateway = parametros.ValorParametro(Convert.ToSByte(settings.GetValue("Modulo", typeof(sbyte))), "URLGateway");
+            string PedidoMultiple = "1";// parametros.ValorParametro(Convert.ToSByte(settings.GetValue("Modulo", typeof(sbyte))), "ConcPedidoMultiple");
             try
             {
                 _conexion.Comando.CommandType = CommandType.StoredProcedure;
                 _conexion.Comando.CommandText = PedidoMultiple == "1" ? _conexion.Comando.CommandText = "spCBPedidosClienteOPadrePM" : _conexion.Comando.CommandText = "spCBPedidosClienteOPadre";
                 _conexion.Comando.Parameters.Clear();
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Cliente", System.Data.SqlDbType.BigInt)).Value = Cliente;
+                _conexion.Comando.Parameters.Add(new SqlParameter("@Contrato", System.Data.SqlDbType.BigInt)).Value = IdContrato;
                 _conexion.Comando.Parameters.Add("@CorporativoConciliacion", System.Data.SqlDbType.VarChar).Value = Corporativo;
                 _conexion.Comando.Parameters.Add("@SucursalConciliacion", System.Data.SqlDbType.VarChar).Value = Sucursal;
                 _conexion.Comando.Parameters.Add("@MesConciliacion", System.Data.SqlDbType.VarChar).Value = Mes;

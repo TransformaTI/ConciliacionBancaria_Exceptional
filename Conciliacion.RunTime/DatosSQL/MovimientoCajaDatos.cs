@@ -117,6 +117,7 @@ namespace Conciliacion.RunTime.DatosSQL
                         this.FOperacion = Convert.ToDateTime(drConsulta["FOperacion"]);
                         this.Consecutivo = Convert.ToInt16(drConsulta["Consecutivo"]);
                         this.Folio = Convert.ToInt32(drConsulta["Folio"]);
+                        this.AñoDocumento = Convert.ToInt32(drConsulta["AñoDocumento"]);
                     }
                 }
                 if (this.Caja == 0)
@@ -196,78 +197,43 @@ namespace Conciliacion.RunTime.DatosSQL
                 foreach (Cobro Cobro in Cobros)
                 {
                     List<ReferenciaConciliadaPedido> Pedidos = Cobro.ListaPedidos.ToList();
-                    if (this.StatusAltaMC == StatusMovimientoCaja.Validado || tipoConciliacion == 2)
-                    {
+                    //if (this.StatusAltaMC == StatusMovimientoCaja.Validado || tipoConciliacion == 2)
+                    //{
                         PedidosActualizaSaldo.AddRange(Pedidos);
-                    }
+                    //}
                 }
 
                 foreach (Cobro Cobro in Cobros)
                 {
                     Cobro.Usuario = this.Usuario;
+                    Cobro.IdDocumento = this.Folio;
+                    Cobro.AñoDocumento = this.AñoDocumento;
                     resultado = Cobro.ChequeTarjetaAltaModifica(_conexion);
+
                     Cobro.MovimientoCajaCobroAlta(this.Caja, this.FOperacion, this.Consecutivo, this.Folio, _conexion);
+
                     Cobro.MovimientoCajaEntradaAlta(this.Caja, this.FOperacion, this.Consecutivo, this.Folio, _conexion);
                     Cobro.ActualizaPagoReferenciado(this.Caja, this.FOperacion, this.Consecutivo, this.Folio, _conexion);
 
                     List<ReferenciaConciliadaPedido> Pedidos = Cobro.ListaPedidos.ToList();
-                    //EsVariosAUno = Cobros.Count >= 1 && Pedidos.Count == 1;
-                    //if (EsVariosAUno) //varios a uno
-                    //{
-                    //    foreach (ReferenciaConciliadaPedido Pedido in Pedidos)
-                    //    {
-                    //        Pedido.MontoConciliado =
-                    //            Cobro.ListaPedidos.Where(y => y.AñoPedido == Pedido.AñoPedido && y.CelulaPedido == Pedido.CelulaPedido && y.Pedido == Pedido.Pedido).Sum(x => x.MontoConciliado);
-                    //        Pedido.CobroPedidoAlta(Cobro.AñoCobro, Cobro.NumCobro, Cobro.Total - Cobro.Saldo, _conexion);
-                    //        Pedido.PedidoActualizaSaldo(_conexion );
-                    //        Pedido.ActualizaPagosPorAplicar(_conexion);
-                    //    }
+                    foreach (ReferenciaConciliadaPedido Pedido in Pedidos)
+                    {
+                        Pedido.MontoConciliado =
+                            Cobro.ListaPedidos.Where(y => y.AñoCargo == Pedido.AñoCargo && y.IdCargo == Pedido.IdCargo).Sum(x => x.MontoConciliado);
+                            Pedido.CobroPedidoAlta(Cobro.AñoCobro, Cobro.NumCobro, _conexion);
 
-                    //}
-                    //else//Uno a varios
-                    //{
-                        foreach (ReferenciaConciliadaPedido Pedido in Pedidos)
+                        //PedidoActualizaSaldo() NO se debe ejecutar
+                        //cuando el status emitido y sea diferente de tipo c 2, 
+                        //solo cuando status sea validado 
+                        if (this.StatusAltaMC == StatusMovimientoCaja.Validado || tipoConciliacion == 2)
                         {
-                            Pedido.MontoConciliado =
-                                Cobro.ListaPedidos.Where(y => y.AñoPedido == Pedido.AñoPedido && y.CelulaPedido == Pedido.CelulaPedido && y.Pedido == Pedido.Pedido).Sum(x => x.MontoConciliado);
-                                Pedido.CobroPedidoAlta(Cobro.AñoCobro, Cobro.NumCobro, _conexion);
-
-                            //PedidoActualizaSaldo() NO se debe ejecutar
-                            //cuando el status emitido y sea diferente de tipo c 2, 
-                            //solo cuando status sea validado 
-                            if (this.StatusAltaMC == StatusMovimientoCaja.Validado || tipoConciliacion == 2)
-                            {
-                                Pedido.PedidoActualizaSaldo(_conexion);
-                            }
-                            Pedido.ActualizaPagosPorAplicar(_conexion);
+                            Pedido.PedidoActualizaSaldo(_conexion);
                         }
-                    //}
+                        Pedido.ActualizaPagosPorAplicar(_conexion);
+                    }
                 }
 
-                //if (EsVariosAUno) //varios a uno
-                //{
-                //    if (this.StatusAltaMC == StatusMovimientoCaja.Validado || tipoConciliacion == 2)
-                //    {
-                //        int numpedidos = 0;
-                //        var PedidosOrdenados =
-                //            PedidosActualizaSaldo.GroupBy(f => new { f.Pedido }).Select(group => new { pedido = group.Key.Pedido, suma = group.Sum(f => f.MontoConciliado) }).ToList();
-                //        foreach (ReferenciaConciliadaPedido Pedido in PedidosActualizaSaldo)
-                //        {
-                //            foreach (var p in PedidosOrdenados)
-                //            {
-                //                if (p.pedido == Pedido.Pedido)
-                //                {
-                //                    Pedido.PedidoActualizaSaldo(_conexion, p.suma);
-                //                    numpedidos++;
-                //                }
-                //            }
-                //            //if (numpedidos >= PedidosOrdenados.Count)
-                //            //    break;
-                //        }
-                //    }
-                //}
-
-                //throw new Exception("PRUEBA");
+                //throw new Exception("MENSAJE DE PRUEBA");
 
             }
             catch (Exception ex)
@@ -277,7 +243,8 @@ namespace Conciliacion.RunTime.DatosSQL
             return resultado;
         }
 
-        private DataTable DatosDePedido(Conexion _conexion, int AñoPed, int Celula, int Pedido)
+        private DataTable DatosDePedido(Conexion _conexion, int AñoPed, //int Celula, 
+            int Pedido)
         {
             DataTable dtRetorno = new DataTable();
             try
@@ -287,7 +254,7 @@ namespace Conciliacion.RunTime.DatosSQL
 
                 _conexion.Comando.Parameters.Clear();
                 _conexion.Comando.Parameters.Add(new SqlParameter("@AñoPed", System.Data.SqlDbType.Int)).Value = AñoPed;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.Int)).Value = Celula;
+                //_conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.Int)).Value = Celula;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@Pedido", System.Data.SqlDbType.Int)).Value = Pedido;
 
                 SqlDataAdapter Dap = new SqlDataAdapter(_conexion.Comando);

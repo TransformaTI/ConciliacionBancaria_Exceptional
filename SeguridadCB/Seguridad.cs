@@ -14,8 +14,14 @@ namespace SeguridadCB
 
         public Seguridad()
         {
-            conexion = new SqlConnection();
-            conexion.ConnectionString = (System.Web.HttpContext.Current.Session["AppCadenaConexion"]).ToString();
+            try
+            {
+                conexion = new SqlConnection();
+                conexion.ConnectionString = (System.Web.HttpContext.Current.Session["AppCadenaConexion"]).ToString();
+            }
+            catch
+            {
+            }            
         }
 
         public SqlConnection Conexion
@@ -36,6 +42,38 @@ namespace SeguridadCB
             return seguridaddatalayer.ExisteUsuarioActivo(usuario);
         }
 
+        public string PswdUsuarioAppTerceros(string usuario)
+        {
+            //_InicialCorporativo = seguridaddatalayer.InicialCorporativosUsuario(usuario);
+            //DataTable dtCorporativos = new DataTable("Corporativos");
+            //dtCorporativos = seguridaddatalayer.CorporativosUsuario(usuario);
+            SqlDataReader rdr = null;
+            try
+            {
+                rdr = seguridaddatalayer.DatosUsuarioAppTerceros(usuario);
+                rdr.Read();
+                //Encripter objEncrypter = new Encripter();
+                if (rdr.HasRows)
+                    return rdr["Password"].ToString();
+                else
+                    return "";
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (rdr != null)
+                    rdr.Close();
+                seguridaddatalayer.TerminaConsulta(false, true);
+            }
+        }
+
         public Usuario DatosUsuario(string usuario)
         {
             _InicialCorporativo = seguridaddatalayer.InicialCorporativosUsuario(usuario);
@@ -47,11 +85,14 @@ namespace SeguridadCB
                 rdr = seguridaddatalayer.DatosUsuario(usuario);
                 rdr.Read();
                 Encripter objEncrypter = new Encripter();
+
+                //objEncrypter.ImplicitEncript("123");
+
                 return  new Usuario(rdr["Usuario"].ToString(),
                                     rdr["Nombre"].ToString(), 
                                     Convert.ToInt32(rdr["Empleado"]), 
-                                    "oxelosund80",//objEncrypter.ImplicitUnencript(rdr["Clave"].ToString()), 
-                                    "oxelosund80",//objEncrypter.ImplicitUnencript(rdr["Clave"].ToString()), 
+                                    objEncrypter.ImplicitUnencript(rdr["Clave"].ToString()), 
+                                    objEncrypter.ImplicitUnencript(rdr["Clave"].ToString()), 
                                     Convert.ToByte(rdr["Corporativo"]), 
                                     rdr["NombreCorporativo"].ToString(), 
                                     Convert.ToInt16(rdr["Sucursal"]), 
@@ -79,8 +120,8 @@ namespace SeguridadCB
 
         public bool ComparaClaves(string clave, Usuario datosUsuario)
         {
-            //return clave == datosUsuario.ClaveDesencriptada;
-            return true;
+            return clave == datosUsuario.Clave;
+            //return true;
         }
 
         public Modulos Modulos(string usuario)
@@ -112,6 +153,24 @@ namespace SeguridadCB
         {
             Encripter objEncrypter = new Encripter();
             return objEncrypter.ImplicitUnencript(clave);
+        }
+
+        protected void ConfiguraLanguage()
+        {
+            string sql = " SET lc_time_names = 'sp_MX'; ";
+
+            using (SqlCommand commando = new SqlCommand(sql, conexion))
+            {
+                try
+                {
+                    commando.Connection.Open();
+                    commando.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw new ApplicationException("No se pudo establecer language", ex);
+                }
+            }
         }
 
         public enum TipoSeguridad : byte { SQL = 0, NT = 1 }

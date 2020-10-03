@@ -101,7 +101,8 @@
                                     <div class="floatDerecha bg-color-grisClaro01">
                                         <asp:ImageButton runat="server" ID="imgCerrar_AreasComunes" CssClass="iconoPequeño bg-color-rojo"
                                             ImageUrl="~/App_Themes/GasMetropolitanoSkin/Iconos/Cerrar.png" Width="20px" Height="20px"
-                                            OnClientClick="OcultarPopUpAreasComunes();" />
+                                            />
+                                        <%--OnClientClick="OcultarPopUpAreasComunes();" --%>
                                     </div>
                                     <div class="fg-color-blanco centradoJustificado">
                                  Listado de documentos por cliente padre
@@ -110,7 +111,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <ControlUsuario:AreasComunesControl runat="server" ID="wuAreascomunes" />
+                                    <%--<ControlUsuario:AreasComunesControl runat="server" ID="wuAreascomunes" />--%>
                                 </td>
                             </tr>
                         </table>
@@ -400,17 +401,17 @@
                                     <th align="center" scope="col" style="width:70px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$Referencia')">Referencia</a></th>
                                     <th align="center" scope="col" style="width:70px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$FMovimiento')">F. Mov. Ext.</a></th>
                                     <th align="center" scope="col" style="width:70px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$FOperacion')">F. Op. Ext.</a></th>
-                                    <th align="center" scope="col" style="width:70px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$ClientePadre')">Cliente Padre</a></th>
+                                    <th align="center" scope="col" style="width:70px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$ClientePadre')"></a></th>
                                     <th align="center" scope="col" style="width:100px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$Diferencia')">Diferencia</a></th>
                                     <th scope="col" style="width:200px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$Concepto')">Concepto</a></th>
-                                    <th align="center" scope="col" style="width:70px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$PedidoReferencia')">Documento</a></th>
-                                    <th align="center" scope="col" style="width:100px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$RemisionPedido')">Remision Ped.</a></th>
-                                    <th align="center" scope="col" style="width:40px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$SeriePedido')">Serie Ped.</a></th>
-                                    <th align="center" scope="col" style="width:100px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$FolioSat')">Folio Sat</a></th>
-                                    <th align="center" scope="col" style="width:100px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$SerieSat')">Serie Sat</a></th>
-                                    <th align="center" scope="col" style="width:120px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$ConceptoPedido')">Concepto</a></th>
-                                    <th align="center" scope="col" style="width:100px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$Total')">Total Pedido</a></th>
-                                    <th align="center" scope="col" style="width:100px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$Cliente')">Cliente</a></th>
+                                    <th align="center" scope="col" style="width:70px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$IdContrato')">Contrato</a></th>
+                                    <th align="center" scope="col" style="width:100px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$SerieFactura')">Serie Factura</a></th>
+                                    <th align="center" scope="col" style="width:40px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$FolioFactura')">Folio Factura</a></th>
+                                    <th align="center" scope="col" style="width:100px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$FFactura')">Fecha Factura</a></th>
+                                    <th align="center" scope="col" style="width:100px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$AñoCargo')">Año Cargo</a></th>
+                                    <th align="center" scope="col" style="width:120px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$FolioCargo')">Folio Cargo</a></th>
+                                    <th align="center" scope="col" style="width:100px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$TipoCargoDescripcion')">Tipo Cargo</a></th>
+                                    <%--<th align="center" scope="col" style="width:100px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$Cliente')">Cliente</a></th>--%>
                                     <th align="center" scope="col" style="width:150px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$Nombre')">Nom. Cliente</a></th>
                                     <th align="center" scope="col" style="width:150px;"><a href="javascript:__doPostBack('ctl00$contenidoPrincipal$grvPagos','Sort$TipoCobro')">T. Cobro</a></th>
 		                        </tr>
@@ -419,7 +420,7 @@
                         <div style="width:1200px; height: 500px; overflow:auto;">
                             <asp:GridView ID="grvPagos" runat="server" AutoGenerateColumns="False" AllowPaging="False"
                             AllowSorting="True" ShowHeader="False" CssClass="grvResultadoConsultaCss" ShowHeaderWhenEmpty="True"
-                            DataKeyNames="Secuencia,FolioExt,Pedido,Celula,AñoPed" OnRowCreated="grvPagos_RowCreated"
+                            DataKeyNames="Secuencia,FolioExt,IdCargo,AñoCargo" OnRowCreated="grvPagos_RowCreated"
                             OnSorting="grvPagos_Sorting" OnRowDataBound="grvPagos_RowDataBound" OnSelectedIndexChanged="grvPagos_SelectedIndexChanged" >
                             <%--<EmptyDataTemplate>
                                 <asp:Label ID="lblvacio" runat="server" CssClass="etiqueta fg-color-rojo" Text="No existen pedidos con cantidades concordantes."></asp:Label>
@@ -433,9 +434,8 @@
                         <ControlStyle Width="22px" />
                         <FooterStyle Width="22px" />
                         <HeaderStyle Width="22px" />
-                        <ItemStyle Width="22
-                            px" />
-                    </asp:TemplateField>
+                        <ItemStyle Width="22px" />
+                        </asp:TemplateField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
                                         <asp:Image ID="imgStatusMovimiento" runat="server" CssClass="icono" ImageUrl="~/App_Themes/GasMetropolitanoSkin/Iconos/Exito.png"
@@ -475,7 +475,7 @@
                                     <HeaderStyle HorizontalAlign="Center" Width="70px"></HeaderStyle>
                                 </asp:TemplateField>
 
-                                <asp:TemplateField HeaderText="ClientePadre" SortExpression="ClientePadre">
+<%--                                <asp:TemplateField HeaderText="ClientePadre" SortExpression="ClientePadre">
                                     <ItemTemplate>
                                         <b>
                                             <asp:Label ID="lblClientePadre" runat="server" Text='<%# resaltarBusqueda(Eval("ClientePadre").ToString()) %>'></asp:Label>
@@ -483,7 +483,7 @@
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="100px"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Center" Width="100px"></HeaderStyle>
-                                </asp:TemplateField>
+                                </asp:TemplateField>--%>
 
                                 <asp:TemplateField HeaderText="Diferencia" SortExpression="Diferencia">
                                     <ItemTemplate>
@@ -511,35 +511,35 @@
                                     <HeaderStyle Width="200px"></HeaderStyle>
                                     <ItemStyle Width="200px"></ItemStyle>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Documento" SortExpression="PedidoReferencia">
+                                <asp:TemplateField HeaderText="Contrato" SortExpression="IdContrato">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblPedidoReferencia" runat="server" Text='<%# resaltarBusqueda(Eval("PedidoReferencia").ToString()) %>' />
+                                        <asp:Label ID="lblPedidoReferencia" runat="server" Text='<%# resaltarBusqueda(Eval("NumContrato").ToString()) %>' />
                                     </ItemTemplate>
                                     <ControlStyle CssClass="centradoMedio" />
                                     <ItemStyle HorizontalAlign="Center" Width="70px" BackColor="#d9b335" ForeColor="White">
                                     </ItemStyle>
                                     <HeaderStyle HorizontalAlign="Center" Width="70px"></HeaderStyle>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Remision Ped." SortExpression="RemisionPedido">
+                                <asp:TemplateField HeaderText="Serie Factura" SortExpression="SerieFactura">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblRemisionPedido" runat="server" Text='<%# resaltarBusqueda(Eval("RemisionPedido").ToString()) %>' />
+                                        <asp:Label ID="lblSerieFactura" runat="server" Text='<%# resaltarBusqueda(Eval("SerieFactura").ToString()) %>' />
                                     </ItemTemplate>
                                     <ControlStyle CssClass="centradoMedio" />
                                     <ItemStyle HorizontalAlign="Center" Width="100px"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Center" Width="100px"></HeaderStyle>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Serie Ped." SortExpression="SeriePedido">
+                                <asp:TemplateField HeaderText="Folio Factura" SortExpression="FolioFactura">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblSeriePedido" runat="server" Text='<%# resaltarBusqueda(Eval("SeriePedido").ToString()) %>' />
+                                        <asp:Label ID="lblFolioFactura" runat="server" Text='<%# resaltarBusqueda(Eval("FolioFactura").ToString()) %>' />
                                     </ItemTemplate>
                                     <ControlStyle CssClass="centradoMedio" />
                                     <ItemStyle HorizontalAlign="Center" Width="40px"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Center" Width="40px"></HeaderStyle>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Folio Sat" SortExpression="FolioSat">
+                                <asp:TemplateField HeaderText="Fecha Factura" SortExpression="FFactura">
                                     <ItemTemplate>
                                         <b>
-                                            <asp:Label ID="lblFolioSat" runat="server" Text='<%# resaltarBusqueda(Eval("FolioSat","{0:c2}").ToString()) %>'></asp:Label>
+                                            <asp:Label ID="lblFFactura" runat="server" Text='<%# resaltarBusqueda(Eval("FFactura","{0:d}").ToString()) %>'></asp:Label>
                                         </b>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="100px"></ItemStyle>
@@ -548,13 +548,35 @@
                                 <asp:TemplateField HeaderText="Serie Sat" SortExpression="SerieSat">
                                     <ItemTemplate>
                                         <b>
-                                            <asp:Label ID="lblSerieSat" runat="server" Text='<%# resaltarBusqueda(Eval("SerieSat","{0:c2}").ToString()) %>'></asp:Label>
+                                            <asp:Label ID="lblAñoCargo" runat="server" Text='<%# resaltarBusqueda(Eval("AñoCargo").ToString()) %>'></asp:Label>
                                         </b>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="100px"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Center" Width="100px"></HeaderStyle>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Concepto" SortExpression="ConceptoPedido">
+
+                                <asp:TemplateField HeaderText="Folio Cargo" SortExpression="SerieSat">
+                                    <ItemTemplate>
+                                        <b>
+                                            <asp:Label ID="lblIdCargo" runat="server" Text='<%# resaltarBusqueda(Eval("IdCargo").ToString()) %>'></asp:Label>
+                                        </b>
+                                    </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Center" Width="100px"></ItemStyle>
+                                    <HeaderStyle HorizontalAlign="Center" Width="100px"></HeaderStyle>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderText="Tipo Cargo" SortExpression="TipoCargoDescripcion">
+                                    <ItemTemplate>
+                                        <b>
+                                            <asp:Label ID="lblTipoCargo" runat="server" Text='<%# resaltarBusqueda(Eval("TipoCargoDescripcion").ToString()) %>'></asp:Label>
+                                        </b>
+                                    </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Center" Width="100px"></ItemStyle>
+                                    <HeaderStyle HorizontalAlign="Center" Width="100px"></HeaderStyle>
+                                </asp:TemplateField>
+
+
+<%--                                <asp:TemplateField HeaderText="Concepto" SortExpression="ConceptoPedido">
                                     <ItemTemplate>
                                         <div class="parrafoTexto" style="width: 120px">
                                             <asp:Label ID="lblConceptoPedido" runat="server" Text='<%# resaltarBusqueda(Eval("ConceptoPedido").ToString()) %>'></asp:Label>
@@ -570,18 +592,18 @@
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="120px"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Center" Width="120px"></HeaderStyle>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Total Pedido" SortExpression="Total">
+                                </asp:TemplateField>--%>
+                                <asp:TemplateField HeaderText="Total Cargo" SortExpression="Total">
                                     <ItemTemplate>
                                         <b>
-                                            <asp:Label ID="lblMontoPedido" runat="server" Text='<%# resaltarBusqueda(Eval("Total","{0:c2}").ToString()) %>'></asp:Label>
+                                            <asp:Label ID="lblTotalCargo" runat="server" Text='<%# resaltarBusqueda(Eval("Total","{0:c2}").ToString()) %>'></asp:Label>
                                         </b>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="100px"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Center" Width="100px"></HeaderStyle>
                                 </asp:TemplateField>
 
-                                <asp:TemplateField HeaderText="Cliente" SortExpression="Cliente">
+<%--                                <asp:TemplateField HeaderText="Cliente" SortExpression="Cliente">
                                     <ItemTemplate>
                                         <b>
                                             <asp:Label ID="lblCliente" runat="server" Text='<%# resaltarBusqueda(Eval("Cliente").ToString()) %>'></asp:Label>
@@ -589,7 +611,7 @@
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="100px"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Center" Width="100px"></HeaderStyle>
-                                </asp:TemplateField>
+                                </asp:TemplateField>--%>
 
                                 <asp:TemplateField HeaderText="Nom. Cliente" SortExpression="Nombre">
                                     <ItemTemplate>

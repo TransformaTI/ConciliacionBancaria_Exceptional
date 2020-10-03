@@ -43,10 +43,35 @@ namespace Conciliacion.RunTime.DatosSQL
                                      int sucursalext, string sucursalextdes, int folioext, int secuenciaext, string conceptoext, decimal montoconciliado, decimal diferencia, short formaconciliacion, short statusconcepto, string statusconciliacion, DateTime foperacionext, DateTime fmovimientoext,
                                      string chequeexterno, string referenciaexterno, string descripcionexterno, string nombreterceroexterno, string rfcterceroexterno, decimal depositoexterno, decimal retiroexterno,
                                      int sucursalpedido, string sucursalpedidodes, int celulapedido, int añopedido, int pedido, int remisionpedido, string seriepedido, int foliosat, string seriesat, string conceptopedido, decimal total, string statusmovimiento,
-                                     int cliente, string nombre, string pedidoreferencia, decimal saldo, int añoexterno, MensajesImplementacion implementadorMensajes)
+                                     int cliente, string nombre, 
+                                     string pedidoreferencia, decimal saldo, int añoexterno, 
+                                     MensajesImplementacion implementadorMensajes)
               : base(corporativo, añoconciliacion, mesconciliacion, folioconciliacion, sucursalext, sucursalextdes, folioext, secuenciaext, conceptoext, montoconciliado, diferencia, formaconciliacion, statusconcepto, statusconciliacion, foperacionext, fmovimientoext,
               chequeexterno, referenciaexterno, descripcionexterno, nombreterceroexterno, rfcterceroexterno, depositoexterno, retiroexterno,
-               sucursalpedido, sucursalpedidodes, celulapedido, añopedido, pedido, remisionpedido, seriepedido, foliosat, seriesat, conceptopedido, total, statusmovimiento, cliente, nombre, pedidoreferencia, saldo, añoexterno, implementadorMensajes)
+               sucursalpedido, sucursalpedidodes, celulapedido, añopedido, pedido, remisionpedido, seriepedido, foliosat, seriesat, conceptopedido, total, statusmovimiento, cliente, nombre, 
+               pedidoreferencia, saldo, añoexterno, 
+               implementadorMensajes)
+          {
+
+          }
+
+          public ReferenciaConciliadaPedidoDatos(int corporativo, int añoconciliacion, short mesconciliacion, int folioconciliacion,
+                                   int sucursalext, string sucursalextdes, int folioext, int secuenciaext, string conceptoext, decimal montoconciliado, decimal diferencia, short formaconciliacion, short statusconcepto, string statusconciliacion, DateTime foperacionext, DateTime fmovimientoext,
+                                   string chequeexterno, string referenciaexterno, string descripcionexterno, string nombreterceroexterno, string rfcterceroexterno, decimal depositoexterno, decimal retiroexterno,
+                                   int sucursalpedido, string sucursalpedidodes, int celulapedido, int añopedido, int pedido, int remisionpedido, string seriepedido, int foliosat, string seriesat, string conceptopedido, decimal total, string statusmovimiento,
+                                   int cliente, string nombre, string pedidoreferencia, int añoexterno,
+                                   
+                                   int idcontrato, string serie, int folio, DateTime ffactura, int anocargo, int idcargo, 
+                                   
+                                   MensajesImplementacion implementadorMensajes)
+            : base(corporativo, añoconciliacion, mesconciliacion, folioconciliacion, sucursalext, sucursalextdes, folioext, secuenciaext, conceptoext, montoconciliado, diferencia, formaconciliacion, statusconcepto, statusconciliacion, foperacionext, fmovimientoext,
+             chequeexterno, referenciaexterno, descripcionexterno, nombreterceroexterno, rfcterceroexterno, depositoexterno, retiroexterno,
+             sucursalpedido, sucursalpedidodes, celulapedido, añopedido, pedido, remisionpedido, seriepedido, foliosat, seriesat, conceptopedido, total, statusmovimiento, 
+             cliente, nombre, pedidoreferencia, añoexterno,
+             
+             idcontrato, serie, folio, ffactura, anocargo, idcargo,
+
+             implementadorMensajes)
           {
 
           }
@@ -70,7 +95,7 @@ namespace Conciliacion.RunTime.DatosSQL
             this.Usuario = usuario.IdUsuario;
 
             _conexion.Comando.CommandType = CommandType.StoredProcedure;
-            _conexion.Comando.CommandText = "spCBActualizaConciliacionPedido";
+            _conexion.Comando.CommandText = "spCBActualizaConciliacionCargo";
             _conexion.Comando.Parameters.Clear();
           
             _conexion.Comando.Parameters.Add("@Configuracion", System.Data.SqlDbType.SmallInt).Value = 0;
@@ -80,9 +105,9 @@ namespace Conciliacion.RunTime.DatosSQL
             _conexion.Comando.Parameters.Add("@FolioConciliacion ", System.Data.SqlDbType.Int).Value = this.FolioConciliacion;
             _conexion.Comando.Parameters.Add("@MesConciliacion", System.Data.SqlDbType.SmallInt).Value = this.MesConciliacion;
                     
-            _conexion.Comando.Parameters.Add("@Celula", System.Data.SqlDbType.Int).Value = this.CelulaPedido;
-            _conexion.Comando.Parameters.Add("@AñoPed", System.Data.SqlDbType.Int).Value = this.AñoPedido;
-            _conexion.Comando.Parameters.Add("@Pedido", System.Data.SqlDbType.Int).Value = this.Pedido;
+            //_conexion.Comando.Parameters.Add("@Celula", System.Data.SqlDbType.Int).Value = this.CelulaPedido;
+            _conexion.Comando.Parameters.Add("@AñoCargo", System.Data.SqlDbType.Int).Value = this.AñoCargo;
+            _conexion.Comando.Parameters.Add("@IdCargo", System.Data.SqlDbType.Int).Value = this.IdCargo;
 
             _conexion.Comando.Parameters.Add("@AñoExterno", System.Data.SqlDbType.Int).Value = this.Año;
             _conexion.Comando.Parameters.Add("@FolioExterno", System.Data.SqlDbType.Int).Value = this.Folio;
@@ -133,7 +158,7 @@ namespace Conciliacion.RunTime.DatosSQL
                 using (SqlConnection cnn = new SqlConnection(objApp.CadenaConexion))
                 {
                     cnn.Open();
-                    SqlCommand comando = new SqlCommand("spCBActualizaConciliacionPedido", cnn);
+                    SqlCommand comando = new SqlCommand("spCBActualizaConciliacionCargo", cnn);
                     comando.Parameters.Add("@Configuracion", System.Data.SqlDbType.SmallInt).Value = 0;
                     comando.Parameters.Add("@Corporativo", System.Data.SqlDbType.TinyInt).Value = this.Corporativo;
                     comando.Parameters.Add("@Sucursal", System.Data.SqlDbType.Int).Value = this.Sucursal;
@@ -141,9 +166,9 @@ namespace Conciliacion.RunTime.DatosSQL
                     comando.Parameters.Add("@FolioConciliacion ", System.Data.SqlDbType.Int).Value = this.FolioConciliacion;
                     comando.Parameters.Add("@MesConciliacion", System.Data.SqlDbType.SmallInt).Value = this.MesConciliacion;
 
-                    comando.Parameters.Add("@Celula", System.Data.SqlDbType.Int).Value = this.CelulaPedido;
-                    comando.Parameters.Add("@AñoPed", System.Data.SqlDbType.Int).Value = this.AñoPedido;
-                    comando.Parameters.Add("@Pedido", System.Data.SqlDbType.Int).Value = this.Pedido;
+                    //comando.Parameters.Add("@Celula", System.Data.SqlDbType.Int).Value = this.CelulaPedido;
+                    comando.Parameters.Add("@AñoCargo", System.Data.SqlDbType.Int).Value = this.AñoCargo;
+                    comando.Parameters.Add("@IdCargo", System.Data.SqlDbType.Int).Value = this.IdCargo;
 
                     comando.Parameters.Add("@AñoExterno", System.Data.SqlDbType.Int).Value = this.Año;
                     comando.Parameters.Add("@FolioExterno", System.Data.SqlDbType.Int).Value = this.Folio;
@@ -198,51 +223,19 @@ namespace Conciliacion.RunTime.DatosSQL
             return resultado;
         }
 
-        /*public override bool CobroPedidoAlta(short añocobro, int cobro)
-        {
-            bool resultado = false;
-            try
-            {
-                using (SqlConnection cnn = new SqlConnection(App.CadenaConexion))
-                {
-                    cnn.Open();
-                    SqlCommand comando = new SqlCommand("spCBCobroPedidoAlta", cnn);
-                    comando.Parameters.Add("@Celula", System.Data.SqlDbType.SmallInt).Value = this.CelulaPedido;
-                    comando.Parameters.Add("@AnoCobro", System.Data.SqlDbType.SmallInt).Value = añocobro;
-                    comando.Parameters.Add("@Cobro", System.Data.SqlDbType.Int).Value = cobro;
-                    comando.Parameters.Add("@AnoPed", System.Data.SqlDbType.SmallInt).Value = this.AñoPedido;
-                    comando.Parameters.Add("@Pedido", System.Data.SqlDbType.Int).Value = this.Pedido;
-                    comando.Parameters.Add("@Total", System.Data.SqlDbType.Decimal).Value = this.MontoConciliado;
-
-                    comando.CommandType = System.Data.CommandType.StoredProcedure;
-                    SqlDataReader reader = comando.ExecuteReader();
-                }
-                resultado = true;
-            }
-            catch (SqlException ex)
-            {
-                stackTrace = new StackTrace();
-                this.ImplementadorMensajes.MostrarMensaje("No se pudo guardar el registro.\n\rClase :" + this.GetType().Name + "\n\r" + "Metodo :" + stackTrace.GetFrame(0).GetMethod().Name + "\n\r" + "Error :" + ex.Message);
-                stackTrace = null;
-            }
-
-            return resultado;
-        }*/
-
-
         public override bool CobroPedidoAlta(short añocobro, int cobro, Conexion _conexion)
         {
             bool resultado = false;
             try
             {
                 _conexion.Comando.CommandType = CommandType.StoredProcedure;
-                _conexion.Comando.CommandText = "spCBCobroPedidoAlta";
+                _conexion.Comando.CommandText = "spCBCobroCargoAlta";
                 _conexion.Comando.Parameters.Clear();
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.SmallInt)).Value = this.CelulaPedido;
+                //_conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.SmallInt)).Value = this.CelulaPedido;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@AnoCobro", System.Data.SqlDbType.SmallInt)).Value = añocobro;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@Cobro", System.Data.SqlDbType.Int)).Value = cobro;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@AnoPed", System.Data.SqlDbType.SmallInt)).Value = this.AñoPedido;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Pedido", System.Data.SqlDbType.Int)).Value = this.Pedido;
+                _conexion.Comando.Parameters.Add(new SqlParameter("@AnoCargo", System.Data.SqlDbType.SmallInt)).Value = this.AñoCargo;
+                _conexion.Comando.Parameters.Add(new SqlParameter("@IdCargo", System.Data.SqlDbType.Int)).Value = this.IdCargo;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@Total", System.Data.SqlDbType.Decimal)).Value = this.MontoConciliado;
 
                 _conexion.Comando.ExecuteNonQuery();
@@ -267,13 +260,13 @@ namespace Conciliacion.RunTime.DatosSQL
             try
             {
                 _conexion.Comando.CommandType = CommandType.StoredProcedure;
-                _conexion.Comando.CommandText = "spCBCobroPedidoAlta";
+                _conexion.Comando.CommandText = "spCBCobroCargoAlta";
                 _conexion.Comando.Parameters.Clear();
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.SmallInt)).Value = this.CelulaPedido;
+                //_conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.SmallInt)).Value = this.CelulaPedido;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@AnoCobro", System.Data.SqlDbType.SmallInt)).Value = añocobro;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@Cobro", System.Data.SqlDbType.Int)).Value = cobro;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@AnoPed", System.Data.SqlDbType.SmallInt)).Value = this.AñoPedido;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Pedido", System.Data.SqlDbType.Int)).Value = this.Pedido;
+                _conexion.Comando.Parameters.Add(new SqlParameter("@AnoPed", System.Data.SqlDbType.SmallInt)).Value = this.AñoCargo;
+                _conexion.Comando.Parameters.Add(new SqlParameter("@Pedido", System.Data.SqlDbType.Int)).Value = this.IdCargo;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@Total", System.Data.SqlDbType.Decimal)).Value = total; //this.Total
                 _conexion.Comando.ExecuteNonQuery();
                 resultado = true;
@@ -289,36 +282,7 @@ namespace Conciliacion.RunTime.DatosSQL
 
             return resultado;
         }
-
-        /*public override bool PedidoActualizaSaldo()
-        {
-            bool resultado = false;
-            try
-            {
-                using (SqlConnection cnn = new SqlConnection(App.CadenaConexion))
-                {
-                    cnn.Open();
-                    SqlCommand comando = new SqlCommand("spCBPedidoActualizaSaldo", cnn);
-                    comando.Parameters.Add("@Celula", System.Data.SqlDbType.SmallInt).Value = this.CelulaPedido;
-                    comando.Parameters.Add("@AnoPed", System.Data.SqlDbType.SmallInt).Value = this.AñoPedido;
-                    comando.Parameters.Add("@Pedido", System.Data.SqlDbType.Int).Value = this.Pedido;
-                    comando.Parameters.Add("@Abono", System.Data.SqlDbType.Decimal).Value = this.MontoConciliado;
-                    comando.CommandTimeout = 900;
-                    comando.CommandType = System.Data.CommandType.StoredProcedure;
-                    SqlDataReader reader = comando.ExecuteReader();
-                }
-                resultado = true;
-            }
-            catch (SqlException ex)
-            {
-                stackTrace = new StackTrace();
-                this.ImplementadorMensajes.MostrarMensaje("No se pudo guardar el registro.\n\rClase :" + this.GetType().Name + "\n\r" + "Metodo :" + stackTrace.GetFrame(0).GetMethod().Name + "\n\r" + "Error :" + ex.Message);
-                stackTrace = null;
-            }
-
-            return resultado;
-        }*/
-
+        
         public override bool PedidoActualizaSaldo(Conexion _conexion)
         {
             bool resultado = false;
@@ -328,9 +292,8 @@ namespace Conciliacion.RunTime.DatosSQL
                 _conexion.Comando.CommandType = CommandType.StoredProcedure;
                 _conexion.Comando.CommandText = "spCBPedidoActualizaSaldo";
                 _conexion.Comando.Parameters.Clear();
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.SmallInt)).Value = this.CelulaPedido;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@AnoPed", System.Data.SqlDbType.SmallInt)).Value = this.AñoPedido;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Pedido", System.Data.SqlDbType.Int)).Value = this.Pedido;
+                _conexion.Comando.Parameters.Add(new SqlParameter("@AñoCargo", System.Data.SqlDbType.SmallInt)).Value = this.AñoCargo;
+                _conexion.Comando.Parameters.Add(new SqlParameter("@IdCargo", System.Data.SqlDbType.Int)).Value = this.IdCargo;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@Abono", System.Data.SqlDbType.Decimal)).Value = this.MontoConciliado;
                 _conexion.Comando.CommandTimeout = 900;
 
@@ -359,9 +322,9 @@ namespace Conciliacion.RunTime.DatosSQL
                 _conexion.Comando.CommandType = CommandType.StoredProcedure;
                 _conexion.Comando.CommandText = "spCBPedidoActualizaSaldo";
                 _conexion.Comando.Parameters.Clear();
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.SmallInt)).Value = this.CelulaPedido;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@AnoPed", System.Data.SqlDbType.SmallInt)).Value = this.AñoPedido;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Pedido", System.Data.SqlDbType.Int)).Value = this.Pedido;
+                //_conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.SmallInt)).Value = this.CelulaPedido;
+                _conexion.Comando.Parameters.Add(new SqlParameter("@AnoCargo", System.Data.SqlDbType.SmallInt)).Value = this.AñoCargo;
+                _conexion.Comando.Parameters.Add(new SqlParameter("@IdCarto", System.Data.SqlDbType.Int)).Value = this.IdCargo;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@Abono", System.Data.SqlDbType.Decimal)).Value = MontoConciliado;
                 _conexion.Comando.CommandTimeout = 900;
 
@@ -395,9 +358,9 @@ namespace Conciliacion.RunTime.DatosSQL
                 _conexion.Comando.Parameters.Add(new SqlParameter("@AñoConciliacion", System.Data.SqlDbType.Int)).Value = this.AñoConciliacion;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@MesConciliacion", System.Data.SqlDbType.SmallInt)).Value = this.MesConciliacion;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@FolioConciliacion ", System.Data.SqlDbType.Int)).Value = this.FolioConciliacion;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.Int)).Value = this.CelulaPedido;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@AñoPed", System.Data.SqlDbType.Int)).Value = this.AñoPedido;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Pedido", System.Data.SqlDbType.Int)).Value = this.Pedido;
+                //_conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.Int)).Value = this.CelulaPedido;
+                _conexion.Comando.Parameters.Add(new SqlParameter("@AñoCargo", System.Data.SqlDbType.Int)).Value = this.AñoCargo;
+                _conexion.Comando.Parameters.Add(new SqlParameter("@IdCargo", System.Data.SqlDbType.Int)).Value = this.IdCargo;
 
                 _conexion.Comando.ExecuteNonQuery();
 

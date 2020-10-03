@@ -594,14 +594,16 @@ public partial class Conciliacion_FormasConciliar_CantidadConcuerda : System.Web
             }
             else
             {
-                tblDetalleTransaccionConciliada.Columns.Add("Pedido", typeof(int));
-                tblDetalleTransaccionConciliada.Columns.Add("PedidoReferencia", typeof(string));
-                tblDetalleTransaccionConciliada.Columns.Add("AñoPed", typeof(int));
-                tblDetalleTransaccionConciliada.Columns.Add("Celula", typeof(int));
-                tblDetalleTransaccionConciliada.Columns.Add("Cliente", typeof(string));
-                tblDetalleTransaccionConciliada.Columns.Add("Nombre", typeof(string));
+                tblDetalleTransaccionConciliada.Columns.Add("IdContrato", typeof(int));
+                tblDetalleTransaccionConciliada.Columns.Add("FolioFactura", typeof(string));
+                tblDetalleTransaccionConciliada.Columns.Add("SerieFactura", typeof(int));
+                tblDetalleTransaccionConciliada.Columns.Add("FFacturacion", typeof(DateTime));
+                tblDetalleTransaccionConciliada.Columns.Add("AñoCargo", typeof(int));
+                tblDetalleTransaccionConciliada.Columns.Add("IdCargo", typeof(int));
+                tblDetalleTransaccionConciliada.Columns.Add("TipoCargo", typeof(string));
                 tblDetalleTransaccionConciliada.Columns.Add("Total", typeof(decimal));
-                tblDetalleTransaccionConciliada.Columns.Add("ConceptoPedido", typeof(string));
+                tblDetalleTransaccionConciliada.Columns.Add("Cliente", typeof(int));
+                tblDetalleTransaccionConciliada.Columns.Add("Nombre", typeof(string));
             }
         }
         catch (Exception)
@@ -631,10 +633,10 @@ public partial class Conciliacion_FormasConciliar_CantidadConcuerda : System.Web
                 foreach (ReferenciaConciliadaPedido r in trConciliada.ListaReferenciaConciliada)
                 {
                     tblDetalleTransaccionConciliada.Rows.Add(
-                        r.Pedido,
-                        r.PedidoReferencia,
-                        r.AñoPedido,
-                        r.CelulaPedido,
+                        r.IdCargo,
+                        0, //r.PedidoReferencia,
+                        r.AñoCargo,
+                        0, //r.CelulaPedido,
                         r.Cliente,
                         r.Nombre,
                         r.Total,
@@ -770,7 +772,7 @@ public partial class Conciliacion_FormasConciliar_CantidadConcuerda : System.Web
             tblReferenciasAConciliar.Columns.Add("Pedido", typeof(int));
             tblReferenciasAConciliar.Columns.Add("PedidoReferencia", typeof(string));
             tblReferenciasAConciliar.Columns.Add("AñoPed", typeof(int));
-            tblReferenciasAConciliar.Columns.Add("Celula", typeof(int));
+            //tblReferenciasAConciliar.Columns.Add("Celula", typeof(int));
             tblReferenciasAConciliar.Columns.Add("Cliente", typeof(string));
             tblReferenciasAConciliar.Columns.Add("Nombre", typeof(string));
             tblReferenciasAConciliar.Columns.Add("Total", typeof(decimal));
@@ -795,10 +797,10 @@ public partial class Conciliacion_FormasConciliar_CantidadConcuerda : System.Web
                     rc.MontoConciliado,
                     rc.Concepto,
                     rc.Descripcion,
-                    rc.Pedido,
+                    rc.IdCargo,
                     rc.PedidoReferencia,
-                    rc.AñoPedido,
-                    rc.CelulaPedido,
+                    rc.AñoCargo,
+                    0, //rc.CelulaPedido,
                     rc.Cliente,
                     rc.Nombre,
                     rc.Total,
@@ -2197,12 +2199,13 @@ public partial class Conciliacion_FormasConciliar_CantidadConcuerda : System.Web
                     int secuenciaEx = Convert.ToInt32(grvCantidadConcuerdanPedidos.DataKeys[un.RowIndex].Values["Secuencia"]);
                     int folioExt = Convert.ToInt32(grvCantidadConcuerdanPedidos.DataKeys[un.RowIndex].Values["FolioExt"]);
                     int pedido = Convert.ToInt32(grvCantidadConcuerdanPedidos.DataKeys[un.RowIndex].Values["Pedido"]);
-                    int celula = Convert.ToInt32(grvCantidadConcuerdanPedidos.DataKeys[un.RowIndex].Values["Celula"]);
+                    //int celula = Convert.ToInt32(grvCantidadConcuerdanPedidos.DataKeys[un.RowIndex].Values["Celula"]);
 
                     //Leer la lista de Referencias por Conciliar : Tipo Conciliacion = 2
                     listaReferenciaConciliadaPedidos = Session["POR_CONCILIAR"] as List<ReferenciaConciliadaPedido>;
 
-                    rcp = listaReferenciaConciliadaPedidos.Single(x => x.Secuencia == secuenciaEx && x.Folio == folioExt && x.Pedido == pedido && x.CelulaPedido == celula);
+                    rcp = listaReferenciaConciliadaPedidos.Single(x => x.Secuencia == secuenciaEx && x.Folio == folioExt && x.IdCargo == pedido //&& x.CelulaPedido == celula
+                    );
                     resultado = rcp.Guardar();
                 }
                 objApp.ImplementadorMensajes.MostrarMensaje(resultado

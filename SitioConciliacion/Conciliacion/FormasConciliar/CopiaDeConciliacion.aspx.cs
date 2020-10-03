@@ -788,7 +788,7 @@ public partial class Conciliacion_FormasConciliar_CopiaDeConciliacion : System.W
                 tblDetalleTransaccionConciliada.Columns.Add("Pedido", typeof(int));
                 tblDetalleTransaccionConciliada.Columns.Add("PedidoReferencia", typeof(string));
                 tblDetalleTransaccionConciliada.Columns.Add("AñoPed", typeof(int));
-                tblDetalleTransaccionConciliada.Columns.Add("Celula", typeof(int));
+                //tblDetalleTransaccionConciliada.Columns.Add("Celula", typeof(int));
                 tblDetalleTransaccionConciliada.Columns.Add("Cliente", typeof(string));
                 tblDetalleTransaccionConciliada.Columns.Add("Nombre", typeof(string));
                 tblDetalleTransaccionConciliada.Columns.Add("Total", typeof(decimal));
@@ -822,10 +822,10 @@ public partial class Conciliacion_FormasConciliar_CopiaDeConciliacion : System.W
                 foreach (ReferenciaConciliadaPedido r in trConciliada.ListaReferenciaConciliada)
                 {
                     tblDetalleTransaccionConciliada.Rows.Add(
-                        r.Pedido,
+                        r.IdCargo,
                         r.PedidoReferencia,
-                        r.AñoPedido,
-                        r.CelulaPedido,
+                        r.AñoCargo,
+                        0, //r.CelulaPedido,
                         r.Cliente,
                         r.Nombre,
                         r.Total,

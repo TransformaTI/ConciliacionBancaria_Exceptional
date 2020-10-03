@@ -162,7 +162,7 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
 
         public abstract List<ListaCombo> ConsultaStatusConcepto(ConfiguracionStatusConcepto configuracion);
 
-        public abstract List<ListaCombo> ConsultaCelula(int corporativo);
+        //public abstract List<ListaCombo> ConsultaCelula(int corporativo);
 
         public abstract List<ImportacionAplicacion> ConsultaImportacionAplicacion(int sucursal);
 
@@ -222,15 +222,40 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
 
         //public abstract List<ReferenciaNoConciliadaPedido> ConsultaDetalleExternoPendientePedido(ConsultaExterno configuracion, int corporativo, int sucursal, int año, short mes, int folio, decimal diferencia);
 
-        public abstract List<ReferenciaNoConciliadaPedido> ConciliacionBusquedaPedido(BusquedaPedido configuracion, int corporativoconciliacion, int sucursalconciliacion, int añoconciliacion, short mesconciliacion, int folioconciliacion, int folioexterno, int secuenciaexterno, decimal diferencia, int celula, string cliente, bool clientepadre);
-        public abstract List<ReferenciaNoConciliadaPedido> ConciliacionBusquedaPedido(BusquedaPedido configuracion, int corporativoconciliacion, int sucursalconciliacion, int añoconciliacion, short mesconciliacion, int folioconciliacion, int folioexterno, int secuenciaexterno, decimal diferencia, int celula, string cliente, bool clientepadre, SqlString factura, DateTime ffactura);
+        public abstract List<ReferenciaNoConciliadaPedido> ConciliacionBusquedaPedido(BusquedaPedido configuracion, 
+                                                                                        int corporativoconciliacion, 
+                                                                                        int sucursalconciliacion, 
+                                                                                        int añoconciliacion, 
+                                                                                        short mesconciliacion, 
+                                                                                        int folioconciliacion, 
+                                                                                        int folioexterno, 
+                                                                                        int secuenciaexterno, 
+                                                                                        decimal diferencia, 
+                                                                                        /*int celula, */
+                                                                                        string cliente);
+
+        public abstract List<ReferenciaNoConciliadaPedido> ConciliacionBusquedaPedido(BusquedaPedido configuracion, 
+                                                                                        int corporativoconciliacion, 
+                                                                                        int sucursalconciliacion, 
+                                                                                        int añoconciliacion, 
+                                                                                        short mesconciliacion, 
+                                                                                        int folioconciliacion, 
+                                                                                        int folioexterno, 
+                                                                                        int secuenciaexterno, 
+                                                                                        decimal diferencia, 
+                                                                                        /*int celula, */
+                                                                                        string cliente, 
+                                                                                        //bool clientepadre, 
+                                                                                        SqlString factura, 
+                                                                                        DateTime ffactura);
+
         //public abstract List<ReferenciaNoConciliadaPedido> ConciliacionBusquedaFacturaManual(string cliente, bool clientepadre, SqlString factura, DateTime ffactura);
         public abstract List<ReferenciaNoConciliadaPedido> ConciliacionBusquedaFacturaManual(int cliente, bool clientepadre, SqlString factura, DateTime fechaIni, DateTime fechaFin);
 
         public abstract bool ValidaPedidoEspecifico(int corporativo, int sucursal,
             string pedidoReferencia);
 
-        public abstract bool ActualizaStatusConciliacionPedido(int corporativo, int sucursal, int año, int folio, int mes, int pedido, int celula, int añoped, Conexion _conexion);
+        public abstract bool ActualizaStatusConciliacionPedido(int corporativo, int sucursal, int año, int folio, int mes, int pedido, /*int celula, */int añoped, Conexion _conexion);
 
 
         public abstract ReferenciaNoConciliadaPedido ConsultaPedidoReferenciaEspecifico(
@@ -242,18 +267,27 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             decimal diferencia,
             string pedidoReferencia);
 
-    public abstract ReferenciaNoConciliadaPedido ConsultaPedidoReferenciaEspecificoCliente(
-    int corporativoconciliacion,
-    int sucursalconciliacion,
-    int añoconciliacion,
-    short mesconciliacion,
-    int folioconciliacion,
-    decimal diferencia,
-    string pedidoReferencia);
+        public abstract ReferenciaNoConciliadaPedido ConsultaPedidoReferenciaEspecificoCliente(
+            int corporativoconciliacion,
+            int sucursalconciliacion,
+            int añoconciliacion,
+            short mesconciliacion,
+            int folioconciliacion,
+            decimal diferencia,
+            string pedidoReferencia);
 
-        public abstract List<ReferenciaNoConciliadaPedido> ConciliacionBusquedaPedidoVariosUno(BusquedaPedido configuracion, int corporativoconciliacion, int sucursalconciliacion, int añoconciliacion, short mesconciliacion, int folioconciliacion, int folioexterno, int secuenciaexterno, decimal diferencia, int celula);
+        public abstract List<ReferenciaNoConciliadaPedido> ConciliacionBusquedaPedidoVariosUno(BusquedaPedido configuracion, int corporativoconciliacion, int sucursalconciliacion, int añoconciliacion, short mesconciliacion, int folioconciliacion, int folioexterno, int secuenciaexterno, decimal diferencia /*int celula*/);
 
-        public abstract List<ReferenciaNoConciliadaPedido> ConciliacionBusquedaPedidoManual(BusquedaPedido configuracion, int corporativoconciliacion, int sucursalconciliacion, int añoconciliacion, short mesconciliacion, int folioconciliacion, int folioexterno, int secuenciaexterno, decimal diferencia, int celula);
+        public abstract List<ReferenciaNoConciliadaPedido> ConciliacionBusquedaPedidoManual(
+            BusquedaPedido configuracion, 
+            int corporativoconciliacion, 
+            int sucursalconciliacion, 
+            int añoconciliacion, 
+            short mesconciliacion, 
+            int folioconciliacion, 
+            int folioexterno, 
+            int secuenciaexterno, 
+            decimal diferencia /*int celula*/);
         //public abstract List<ReferenciaNoConciliadaPedido> ConciliacionBusquedaExternoPedido(int corporativo, int sucursal, int año, short mes, int folio, String campo, string operacion, string valor, string tipocampo, decimal diferencia);       
 
 

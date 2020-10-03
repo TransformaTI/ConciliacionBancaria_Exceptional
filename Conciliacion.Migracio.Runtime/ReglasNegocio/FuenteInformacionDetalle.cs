@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Conciliacion.RunTime;
 
 namespace Conciliacion.Migracion.Runtime.ReglasNegocio
 {
@@ -22,6 +23,7 @@ namespace Conciliacion.Migracion.Runtime.ReglasNegocio
         string cuentaBancoFinanciero;
         int bancoFinanciero;
 
+        public Conciliacion.RunTime.MensajesImplementacion ImplementadorMensajes { get; set; }
 
         public bool EsTipoFecha
         {

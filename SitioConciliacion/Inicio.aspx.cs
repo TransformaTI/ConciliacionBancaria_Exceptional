@@ -214,7 +214,7 @@ public partial class Inicio : System.Web.UI.Page
     {
         try
         {
-            listGrupoConciliacion = objApp.Consultas.ConsultaGruposConciliacion(Conciliacion.RunTime.ReglasDeNegocio.Consultas.ConfiguracionGrupo.Asignados, usuario);
+            listGrupoConciliacion = objApp.Consultas.ConsultaGruposConciliacion(Conciliacion.RunTime.ReglasDeNegocio.Consultas.ConfiguracionGrupo.Todos, usuario);
             this.ddlGrupo.DataSource = listGrupoConciliacion;
             this.ddlGrupo.DataValueField = "Identificador";
             this.ddlGrupo.DataTextField = "Descripcion";
@@ -233,7 +233,7 @@ public partial class Inicio : System.Web.UI.Page
     {
         try
         {
-            listTipoConciliacion = objApp.Consultas.ConsultaTipoConciliacion(Conciliacion.RunTime.ReglasDeNegocio.Consultas.ConfiguracionGrupo.Asignados, usuario);
+            listTipoConciliacion = objApp.Consultas.ConsultaTipoConciliacion(Conciliacion.RunTime.ReglasDeNegocio.Consultas.ConfiguracionGrupo.Todos, usuario);
             this.ddlTipoConciliacion.DataSource = listTipoConciliacion;
             this.ddlTipoConciliacion.DataValueField = "Identificador";
             this.ddlTipoConciliacion.DataTextField = "Descripcion";

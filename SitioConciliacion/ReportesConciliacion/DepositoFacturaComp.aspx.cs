@@ -449,6 +449,12 @@ public partial class ReportesConciliacion_CuentaBancariaSaldo : System.Web.UI.Pa
             DateTime ftimbradoini = DateTime.Now;
             DateTime ftimbradofin = DateTime.Now;
 
+            chkFConciliacion.Checked = txtFConsultaIni.Text != "";
+            if (!chkFConciliacion.Checked)
+                chkFDeposito.Checked = txtFDepositoIni.Text != "";
+            if (!chkFDeposito.Checked)
+                chkFTimbrado.Checked = txtFTimbradoIni.Text != "";
+
             if (chkFConciliacion.Checked)
             {
                 tiporeporte = 1;
@@ -471,8 +477,10 @@ public partial class ReportesConciliacion_CuentaBancariaSaldo : System.Web.UI.Pa
                 tiporeporte = 3;
                 ftimbradoini = Convert.ToDateTime(txtFTimbradoIni.Text);
                 ftimbradofin = Convert.ToDateTime(txtFTimbradoFin.Text);
-                hdfTibrado.Value = ftimbradoini.ToShortDateString();                
+                hdfTibrado.Value = ftimbradoini.ToShortDateString();
             }
+            else
+                throw new Exception("Active el check y capture el periodo, para continuar.");
 
             ConsultaDepositoFacturaComp(tiporeporte, fconciliacionini, fconciliacionfin, fdepositoini, fdepositofin, ftimbradoini, ftimbradofin);
 

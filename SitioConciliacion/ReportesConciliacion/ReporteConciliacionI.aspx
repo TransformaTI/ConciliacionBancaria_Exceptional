@@ -937,7 +937,7 @@
                                                 <div style="width:100%; height:280px; overflow: scroll;">
                                                     <asp:GridView ID="grvPedidos" runat="server" AutoGenerateColumns="False" ShowHeader="False"
                                                         CssClass="grvResultadoConsultaCss" AllowSorting="True" ShowFooter="False" Width="100%"
-                                                        ShowHeaderWhenEmpty="True" DataKeyNames="Celula,Pedido,AñoPed,Cliente,Total" AllowPaging="False">
+                                                        ShowHeaderWhenEmpty="True" DataKeyNames="Pedido,AñoPed,Cliente,Total" AllowPaging="False">
                                   
                                                         <HeaderStyle HorizontalAlign="Center" />
                                                         <Columns>

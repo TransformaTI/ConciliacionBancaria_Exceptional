@@ -118,7 +118,7 @@ namespace Conciliacion.RunTime.DatosSQL
                 using (SqlConnection cnn = new SqlConnection(objApp.CadenaConexion))
                 {
                     cnn.Open();
-                    SqlCommand comando = new SqlCommand("spCBActualizaConciliacionPedido", cnn);
+                    SqlCommand comando = new SqlCommand("spCBActualizaConciliacionCargo", cnn);
                     comando.Parameters.Add("@Configuracion", System.Data.SqlDbType.SmallInt).Value = 3;
                     comando.Parameters.Add("@Corporativo", System.Data.SqlDbType.TinyInt).Value = this.Corporativo;
                     comando.Parameters.Add("@Sucursal", System.Data.SqlDbType.Int).Value = this.Sucursal;
@@ -127,9 +127,9 @@ namespace Conciliacion.RunTime.DatosSQL
                     comando.Parameters.Add("@MesConciliacion", System.Data.SqlDbType.SmallInt).Value = this.MesConciliacion;
                     comando.Parameters.Add("@SecuenciaRelacion", System.Data.SqlDbType.SmallInt).Value = this.SecuenciaRelacion;
 
-                    comando.Parameters.Add("@Celula", System.Data.SqlDbType.Int).Value = 0;
-                    comando.Parameters.Add("@AñoPed", System.Data.SqlDbType.Int).Value = 0;
-                    comando.Parameters.Add("@Pedido", System.Data.SqlDbType.Int).Value = 0;
+                    //comando.Parameters.Add("@Celula", System.Data.SqlDbType.Int).Value = 0;
+                    comando.Parameters.Add("@AñoCargo", System.Data.SqlDbType.Int).Value = 0;
+                    comando.Parameters.Add("@IdCargo", System.Data.SqlDbType.Int).Value = 0;
 
                     comando.Parameters.Add("@AñoExterno", System.Data.SqlDbType.Int).Value = this.Año;
                     comando.Parameters.Add("@FolioExterno", System.Data.SqlDbType.Int).Value = this.Folio;

@@ -35,6 +35,26 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
         decimal ivaComision;
 
         string usuario;
+        private int sucursalext;
+        private string sucursalextdes;
+        private int añoexterno;
+        private int folioext;
+        private int secuenciaext;
+        private string conceptoext;
+        private DateTime foperacionext;
+        private DateTime fmovimientoext;
+        private string chequeexterno;
+        private string referenciaexterno;
+        private string descripcionexterno;
+        private string nombreterceroexterno;
+        private string rfcterceroexterno;
+        private decimal depositoexterno;
+        private decimal retiroexterno;
+        private int idcontrato;
+        private string serie;
+        private DateTime ffactura;
+        private int anocargo;
+        private int idcargo;
 
         #region Constructores
 
@@ -91,6 +111,38 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             this.retiro = 0;
 
             this.usuario = "";
+        }
+
+        protected cReferencia(int corporativo, int sucursalext, string sucursalextdes, int añoexterno, int folioext, int secuenciaext, string conceptoext, decimal montoconciliado, decimal diferencia, short formaconciliacion, short statusconcepto, string statusconciliacion, DateTime foperacionext, DateTime fmovimientoext, string chequeexterno, string referenciaexterno, string descripcionexterno, string nombreterceroexterno, string rfcterceroexterno, decimal depositoexterno, decimal retiroexterno, int idcontrato, string serie, int folio, DateTime ffactura, int anocargo, int idcargo, MensajesImplementacion implementadorMensajes)
+        {
+            this.corporativo = corporativo;
+            this.sucursalext = sucursalext;
+            this.sucursalextdes = sucursalextdes;
+            this.añoexterno = añoexterno;
+            this.folioext = folioext;
+            this.secuenciaext = secuenciaext;
+            this.conceptoext = conceptoext;
+            this.montoconciliado = montoconciliado;
+            this.diferencia = diferencia;
+            this.formaconciliacion = formaconciliacion;
+            this.statusconcepto = statusconcepto;
+            this.statusconciliacion = statusconciliacion;
+            this.foperacionext = foperacionext;
+            this.fmovimientoext = fmovimientoext;
+            this.chequeexterno = chequeexterno;
+            this.referenciaexterno = referenciaexterno;
+            this.descripcionexterno = descripcionexterno;
+            this.nombreterceroexterno = nombreterceroexterno;
+            this.rfcterceroexterno = rfcterceroexterno;
+            this.depositoexterno = depositoexterno;
+            this.retiroexterno = retiroexterno;
+            this.idcontrato = idcontrato;
+            this.serie = serie;
+            this.folio = folio;
+            this.ffactura = ffactura;
+            this.anocargo = anocargo;
+            this.idcargo = idcargo;
+            this.implementadorMensajes = implementadorMensajes;
         }
 
         //protected cReferencia(MensajesImplementacion implementadorMensajes)

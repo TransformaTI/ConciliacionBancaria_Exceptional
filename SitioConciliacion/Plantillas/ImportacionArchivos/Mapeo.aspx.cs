@@ -22,6 +22,7 @@ public partial class ImportacionArchivos_Mapeo : System.Web.UI.Page
     #region "Propiedades Globales"
     private SeguridadCB.Public.Operaciones operaciones;
     #endregion
+
     FuenteInformacion finformacion;
     ImportacionController iController;
 
@@ -50,6 +51,7 @@ public partial class ImportacionArchivos_Mapeo : System.Web.UI.Page
             if (!IsPostBack)
             {
                 LlenarCombos();
+                objApp.ImplementadorMensajes.ContenedorActual = this;
             }
         }
         catch(Exception ex)
@@ -147,6 +149,7 @@ public partial class ImportacionArchivos_Mapeo : System.Web.UI.Page
             Label lblSecuencia = (Label)row.FindControl("lblGVSecuencia");
 
             FuenteInformacionDetalle fid = (FuenteInformacionDetalle)App.FuenteInformacionDetalle.CrearObjeto();
+            //fid.ImplementadorMensajes.ContenedorActual = objApp.ImplementadorMensajes;
             fid.CuentaBancoFinanciero = lblCuenta.Text;
             fid.BancoFinanciero = Convert.ToInt32(lblBanco.Text);
             fid.IdFuenteInformacion = Convert.ToInt32(lblFuenteInformacion.Text);
@@ -280,6 +283,8 @@ public partial class ImportacionArchivos_Mapeo : System.Web.UI.Page
                     if (!existeFecha)
                     {
                         FuenteInformacionDetalle FID = App.FuenteInformacionDetalle;
+                        FID.ImplementadorMensajes = objApp.ImplementadorMensajes;
+                        FID.ImplementadorMensajes.ContenedorActual = this;
                         FID.CuentaBancoFinanciero = cboCuentaFinanciero.SelectedValue.ToString();
                         FID.BancoFinanciero = Convert.ToInt32(cboBancoFinanciero.SelectedValue);
                         FID.IdFuenteInformacion = finformacion.IdFuenteInformacion;

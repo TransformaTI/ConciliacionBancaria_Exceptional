@@ -47,7 +47,7 @@ namespace Conciliacion.RunTime.DatosSQL
                 _conexion.Comando.Parameters.Clear();
 
                 _conexion.Comando.Parameters.Add(new SqlParameter("@AñoPed", System.Data.SqlDbType.SmallInt)).Value = this.AnioPed;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.TinyInt)).Value = this.Celula;
+                //_conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.TinyInt)).Value = this.Celula;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@Pedido", System.Data.SqlDbType.Int)).Value = this.Pedido;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@Saldo", System.Data.SqlDbType.Money)).Value = this.Saldo;
                 _conexion.Comando.Parameters.Add(new SqlParameter("@GestionInicial", System.Data.SqlDbType.TinyInt)).Value = this.GestionInicial;

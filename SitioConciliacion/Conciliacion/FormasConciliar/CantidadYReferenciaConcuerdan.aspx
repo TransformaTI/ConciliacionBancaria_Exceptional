@@ -649,7 +649,7 @@
                                 <td class="bg-color-grisClaro02" style="width: 64%">
                                     <b>
                                         <asp:Label ID="lblArchivosInternos" Text="Archivos Internos" runat="server" Visible="false"></asp:Label>
-                                        <asp:Label ID="lblPedidos" Text="Pedidos" runat="server" Visible="false"></asp:Label>
+                                        <asp:Label ID="lblPedidos" Text="Documentos" runat="server" Visible="false"></asp:Label>
                                     </b>
                                 </td>
                                 <td class="bg-color-grisClaro fg-color-amarillo" style="width: 1%">
@@ -908,7 +908,7 @@
                             AutoGenerateColumns="False" CssClass="grvResultadoConsultaCss" 
                             OnPageIndexChanging="grvCantidadReferenciaConcuerdanPedido_PageIndexChanging"
                             OnRowDataBound="grvCantidadReferenciaConcuerdanPedido_RowDataBound" ShowHeader="True"
-                            ShowHeaderWhenEmpty="True" Width="100%" DataKeyNames="Secuencia,FolioExt,Pedido,Celula,AñoPed"
+                            ShowHeaderWhenEmpty="True" Width="100%" DataKeyNames="Secuencia,FolioExt,Pedido,AñoPed"
                             AllowSorting="True" OnRowCreated="grvCantidadReferenciaConcuerdanPedido_RowCreated"
                             OnSorting="grvCantidadReferenciaConcuerdanPedido_Sorting">
                             <HeaderStyle HorizontalAlign="Center" />
@@ -992,11 +992,11 @@
                                                 CssClass="etiqueta centradoJustificado" Width="20cm" Font-Size="10px" />
                                         </asp:Panel>
                                     </ItemTemplate>
-                                    <ItemStyle Width="150px"></ItemStyle>
+                                    <ItemStyle Width="100px"></ItemStyle>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Descrip. Ext." SortExpression="DescripcionExt">
                                     <ItemTemplate>
-                                        <div class="parrafoTexto" style="width: 120px">
+                                        <div class="parrafoTexto" style="width: 100px">
                                             <asp:Label ID="lblDescripcionExt" runat="server" Text='<%# resaltarBusqueda(Eval("Descripcion").ToString()) %>'></asp:Label>
                                         </div>
                                         <asp:HoverMenuExtender ID="hmeDescripcionExt" runat="server" TargetControlID="lblDescripcionExt"
@@ -1008,83 +1008,99 @@
                                                 CssClass="etiqueta" Font-Size="10px" />
                                         </asp:Panel>
                                     </ItemTemplate>
-                                    <ItemStyle Width="120px"></ItemStyle>
+                                    <ItemStyle Width="100px"></ItemStyle>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Documento" SortExpression="PedidoReferencia">
+
+                                <asp:TemplateField HeaderText="Contrato" SortExpression="IdContrato">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblPedidoReferencia" runat="server" Text='<%# resaltarBusqueda(Eval("PedidoReferencia").ToString()) %>' />
+                                        <asp:Label ID="lblIdContrato" runat="server" Text='<%# resaltarBusqueda(Eval("IdContrato").ToString()) %>' />
                                     </ItemTemplate>
                                     <ControlStyle CssClass="centradoMedio" />
                                     <ItemStyle HorizontalAlign="Center" Width="40px"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Center" Width="40px"></HeaderStyle>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Celula" SortExpression="Celula">
+
+                                <asp:TemplateField HeaderText="Serie factura" SortExpression="Serie">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblCelula" runat="server" Text='<%# resaltarBusqueda(Eval("Celula").ToString()) %>' />
+                                        <asp:Label ID="lblSerie" runat="server" Text='<%# resaltarBusqueda(Eval("Serie").ToString()) %>' />
                                     </ItemTemplate>
                                     <ControlStyle CssClass="centradoMedio" />
                                     <ItemStyle HorizontalAlign="Center" Width="40px"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Center" Width="40px"></HeaderStyle>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Total Pedido" SortExpression="Total">
+                                
+                                <asp:TemplateField HeaderText="Folio factura" SortExpression="Folio">
                                     <ItemTemplate>
                                         <b>
-                                            <asp:Label ID="lblMontoPedido" runat="server" Text='<%# resaltarBusqueda(Eval("Total","{0:c2}").ToString()) %>'></asp:Label></b>
+                                            <asp:Label ID="lblFolio" runat="server" Text='<%# resaltarBusqueda(Eval("Folio").ToString()) %>'></asp:Label></b>
                                     </ItemTemplate>
                                     <FooterTemplate>
-                                        <asp:Label runat="server" ID="lblTotalMontoPedido"></asp:Label>
+                                        <asp:Label runat="server" ID="lblFolio"></asp:Label>
                                     </FooterTemplate>
-                                    <ItemStyle HorizontalAlign="Center" Width="100px"></ItemStyle>
-                                    <HeaderStyle HorizontalAlign="Center" Width="100px"></HeaderStyle>
+                                    <ItemStyle HorizontalAlign="Center" Width="40px"></ItemStyle>
+                                    <HeaderStyle HorizontalAlign="Center" Width="40px"></HeaderStyle>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Concepto" SortExpression="ConceptoPedido">
+                                
+                                <asp:TemplateField HeaderText="Fecha factura" SortExpression="FFactura">
                                     <ItemTemplate>
-                                        <div class="parrafoTexto" style="width: 120px">
-                                            <asp:Label ID="lblConceptoPedido" runat="server" Text='<%# resaltarBusqueda(Eval("ConceptoPedido").ToString()) %>'></asp:Label>
+                                        <div class="parrafoTexto" style="width: 70px">
+                                            <asp:Label ID="lblFFactura" runat="server" Text='<%# resaltarBusqueda(Eval("FFactura").ToString()) %>'></asp:Label>
                                         </div>
-                                        <asp:HoverMenuExtender ID="hmeConceptoPedido" runat="server" TargetControlID="lblConceptoPedido"
+                                        <%-- <asp:HoverMenuExtender ID="hmeConceptoPedido" runat="server" TargetControlID="lblConceptoPedido"
                                             PopupControlID="pnlPopUpConceptoPedido" PopDelay="20" OffsetX="0" OffsetY="0">
                                         </asp:HoverMenuExtender>
                                         <asp:Panel ID="pnlPopUpConceptoPedido" runat="server" CssClass="grvResultadoConsultaCss ocultar"
                                             Width="20.5cm" Wrap="True" BackColor="White" Style="padding: 5px 5px 5px 5px">
                                             <asp:Label ID="lblToolTipConceptoPedido" runat="server" Text='<%# resaltarBusqueda(Eval("ConceptoPedido").ToString()) %>'
                                                 CssClass="etiqueta" Width="20cm" Font-Size="10px" />
-                                        </asp:Panel>
+                                        </asp:Panel>--%>
                                     </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Center" Width="120px"></ItemStyle>
-                                    <HeaderStyle HorizontalAlign="Center" Width="120px"></HeaderStyle>
+                                    <ItemStyle HorizontalAlign="Center" Width="70px"></ItemStyle>
+                                    <HeaderStyle HorizontalAlign="Center" Width="70px"></HeaderStyle>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Nom. Cliente" SortExpression="Nombre">
+                                
+                                <asp:TemplateField HeaderText="Año cargo" SortExpression="AnoCargo">
                                     <ItemTemplate>
                                         <div class="parrafoTexto" style="width: 150px">
-                                            <asp:Label ID="lblCliente" runat="server" Text='<%# resaltarBusqueda(Eval("Nombre").ToString()) %>'></asp:Label>
+                                            <asp:Label ID="lblAnoCargo" runat="server" Text='<%# resaltarBusqueda(Eval("AnoCargo").ToString()) %>'></asp:Label>
                                         </div>
-                                        <asp:HoverMenuExtender ID="hmeCliente" runat="server" TargetControlID="lblCliente"
+<%--                                        <asp:HoverMenuExtender ID="hmeCliente" runat="server" TargetControlID="lblCliente"
                                             PopupControlID="pnlPopUpCliente" PopDelay="20" OffsetX="0" OffsetY="0">
                                         </asp:HoverMenuExtender>
                                         <asp:Panel ID="pnlPopUpCliente" runat="server" CssClass="grvResultadoConsultaCss ocultar"
                                             Width="150px" Wrap="True" BackColor="White" Style="padding: 5px 5px 5px 5px">
                                             <asp:Label ID="lblToolTipCliente" runat="server" Text='<%# resaltarBusqueda(Eval("Nombre").ToString()) %>'
                                                 CssClass="etiqueta" Font-Size="10px" />
-                                        </asp:Panel>
+                                        </asp:Panel>--%>
                                     </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Center" Width="150px"></ItemStyle>
-                                    <HeaderStyle HorizontalAlign="Center" Width="150px"></HeaderStyle>
+                                    <ItemStyle HorizontalAlign="Center" Width="40px"></ItemStyle>
+                                    <HeaderStyle HorizontalAlign="Center" Width="40px"></HeaderStyle>
                                 </asp:TemplateField>
-                                <asp:TemplateField  HeaderText="Factura" SortExpression="SerieFactura" >
+                                
+                                <asp:TemplateField  HeaderText="Folio Cargo" SortExpression="IdCargo" >
                                     <ItemTemplate>
                                         <div class="parrafoTexto" style="width: 80px">
-                                            <asp:Label runat="server" ID="lblSerieFactura" Text='<%# resaltarBusqueda(Eval("Factura").ToString()) %>'> </asp:Label>
+                                            <asp:Label runat="server" ID="lblFolioCargo" Text='<%# resaltarBusqueda(Eval("FolioCargo").ToString()) %>'> </asp:Label>
                                         </div>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField  HeaderText="Cliente" SortExpression="ClienteReferencia" >
+
+                                <asp:TemplateField  HeaderText="Importe" SortExpression="Total" >
                                     <ItemTemplate>
                                         <div class="parrafoTexto" style="width: 80px">
-                                            <asp:Label runat="server" ID="lblClienteReferencia" Text='<%# resaltarBusqueda(Eval("Cliente").ToString()) %>'> </asp:Label>
+                                            <asp:Label runat="server" ID="lblSaldo" Text='<%# resaltarBusqueda(Eval("Total","{0:c2}").ToString()) %>'> </asp:Label>
                                         </div>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+
+                                <asp:TemplateField  HeaderText="Nombre Cliente" SortExpression="Nombre" >
+                                    <ItemTemplate>
+                                        <div class="parrafoTexto" style="width: 80px">
+                                            <asp:Label runat="server" ID="lblNombre" Text='<%# resaltarBusqueda(Eval("Nombre").ToString()) %>'> </asp:Label>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
                             </Columns>
                             <PagerStyle CssClass="grvPaginacionScroll" />
                         </asp:GridView>
@@ -1299,7 +1315,7 @@
                             </asp:GridView>
                             <asp:GridView ID="grvDetallePedidoInterno" runat="server" AutoGenerateColumns="False"
                                 ShowHeader="True" Width="100%" CssClass="grvResultadoConsultaCss" ShowHeaderWhenEmpty="True"
-                                DataKeyNames="Celula,Pedido,AñoPed">
+                                DataKeyNames="IdCargo,AñoCargo">
                                 <HeaderStyle HorizontalAlign="Center" />
                                 <Columns>
                                     <asp:TemplateField>
@@ -1311,28 +1327,59 @@
                                             Width="30px"></ItemStyle>
                                         <HeaderStyle HorizontalAlign="Center" Width="30px"></HeaderStyle>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Ped." SortExpression="Pedido">
+                                    <asp:TemplateField HeaderText="Contrato" SortExpression="IdContrato">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblPedido" runat="server" Text='<%# Eval("Pedido") %>' />
+                                            <asp:Label ID="lblContrato" runat="server" Text='<%# Eval("IdContrato") %>' />
                                         </ItemTemplate>
                                         <ItemStyle HorizontalAlign="Center" BackColor="#d9b335" ForeColor="White" Width="50px"></ItemStyle>
                                         <HeaderStyle HorizontalAlign="Center" Width="50px"></HeaderStyle>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Celula" SortExpression="Celula">
+
+                                    <asp:TemplateField HeaderText="Folio Factura" SortExpression="FolioFactura">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblCelula" runat="server" Text='<%# Eval("Celula") %>' />
+                                            <asp:Label ID="lblFolioFactura" runat="server" Text='<%# Eval("FolioFactura") %>' />
                                         </ItemTemplate>
                                         <ItemStyle HorizontalAlign="Center" Width="40px"></ItemStyle>
                                         <HeaderStyle HorizontalAlign="Center" Width="40px"></HeaderStyle>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Total Pedido" SortExpression="Total">
+                                    <asp:TemplateField HeaderText="Serie Factura" SortExpression="SerieFactura">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblMontoPedido" runat="server" Text='<%# Eval("Total","{0:c2}") %>'></asp:Label>
+                                            <asp:Label ID="lblSerieFactura" runat="server" Text='<%# Eval("SerieFactura") %>' />
+                                        </ItemTemplate>
+                                        <ItemStyle HorizontalAlign="Center" Width="40px"></ItemStyle>
+                                        <HeaderStyle HorizontalAlign="Center" Width="40px"></HeaderStyle>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Fecha Factura" SortExpression="FFacturacion">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblFFacturacion" runat="server" Text='<%# Eval("FFacturacion") %>' />
+                                        </ItemTemplate>
+                                        <ItemStyle HorizontalAlign="Center" Width="40px"></ItemStyle>
+                                        <HeaderStyle HorizontalAlign="Center" Width="40px"></HeaderStyle>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Año Cargo" SortExpression="AñoCargo">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblAñoCargo" runat="server" Text='<%# Eval("AñoCargo") %>' />
+                                        </ItemTemplate>
+                                        <ItemStyle HorizontalAlign="Center" Width="40px"></ItemStyle>
+                                        <HeaderStyle HorizontalAlign="Center" Width="40px"></HeaderStyle>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Folio Cargo" SortExpression="IdCargo">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblIdCargo" runat="server" Text='<%# Eval("IdCargo") %>' />
+                                        </ItemTemplate>
+                                        <ItemStyle HorizontalAlign="Center" Width="40px"></ItemStyle>
+                                        <HeaderStyle HorizontalAlign="Center" Width="40px"></HeaderStyle>
+                                    </asp:TemplateField>
+                                    
+                                    <asp:TemplateField HeaderText="Total Cargo" SortExpression="Total">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblTotalCargo" runat="server" Text='<%# Eval("Total","{0:c2}") %>'></asp:Label>
                                         </ItemTemplate>
                                         <ItemStyle HorizontalAlign="Center" Width="100px"></ItemStyle>
                                         <HeaderStyle HorizontalAlign="Center" Width="100px"></HeaderStyle>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Concepto" SortExpression="ConceptoPedido">
+                                   <%-- <asp:TemplateField HeaderText="Concepto" SortExpression="ConceptoPedido">
                                         <ItemTemplate>
                                             <div class="parrafoTexto" style="width: 350px">
                                                 <asp:Label ID="lblConceptoPedido" runat="server" Text='<%# Eval("ConceptoPedido") %>'></asp:Label>
@@ -1348,7 +1395,7 @@
                                         </ItemTemplate>
                                         <ItemStyle HorizontalAlign="Justify" Width="400px"></ItemStyle>
                                         <HeaderStyle HorizontalAlign="Center" Width="400px"></HeaderStyle>
-                                    </asp:TemplateField>
+                                    </asp:TemplateField>--%>
                                     <asp:TemplateField HeaderText="Nom. Cliente" SortExpression="Nombre">
                                         <ItemTemplate>
                                             <div class="parrafoTexto" style="width: 350px">

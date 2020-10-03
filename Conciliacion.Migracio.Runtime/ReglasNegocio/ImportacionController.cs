@@ -78,6 +78,7 @@ namespace Conciliacion.Migracion.Runtime.ReglasNegocio
                             }
                         }
                     }
+
                 }
                 catch (Exception ex)
                 {

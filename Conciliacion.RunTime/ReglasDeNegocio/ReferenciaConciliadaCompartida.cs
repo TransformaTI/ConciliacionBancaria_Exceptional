@@ -103,7 +103,7 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             this.secuenciainterno = secuenciaint;
 
             this.pedido = pedido;
-            this.celula = celula;
+            //this.celula = celula;
             this.añoped = añoped;
             this.total = total;
             this.cliente = cliente;
@@ -346,9 +346,9 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
                 RefConciliada.FolioConciliacion = this.FolioConciliacion; //Folio de la conciliacion
 
                 RefConciliada.SucursalPedido = referencia.Sucursal;//Sucursa del interno
-                RefConciliada.CelulaPedido = referencia.CelulaPedido; //Folio del interno
-                RefConciliada.AñoPedido = referencia.AñoPedido;//Secuencia del interno
-                RefConciliada.Pedido = referencia.Pedido;
+                //RefConciliada.CelulaPedido = referencia.CelulaPedido; //Folio del interno
+                RefConciliada.AñoCargo = referencia.AñoCargo;//Secuencia del interno
+                RefConciliada.IdCargo = referencia.IdCargo;
                 RefConciliada.ConceptoPedido = referencia.Concepto;
 
 

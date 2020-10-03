@@ -48,7 +48,7 @@ public partial class ControlesUsuario_AreasComunes_areascomunes : System.Web.UI.
 
     private class pedidoPagar : ICloneable
     {
-        private int _celulapedido;
+        //private int _celulapedido;
         private int _añopedido;
         private int _pedido;
         private string _pedidoReferencia;
@@ -60,18 +60,18 @@ public partial class ControlesUsuario_AreasComunes_areascomunes : System.Web.UI.
             this.pedidoPadre = 0;
         }
 
-        public int Celulapedido
-        {
-            get
-            {
-                return _celulapedido;
-            }
+        //public int Celulapedido
+        //{
+        //    get
+        //    {
+        //        return _celulapedido;
+        //    }
 
-            set
-            {
-                _celulapedido = value;
-            }
-        }
+        //    set
+        //    {
+        //        _celulapedido = value;
+        //    }
+        //}
 
         public int Añopedido
         {
@@ -514,7 +514,7 @@ public partial class ControlesUsuario_AreasComunes_areascomunes : System.Web.UI.
         {
             filaPadre = TablaPagosPadre.Select("pedidoreferencia='" +pedidoTemp.PedidoReferencia + "'").FirstOrDefault();
 
-            pedidoTemp.Celulapedido = Convert.ToInt32(filaPadre["celula"]);
+            //pedidoTemp.Celulapedido = Convert.ToInt32(filaPadre["celula"]);
             pedidoTemp.Añopedido = Convert.ToInt32(filaPadre["añoPed"]);
             pedidoTemp.Pedido = Convert.ToInt32(filaPadre["pedido"]);
         }
@@ -562,7 +562,7 @@ public partial class ControlesUsuario_AreasComunes_areascomunes : System.Web.UI.
                                                     0,
                                                     Convert.ToInt32(filaTabla["SucursalPedido"]),
                                                     "",
-                                                    pedidoAPagar.Celulapedido,
+                                                    0,//pedidoAPagar.Celulapedido,
                                                     pedidoAPagar.Añopedido,
                                                     pedidoAPagar.Pedido,
                                                     Convert.ToInt32(filaTabla["RemisionPedido"]),

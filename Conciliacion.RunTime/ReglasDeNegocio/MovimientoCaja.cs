@@ -17,6 +17,7 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
         DateTime foperacion;
         short consecutivo;
         int folio;
+        int añodocumento;
         DateTime fmovimiento;
         decimal total;
         string usuario;
@@ -110,6 +111,12 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
         {
             get { return folio; }
             set { folio = value; }
+        }
+
+        public int AñoDocumento
+        {
+            get { return añodocumento; }
+            set { añodocumento = value; }
         }
 
         public DateTime FMovimiento

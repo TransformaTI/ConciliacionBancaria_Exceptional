@@ -20,7 +20,7 @@
 
          $(window).on("load", function () {
              var txtUsr = document.getElementById('ctl00_contenidoPrincipal_Login_txtUsuario');
-             txtUsr.focus();
+             //txtUsr.focus();
              console.log('Ventana cargada');
          });
 

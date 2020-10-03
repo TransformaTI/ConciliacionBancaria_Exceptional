@@ -128,9 +128,9 @@ namespace Conciliacion.RunTime.DatosSQL
                 foreach (ReferenciaConciliadaPedido referenciaConciliadaPedido in listaReferenciaConciliadaPedido)
                 {
                     PedidoCobranza pedidoCobranza = objApp.PedidoCobranza.CrearObjeto();
-                    pedidoCobranza.Pedido = referenciaConciliadaPedido.Pedido;
-                    pedidoCobranza.AnioPed = referenciaConciliadaPedido.AñoPedido;
-                    pedidoCobranza.Celula = referenciaConciliadaPedido.CelulaPedido;
+                    pedidoCobranza.Pedido = referenciaConciliadaPedido.IdCargo;
+                    pedidoCobranza.AnioPed = referenciaConciliadaPedido.AñoCargo;
+                    //pedidoCobranza.Celula = referenciaConciliadaPedido.CelulaPedido;
                     pedidoCobranza.Cobranza = this.Id;
                     pedidoCobranza.GestionInicial = 1;/*Gestion inicial siempre es 1*/
                     pedidoCobranza.Saldo = referenciaConciliadaPedido.Total;

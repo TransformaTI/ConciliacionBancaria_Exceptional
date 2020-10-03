@@ -847,10 +847,10 @@ public partial class wucCargaManualExcelCyC : System.Web.UI.UserControl
 
                         RefNoConciliadaPedido.PedidoReferencia = sDocumento;
                         RefNoConciliadaPedido.Total = dMonto;
-                        RefNoConciliadaPedido.AñoPedido = ReferenciaNoConciliada.AñoPedido;//Convert.ToInt32(sDocumento.Substring(0, 4));
-                        RefNoConciliadaPedido.CelulaPedido = ReferenciaNoConciliada.CelulaPedido;//Convert.ToInt32(sDocumento.Substring(4, 1));
+                        RefNoConciliadaPedido.AñoCargo = ReferenciaNoConciliada.AñoCargo;//Convert.ToInt32(sDocumento.Substring(0, 4));
+                        //RefNoConciliadaPedido.CelulaPedido = ReferenciaNoConciliada.CelulaPedido;//Convert.ToInt32(sDocumento.Substring(4, 1));
                         //int.TryParse(sDocumento.Substring(5, sDocumento.Length - 5), out Pedido);
-                        RefNoConciliadaPedido.Pedido = ReferenciaNoConciliada.Pedido;
+                        RefNoConciliadaPedido.IdCargo = ReferenciaNoConciliada.IdCargo;
 
                         if (_referenciasPorConciliarExcel.Count > 0)
                         {

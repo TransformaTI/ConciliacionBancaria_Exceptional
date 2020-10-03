@@ -3,9 +3,51 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ MasterType TypeName="Principal" %>
+
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="contenidoPrincipal" runat="Server">
+
+    <style type="text/css">
+    .divTab
+    {
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        padding: 3px 10px 2px 10px;
+    }
+    .divTab:hover
+    {
+        color: #c8ccd0;
+    }
+    .MyTabStyle .ajax__tab_header
+    {
+        cursor: pointer;
+        font-weight: normal;
+        display: block;
+    }
+    .MyTabStyle .ajax__tab_header .ajax__tab_outer
+    {
+        border-color: #8197a6;
+        color: #8197a6;
+        margin-left: 1px;
+        border: 1px solid black;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+    .MyTabStyle .ajax__tab_body
+    {
+        font-family: verdana,tahoma,helvetica;
+        font-size: 10pt;
+        border-top-width: 0;
+        border: solid 1px #d7d7d7;
+        border-top-color: #ffffff;
+    }
+    </style>
+
     <asp:ToolkitScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
     </asp:ToolkitScriptManager>
+    <script src="/App_Scripts/jQueryScripts/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="/App_Scripts/jQueryScripts/jquery-ui.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="../../App_Scripts/jsUpdateProgress.js"></script>
     <script type="text/javascript" language="javascript">
         function ShowModalPopup() {
@@ -18,6 +60,7 @@
     <script type="text/javascript" language="javascript">
         var ModalProgress = '<%:ModalProgress.ClientID %>';       
     </script>
+    
     <asp:UpdatePanel ID="uppPrincipal" runat="server">
         <ContentTemplate>
             <table style="width: 100%">
@@ -61,9 +104,10 @@
                             <br />
                             <div class="etiqueta" style="margin-bottom: 5px">
                                 Mapeo</div>
+
                             <asp:TabContainer ID="tabNuevaConciliacion" TabStripPlacement="Top" runat="server"
-                                ActiveTabIndex="0" Width="100%">
-                                <asp:TabPanel runat="server" HeaderText="NUEVO" ID="tabNuevo" Width="100%">
+                                ActiveTabIndex="0" Width="100%" CssClass="MyTabStyle" >
+                                <asp:TabPanel runat="server" HeaderText="Nuevo" ID="tabNuevo" Width="100%" Font-Size="Larger">
                                     <ContentTemplate>
                                         <div class="etiqueta">
                                             Campo Destino</div>
@@ -81,7 +125,7 @@
                                             Font-Bold="true" />
                                     </ContentTemplate>
                                 </asp:TabPanel>
-                                <asp:TabPanel runat="server" HeaderText="EXISTENTE" ID="tabExistente" Width="100%">
+                                <asp:TabPanel runat="server" HeaderText="Existente" ID="tabExistente" Width="100%" >
                                     <ContentTemplate>
                                         <div class="etiqueta">
                                             Cuenta Bancaria Fuente</div>

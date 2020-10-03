@@ -56,6 +56,15 @@ public partial class ReportesConciliacion_ReporteSaldoAnticiposxCliente : System
         return resultado;
     }
 
+    private string QuitaHora(string stringFecha)
+    {
+        string[] arFecha = stringFecha.Split(' ');
+        if (arFecha.Count() > 0)
+            return arFecha[0];
+        else
+            return stringFecha;
+    }
+
     protected void imgExportar_Click(object sender, ImageClickEventArgs e)
     {
         if (FiltroCorrecto())
@@ -99,8 +108,8 @@ public partial class ReportesConciliacion_ReporteSaldoAnticiposxCliente : System
                     ArrayList Par = new ArrayList();
 
                     Par.Add("@Cliente=" + ClienteID.ToString());
-                    Par.Add("@FechaIni=" + fInicial.ToShortDateString());
-                    Par.Add("@FechaFin=" + fFinal.ToShortDateString());
+                    Par.Add("@FechaIni=" + QuitaHora(fInicial.ToString("MM/dd/yyyy"))); // Par.Add("@FechaIni=" + fInicial.ToShortDateString());
+                    Par.Add("@FechaFin=" + QuitaHora(fFinal.ToString("MM/dd/yyyy")));
                     Par.Add("@ClientesConSaldo=" + ClientesConSaldo.ToString());
                     //Par.Add("@ClientesConSaldo='" + ddlClientesConSaldo.Text + "'");
 

@@ -10,6 +10,16 @@ namespace Conciliacion.Migracion.Runtime.SqlDatos
 {
     public class FuenteInformacionDetalleDatos : FuenteInformacionDetalle
     {
+        //public FuenteInformacionDetalleDatos(RunTime.MensajesImplementacion implementadorMensajes)
+        //   : base(implementadorMensajes)
+        //{
+        //}
+
+        //public IObjetoBase CrearObjeto(RunTime.MensajesImplementacion implementadorMensajes)
+        //{
+        //    return new FuenteInformacionDetalleDatos(implementadorMensajes);
+        //}
+
         public override bool Guardar()
         {
             bool resultado = false;
@@ -67,7 +77,7 @@ namespace Conciliacion.Migracion.Runtime.SqlDatos
                     cmd.ExecuteNonQuery();
                 }
                 resultado = true;
-                this.ImplementadorMensajes.MostrarMensaje("El registro se eliminó con éxito.");
+                //this.ImplementadorMensajes.MostrarMensaje("El registro se eliminó con éxito.");
             }
             catch (SqlException ex)
             {

@@ -3,8 +3,8 @@
   <siteMapNode title="Conciliación" description="Conciliación" resourceKey="1" url="~/Inicio.aspx">
 
     <siteMapNode title="Archivos" description="Consultar Archivos" resourceKey="4" url="~/Archivos/ConsultarArchivo.aspx">
-      <siteMapNode title="Importar" description="Importar Archivos" resourceKey="3" url="~/Archivos/ImportacionArchivos.aspx">
-      </siteMapNode>
+    <siteMapNode title="Importar" description="Importar Archivos" resourceKey="3" url="~/Archivos/ImportacionArchivos.aspx">
+    </siteMapNode>
 <!--
       <siteMapNode title="Tranferencias Bancarias" description="Transferencia Bancaria" resourceKey="22" url="~/TransferenciasBancarias/TransferenciaBancaria.aspx">
       </siteMapNode>
@@ -12,8 +12,9 @@
       <!--
       <siteMapNode title="Exportar" description="Consultar TRANSBAN" resourceKey="22" url="~/Conciliacion/Pagos/ConsultarTransban.aspx">
       </siteMapNode>
+      -->
     </siteMapNode>
-    -->
+    
 
     <siteMapNode title="Plantillas" description="Plantillas" resourceKey="1" url="">
       <siteMapNode title="Nueva plantilla" description="Agregar nueva platilla" resourceKey="5" url="">
@@ -79,8 +80,8 @@
     </siteMapNode>
     
     <siteMapNode title="Reportes" description="Consultar Reportes" resourceKey="4" url="">
-<!--      <siteMapNode title="Libro Contabilidad I" description="Libro Contabilidad I" resourceKey="3" url="~/ReportesConciliacion/ReporteConciliacionI.aspx">
-      </siteMapNode> -->
+      <siteMapNode title="Libro Contabilidad I" description="Libro Contabilidad I" resourceKey="3" url="~/ReportesConciliacion/ReporteConciliacionI.aspx">
+      </siteMapNode> 
     <!--
       <siteMapNode title="Cuenta Bancaria Saldo" description="Cuenta Bancaria Saldo" resourceKey="3" url="~/ReportesConciliacion/CuentaBancariaSaldo.aspx">
       </siteMapNode> -->
@@ -112,10 +113,12 @@
 
     <siteMapNode title="Bloqueos" description="Gestión de bloqueos" url="~/Interbloqueo.aspx" resourceKey="1">
     </siteMapNode>
-   
-    
     <siteMapNode title="Cerrar" description="Cerrar sesión" url="~/Acceso/Acceso.aspx" resourceKey="1">
-    </siteMapNode>
+    <!--
+    <siteMapNode title="Cerrar" description="Cerrar sesión" url="http://40.118.227.251:82/" resourceKey="1">
+    -->
+
+  </siteMapNode>
 
   </siteMapNode>
 </siteMap>

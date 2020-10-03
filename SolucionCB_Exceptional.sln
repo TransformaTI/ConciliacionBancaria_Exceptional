@@ -40,6 +40,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conciliacion.RunTimeTests1"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locker", "Locker\Locker.csproj", "{FF1A3892-58A9-416F-80F7-DD4FC02EDDC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB_seguridad", "CB_seguridad\CB_seguridad.csproj", "{F86C56E3-1BAD-428D-869B-5A644506C78F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -108,6 +110,14 @@ Global
 		{FF1A3892-58A9-416F-80F7-DD4FC02EDDC2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FF1A3892-58A9-416F-80F7-DD4FC02EDDC2}.Release|x86.ActiveCfg = Release|Any CPU
 		{FF1A3892-58A9-416F-80F7-DD4FC02EDDC2}.Release|x86.Build.0 = Release|Any CPU
+		{F86C56E3-1BAD-428D-869B-5A644506C78F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F86C56E3-1BAD-428D-869B-5A644506C78F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F86C56E3-1BAD-428D-869B-5A644506C78F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F86C56E3-1BAD-428D-869B-5A644506C78F}.Debug|x86.Build.0 = Debug|Any CPU
+		{F86C56E3-1BAD-428D-869B-5A644506C78F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F86C56E3-1BAD-428D-869B-5A644506C78F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F86C56E3-1BAD-428D-869B-5A644506C78F}.Release|x86.ActiveCfg = Release|Any CPU
+		{F86C56E3-1BAD-428D-869B-5A644506C78F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

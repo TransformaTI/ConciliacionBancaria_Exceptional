@@ -15,7 +15,6 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
         
         int sucursalpedido;
         string sucursalpedidodes;
-        int celulapedido;
         int añopedido;
         int pedido;
         int remisionpedido;
@@ -43,7 +42,25 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
         int clientePadre;
         String _iDPedidoCRM;
 
-        //decimal saldodeposito;
+        private int folioext;
+        private int secuenciaext;
+        private string conceptoext;
+        private decimal montoconciliado;
+
+        private string referenciaexterno;
+        private string descripcionexterno;
+
+        private int añoexterno;
+        private int numcontrato;
+        private int idcontrato;
+        private string serie;
+        private int folio;
+        private DateTime ffactura;
+        private int añocargo;
+        private int idcargo;
+        private int foliofactura;
+        private string seriefactura;
+        private string tipocargo;
 
         #region Constructores
 
@@ -62,9 +79,9 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
 
             this.sucursalpedido = sucursalpedido;
             this.sucursalpedidodes=sucursalpedidodes;
-            this.celulapedido=celulapedido;
-            this.añopedido=añopedido;
-            this.pedido=pedido;
+            //this.celulapedido=celulapedido;
+            this.AñoCargo=añopedido;
+            this.IdCargo=pedido;
             this.remisionpedido=remisionpedido;
             this.seriepedido= seriepedido;
             this.foliosat=foliosat;
@@ -83,8 +100,9 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
                                     int sucursalext, string sucursalextdes, int folioext, int secuenciaext, string conceptoext, decimal montoconciliado, decimal diferencia, short formaconciliacion, short statusconcepto, string statusconciliacion,
                                     DateTime foperacionext, DateTime fmovimientoext,
                                     string chequeexterno, string referenciaexterno, string descripcionexterno, string nombreterceroexterno, string rfcterceroexterno, decimal depositoexterno, decimal retiroexterno,
-                                    int sucursalpedido, string sucursalpedidodes, int celulapedido, int añopedido, int pedido, int remisionpedido, string seriepedido, int foliosat, string seriesat, string conceptopedido, decimal total, string statusmovimiento,
-                                    int cliente, string nombre, string pedidoreferencia, int añoexterno, MensajesImplementacion implementadorMensajes)
+                                    int sucursalpedido, string sucursalpedidodes, int celulapedido, int añocargo, int idcargo, int remisionpedido, string seriepedido, int foliosat, string seriesat, string conceptopedido, decimal total, string statusmovimiento,
+                                    int cliente, string nombre, string pedidoreferencia, int añoexterno, 
+                                    MensajesImplementacion implementadorMensajes)
             : base(corporativo, sucursalext, sucursalextdes, añoexterno, folioext, secuenciaext, conceptoext, montoconciliado, diferencia, formaconciliacion, statusconcepto, statusconciliacion, foperacionext, fmovimientoext,
             chequeexterno, referenciaexterno, descripcionexterno, nombreterceroexterno, rfcterceroexterno, depositoexterno, retiroexterno,
             implementadorMensajes)
@@ -95,9 +113,9 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
 
             this.sucursalpedido = sucursalpedido;
             this.sucursalpedidodes = sucursalpedidodes;
-            this.celulapedido = celulapedido;
-            this.añopedido = añopedido;
-            this.pedido = pedido;
+            //this.celulapedido = celulapedido;
+            this.añocargo = añopedido;
+            this.idcargo = idcargo;
             this.remisionpedido = remisionpedido;
             this.seriepedido = seriepedido;
             this.foliosat = foliosat;
@@ -118,7 +136,8 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
                                     DateTime foperacionext, DateTime fmovimientoext,
                                     string chequeexterno, string referenciaexterno, string descripcionexterno, string nombreterceroexterno, string rfcterceroexterno, decimal depositoexterno, decimal retiroexterno,
                                     int sucursalpedido, string sucursalpedidodes, int celulapedido, int añopedido, int pedido, int remisionpedido, string seriepedido, int foliosat, string seriesat, string conceptopedido, decimal total, string statusmovimiento,
-                                    int cliente, string nombre, string pedidoreferencia, decimal saldo, int añoexterno, MensajesImplementacion implementadorMensajes)
+                                    int cliente, string nombre, string pedidoreferencia, decimal saldo, int añoexterno, 
+                                    MensajesImplementacion implementadorMensajes)
             : base(corporativo, sucursalext, sucursalextdes, añoexterno, folioext, secuenciaext, conceptoext, montoconciliado, diferencia, formaconciliacion, statusconcepto, statusconciliacion, foperacionext, fmovimientoext,
             chequeexterno, referenciaexterno, descripcionexterno, nombreterceroexterno, rfcterceroexterno, depositoexterno, retiroexterno,
             implementadorMensajes)
@@ -129,9 +148,9 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
 
             this.sucursalpedido = sucursalpedido;
             this.sucursalpedidodes = sucursalpedidodes;
-            this.celulapedido = celulapedido;
-            this.añopedido = añopedido;
-            this.pedido = pedido;
+            //this.celulapedido = celulapedido;
+            this.AñoCargo = añopedido;
+            this.IdCargo = pedido;
             this.remisionpedido = remisionpedido;
             this.seriepedido = seriepedido;
             this.foliosat = foliosat;
@@ -146,9 +165,62 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             this.pedidoreferencia = pedidoreferencia;
             this.saldo = saldo;
 
+            this.foliofactura = foliosat;
+            this.seriefactura = seriesat;
+
         }
 
-      
+        public ReferenciaConciliadaPedido(int corporativo, int añoconciliacion, short mesconciliacion, int folioconciliacion,
+                             int sucursalext, string sucursalextdes, int folioext, int secuenciaext, string conceptoext, decimal montoconciliado, decimal diferencia, short formaconciliacion, short statusconcepto, string statusconciliacion,
+                             DateTime foperacionext, DateTime fmovimientoext,
+                             string chequeexterno, string referenciaexterno, string descripcionexterno, string nombreterceroexterno, string rfcterceroexterno, decimal depositoexterno, decimal retiroexterno,
+                             int sucursalpedido, string sucursalpedidodes, int celulapedido, int añopedido, int pedido, int remisionpedido, string seriepedido, int foliosat, string seriesat, string conceptopedido, decimal total, string statusmovimiento,
+                             int cliente, string nombre, string pedidoreferencia, int añoexterno,
+                             int idcontrato, string serie, int folio, DateTime ffactura, int anocargo, int idcargo,
+                             MensajesImplementacion implementadorMensajes)
+     : base(corporativo, sucursalext, sucursalextdes, añoexterno, folioext, secuenciaext, conceptoext, montoconciliado, diferencia, formaconciliacion, statusconcepto, statusconciliacion, foperacionext, fmovimientoext,
+     chequeexterno, referenciaexterno, descripcionexterno, nombreterceroexterno, rfcterceroexterno, depositoexterno, retiroexterno,
+     idcontrato, serie, folio, ffactura, anocargo, idcargo,
+     implementadorMensajes)
+        {
+            this.añoexterno = añoexterno;
+            this.folioext = folioext;
+            this.secuenciaext = secuenciaext;
+            this.conceptoext = conceptoext;
+            this.referenciaexterno = referenciaexterno;
+            this.descripcionexterno = descripcionexterno;
+
+            this.añoconciliacion = añoconciliacion;
+            this.mesconciliacion = mesconciliacion;
+            this.folioconciliacion = folioconciliacion;
+
+            this.sucursalpedido = sucursalpedido;
+            this.sucursalpedidodes = sucursalpedidodes;
+            //this.celulapedido = celulapedido;
+            this.añopedido = añopedido;
+            this.pedido = pedido;
+            this.remisionpedido = remisionpedido;
+            this.seriepedido = seriepedido;
+            this.foliosat = foliosat;
+            this.seriesat = seriesat;
+            this.total = total;
+            this.conceptopedido = conceptopedido;
+            this.statusmovimiento = statusmovimiento;
+            this.selecciona = true;
+
+            this.cliente = cliente;
+            this.nombre = nombre;
+            this.pedidoreferencia = pedidoreferencia;
+            this.idcontrato = idcontrato;
+            this.serie = serie;
+            this.folio = folio;
+            this.ffactura = ffactura;
+            this.añocargo = anocargo;
+            this.idcargo = idcargo;
+
+        }
+
+
 
         public ReferenciaConciliadaPedido(MensajesImplementacion implementadorMensajes)
             : base(implementadorMensajes)
@@ -159,7 +231,7 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
 
             this.sucursalpedido = 0;
             this.sucursalpedidodes = "";
-            this.celulapedido = 0;
+            //this.celulapedido = 0;
             this.añopedido = 0;
             this.pedido = 0;
             this.remisionpedido = 0;
@@ -176,12 +248,7 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             this.tipoproducto = 0;
             this.portatil = false;
         }
-
-        //protected ReferenciaConciliadaPedido(MensajesImplementacion implementadorMensajes)
-        //{
-        //    this.implementadorMensajes = implementadorMensajes;
-        //}
-
+        
         #endregion
 
         #region Propiedades
@@ -230,24 +297,47 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             set { sucursalpedidodes = value; }
         }
         
-        public int CelulaPedido
+        public int AñoCargo
         {
-            get { return celulapedido; }
-            set { celulapedido = value; }
+            get { return añocargo; }
+            set { añocargo = value; }
         }
 
-        public int AñoPedido
+        public int IdCargo
         {
-            get { return añopedido; }
-            set { añopedido = value; }
+            get { return idcargo; }
+            set { idcargo = value; }
         }
-
-        public int Pedido
+        public int IdContrato
         {
-            get { return pedido; }
-            set { pedido = value; }
+            get { return idcontrato; }
+            set { idcontrato = value; }
         }
-        
+        public int NumContrato
+        {
+            get { return numcontrato; }
+            set { numcontrato = value; }
+        }
+        public int FolioFactura
+        {
+            get { return foliofactura; }
+            set { foliofactura = value; }
+        }
+        public string SerieFactura
+        {
+            get { return seriefactura; }
+            set { seriefactura = value; }
+        }
+        public DateTime Ffactura
+        {
+            get { return ffactura; }
+            set { ffactura = value; }
+        }
+        public string TipoCargo
+        {
+            get { return tipocargo; }
+            set { tipocargo = value; }
+        }
 
         public int RemisionPedido
         {

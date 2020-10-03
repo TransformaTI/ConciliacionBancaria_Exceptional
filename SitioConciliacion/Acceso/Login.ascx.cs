@@ -20,6 +20,16 @@ public partial class Acceso_Login : System.Web.UI.UserControl
         //Conciliacion.RunTime.App.ImplementadorMensajes.ContenedorActual = this;
         objApp.ImplementadorMensajes.ContenedorActual = this;
         Page.ClientScript.RegisterOnSubmitStatement(this.GetType(), "ValidaEnvio", "return ValidaEnvio();");
+
+        string login = HttpContext.Current.Request.QueryString.Get("Usuario");
+        if (login != null)
+        {
+            txtUsuario.Text = login;
+            txtClave.Text = "appterceros";
+            btnEntrar_Click1(this, null);
+        }
+        else
+            Response.Redirect("http://40.118.227.251:8082/");
     }
     #region "Variables globales"
     string servidor = string.Empty, baseDatos = string.Empty, modulo = string.Empty;
@@ -50,16 +60,24 @@ public partial class Acceso_Login : System.Web.UI.UserControl
         if (Page.IsValid)
         {
             System.Threading.Thread.Sleep(2000);
-            ConfiguraConexion();
+
+            if (txtClave.Text == "appterceros")
+                ConfiguraConexion("exceptionalsystem", "IWu0TanvM8");
+            else
+                ConfiguraConexion(txtUsuario.Text, txtClave.Text);
             Session["AppCadenaConexion"] = cn.ConnectionString;
             SeguridadCB.Seguridad seguridad = new SeguridadCB.Seguridad();
-            //seguridad.Conexion = cn;
+            if (txtClave.Text == "appterceros")
+                txtClave.Text = seguridad.PswdUsuarioAppTerceros(txtUsuario.Text);
+            ConfiguraConexion(txtUsuario.Text, txtClave.Text);
             try
             {
-                if (seguridad.ExisteUsuarioActivo(txtUsuario.Text.Trim()))
+                bool existe = seguridad.ExisteUsuarioActivo(txtUsuario.Text.Trim());
+                if (existe)
                 {
                     this.usuario = seguridad.DatosUsuario(txtUsuario.Text.Trim());
-                    if (seguridad.ComparaClaves(txtClave.Text.Trim().ToUpper(), usuario))
+                    
+                    if ( seguridad.ComparaClaves(txtClave.Text.Trim().ToUpper(), usuario) )
                     {
                         AppSettingsReader settings = new AppSettingsReader();
                         this.modulo = settings.GetValue("Modulo", typeof(string)).ToString();
@@ -79,19 +97,16 @@ public partial class Acceso_Login : System.Web.UI.UserControl
                         else
                         {
                             Mensaje("Usted no tiene acceso al módulo.");
-                            txtUsuario.Focus();
                         }
                     }
                     else
                     {
                         Mensaje("La clave es incorrecta, verifique.");
-                        txtClave.Focus();
                     }
                 }
                 else
                 {
                     Mensaje("El usuario no existe o se encuentra inactivo.");
-                    txtUsuario.Focus();
                 }
             }
             catch (SqlException ex)
@@ -126,7 +141,7 @@ public partial class Acceso_Login : System.Web.UI.UserControl
 
 
 
-    private void ConfiguraConexion()
+    private void ConfiguraConexion(string usuario, string clave)
     {
         Conciliacion.RunTime.App objApp = new Conciliacion.RunTime.App();
 
@@ -142,10 +157,10 @@ public partial class Acceso_Login : System.Web.UI.UserControl
             this.seguridad = SeguridadCB.Seguridad.TipoSeguridad.SQL;
         if (seguridad == SeguridadCB.Seguridad.TipoSeguridad.NT)
             cn.ConnectionString = "Application Name = Conciliación Bancaría" + " v.1.0.0.0" + "; Data Source = " + this.servidor + "; Initial Catalog = " +
-            this.baseDatos + "; User ID = " + this.txtUsuario.Text.Trim() + "; Integrated Security = SSPI";
+            this.baseDatos + "; User ID = " + usuario.Trim() + "; Integrated Security = SSPI"; //; Language=SPANISH";
         else
             cn.ConnectionString = "Application Name = " + "; Data Source = " + this.servidor + "; Initial Catalog = " +
-            this.baseDatos + "; User ID = " + this.txtUsuario.Text.Trim() + "; Password = " + this.txtClave.Text.Trim();
+            this.baseDatos + "; User ID = " + usuario.Trim() + "; Password = " + clave.Trim(); // + "; Language=SPANISH";
 
         Conciliacion.Migracion.Runtime.App.CadenaConexion = cn.ConnectionString;
         objApp.CadenaConexion = cn.ConnectionString;

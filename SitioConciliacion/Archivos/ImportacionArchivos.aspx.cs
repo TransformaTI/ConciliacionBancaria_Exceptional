@@ -232,10 +232,11 @@ public partial class ImportacionArchivos_ImportacionArchivos : System.Web.UI.Pag
                 string rutaCompleta = MapPath(ruta) + finformacion.RutaArchivo;
                 if (HttpContext.Current.Session["Archivo"] != null)
                 {
-                    SubirArchivo(rutaCompleta);
+                    string errorSubida = SubirArchivo(rutaCompleta);
                     if (finformacion.FuenteInformacionDetalle.Count > 0)
                     {
-                        if (SubirArchivo(rutaCompleta))
+                        errorSubida = SubirArchivo(rutaCompleta);
+                        if (errorSubida == "")
                         {
                             //CultureInfo culture = new CultureInfo("en-US");
                             TablaDestino tablaDestino = (TablaDestino)App.TablaDestino.CrearObjeto();
@@ -267,7 +268,8 @@ public partial class ImportacionArchivos_ImportacionArchivos : System.Web.UI.Pag
                         }
                         else
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), "alert('Ocurrier�n errores al tratar de cargar el archivo.');", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), "alert('Ocurrieron errores al tratar de cargar el archivo.');", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), "alert('"+ errorSubida + "');", true); 
                         }
                     }
                     else
@@ -304,9 +306,9 @@ public partial class ImportacionArchivos_ImportacionArchivos : System.Web.UI.Pag
         return texto;
     }
 
-    private bool SubirArchivo(string ruta)
+    private string SubirArchivo(string ruta)
     {
-        bool resultado = false;
+        string resultado = "";
         try
         {
             if (HttpContext.Current.Session["Archivo"] != null)
@@ -319,12 +321,12 @@ public partial class ImportacionArchivos_ImportacionArchivos : System.Web.UI.Pag
                     file.Close();
                 }
 
-                resultado = true;
+                resultado = "";
             }
         }
         catch (Exception ex)
         {
-            resultado = false;
+            resultado = ex.Message;
 
         }
         return resultado;
@@ -531,6 +533,8 @@ public partial class ImportacionArchivos_ImportacionArchivos : System.Web.UI.Pag
     }
     protected void btnGuardarAplicacion_Click(object sender, EventArgs e)
     {
+        return;
+
         int i = 0;
         List<Conciliacion.RunTime.ReglasDeNegocio.ImportacionAplicacion> listadoExtractores = new List<Conciliacion.RunTime.ReglasDeNegocio.ImportacionAplicacion>();
         if (ValidarDatos())

@@ -387,7 +387,7 @@ namespace ValidacionArchivosConciliacion
 
                 //if ( ! Conciliacion.RunTime.App.Consultas.VerificaPedidoReferenciaExiste(row[colDoc].ToString()) )
                 ReferenciaNoConciliadaPedido ReferenciaNoConciliada = objApp.Consultas.ConsultaPedidoReferenciaEspecificoCliente(Corporativo, Sucursal, 1, 1, 1, 1, row[colDoc].ToString());
-                if (ReferenciaNoConciliada.Pedido == 0 || ReferenciaNoConciliada.CelulaPedido == 0 || ReferenciaNoConciliada.AñoPedido == 0)
+                if (ReferenciaNoConciliada.IdCargo == 0 || ReferenciaNoConciliada.AñoCargo == 0)
                 {
                     Exito = false;
                     ValoresInvalidos = ValoresInvalidos + rowNo.ToString() + ", ";

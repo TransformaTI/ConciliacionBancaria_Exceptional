@@ -904,6 +904,7 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
 
     protected void btnIrFiltro_Click(object sender, EventArgs e)
     {
+        return;
         //Leer el tipoConciliacion URL
         try
         {
@@ -1018,6 +1019,8 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
     /////////////////////////////////////// BUSCAR FACTURA 
     protected void btnBuscarFactura_Click(object sender, EventArgs e) /*System.Web.UI.ImageClickEventArgs*/
     {
+        return;
+
         rblTipoClienteFactura.SelectedValue = rblClienteTipo.SelectedValue;
         lblClienteFactura.Text = lblCliente.Text;
 
@@ -1066,8 +1069,8 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
             {
                 string strServer = settings.GetValue("Servidor", typeof(string)).ToString();
                 string strDatabase = settings.GetValue("Base", typeof(string)).ToString();
-
                 string strUsuario = usuario.IdUsuario.Trim();
+
                 string strPW = usuario.ClaveDesencriptada;
                 ArrayList Par = new ArrayList();
 
@@ -1075,8 +1078,8 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
                 Par.Add("@Corporativo=" + corporativo);
                 Par.Add("@Sucursal=" + sucursal);
                 Par.Add("@CuentaBancaria=" + cuentabancaria);
-                Par.Add("@FInicial=" + QuitaHora(fInicial.ToString()));
-                Par.Add("@FFinal=" + QuitaHora(fFinal.ToString()));
+                Par.Add("@FInicial=" + QuitaHora(fInicial.ToString("MM/dd/yyyy")));
+                Par.Add("@FFinal=" + QuitaHora(fFinal.ToString("MM/dd/yyyy")));
                 Par.Add("@StatusConciliacion=" + status);
 
                 ClaseReporte reporte = new ClaseReporte(strReporte, Par, strServer, strDatabase, strUsuario, strPW);
@@ -1234,20 +1237,6 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
         dtbMovimientoConciliacionCompartida.Columns.Add("Saldo", typeof(decimal));
         dtbMovimientoConciliacionCompartida.Columns.Add("Caja", typeof(string));
 
-        //dtbMovimientoConciliacionCompartida.Columns.Add("CorporativoInterno", typeof(int?));
-        //dtbMovimientoConciliacionCompartida.Columns.Add("SucursalInterno", typeof(int?));
-        //dtbMovimientoConciliacionCompartida.Columns.Add("AñoInterno", typeof(int?));
-        //dtbMovimientoConciliacionCompartida.Columns.Add("FolioInterno", typeof(int?));
-        //dtbMovimientoConciliacionCompartida.Columns.Add("SecuenciaInterno", typeof(int?));
-
-        //dtbMovimientoConciliacionCompartida.Columns.Add("Pedido", typeof(int?));
-        //dtbMovimientoConciliacionCompartida.Columns.Add("Celula", typeof(int?));
-        //dtbMovimientoConciliacionCompartida.Columns.Add("AñoPed", typeof(int?));
-        //dtbMovimientoConciliacionCompartida.Columns.Add("Cliente", typeof(int));
-
-        //dtbMovimientoConciliacionCompartida.Columns.Add("DescripcionInterno", typeof(string));
-        //dtbMovimientoConciliacionCompartida.Columns.Add("ConceptoInterno", typeof(string));
-
         dtbMovimientoConciliacionCompartida.Columns.Add("StatusConcepto", typeof(int));
 
         dtbMovimientoConciliacionCompartida.Columns.Add("TipoTraspaso", typeof(string));
@@ -1323,20 +1312,6 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
         dtbMovimientoConciliacionCompartida.Columns.Add("Deposito", typeof(decimal));
         dtbMovimientoConciliacionCompartida.Columns.Add("Saldo", typeof(decimal));
         dtbMovimientoConciliacionCompartida.Columns.Add("Caja", typeof(string));
-
-        //dtbMovimientoConciliacionCompartida.Columns.Add("CorporativoInterno", typeof(int?));
-        //dtbMovimientoConciliacionCompartida.Columns.Add("SucursalInterno", typeof(int?));
-        //dtbMovimientoConciliacionCompartida.Columns.Add("AñoInterno", typeof(int?));
-        //dtbMovimientoConciliacionCompartida.Columns.Add("FolioInterno", typeof(int?));
-        //dtbMovimientoConciliacionCompartida.Columns.Add("SecuenciaInterno", typeof(int?));
-
-        //dtbMovimientoConciliacionCompartida.Columns.Add("Pedido", typeof(int?));
-        //dtbMovimientoConciliacionCompartida.Columns.Add("Celula", typeof(int?));
-        //dtbMovimientoConciliacionCompartida.Columns.Add("AñoPed", typeof(int?));
-        //dtbMovimientoConciliacionCompartida.Columns.Add("Cliente", typeof(int));
-
-        //dtbMovimientoConciliacionCompartida.Columns.Add("DescripcionInterno", typeof(string));
-        //dtbMovimientoConciliacionCompartida.Columns.Add("ConceptoInterno", typeof(string));
 
         dtbMovimientoConciliacionCompartida.Columns.Add("StatusConcepto", typeof(int));
 
@@ -1417,15 +1392,6 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
 
         dtbMovimientoConciliadosMovEx.Columns.Add("MontoConciliado", typeof(decimal));
 
-        //dtbMovimientoConciliadosMovEx.Columns.Add("CorporativoInterno", typeof(int?));
-        //dtbMovimientoConciliadosMovEx.Columns.Add("SucursalInterno", typeof(int?));
-        //dtbMovimientoConciliadosMovEx.Columns.Add("AñoInterno", typeof(int?));
-        //dtbMovimientoConciliadosMovEx.Columns.Add("FolioInterno", typeof(int?));
-        //dtbMovimientoConciliadosMovEx.Columns.Add("SecuenciaInterno", typeof(int?));
-
-        //dtbMovimientoConciliadosMovEx.Columns.Add("Pedido", typeof(int?));
-        //dtbMovimientoConciliadosMovEx.Columns.Add("Celula", typeof(int?));
-        //dtbMovimientoConciliadosMovEx.Columns.Add("AñoPed", typeof(int?));
         dtbMovimientoConciliadosMovEx.Columns.Add("Cliente", typeof(int));
 
         dtbMovimientoConciliadosMovEx.Columns.Add("DescripcionInterno", typeof(string));
@@ -1607,6 +1573,7 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
 
     protected void btnGuardarVista_Click(object sender, System.Web.UI.ImageClickEventArgs e)
     {
+        return;
         bool resultado = false;
         if (grvConciliacionCompartida.Rows.Count > 0)
         {
@@ -1713,6 +1680,8 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
 
     protected void btnMesAñoCierre_Click(object sender, EventArgs e)
     {
+        return;
+
         try
         {
             string mesaño = ddlMesAño.SelectedValue;
@@ -1890,7 +1859,7 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
                                                                               sucursalconciliacion, añoconciliacion,
                                                                               mesconciliacion, folioconciliacion,
                                                                               folio, secuencia,
-                                                                              0, -1, cliente, clientepadre);
+                                                                              0, cliente);
             Session["PEDIDOS_CONCILIAR"] = listaReferenciaPedidos;
         }
         catch (Exception ex)
@@ -1915,7 +1884,7 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
                                                                               sucursalconciliacion, añoconciliacion,
                                                                               mesconciliacion, folioconciliacion,
                                                                               folio, secuencia,
-                                                                              0, -1, cliente, clientepadre, factura, fechafactura);
+                                                                              0, cliente, factura, fechafactura);
             Session["PEDIDOS_CONCILIAR"] = listaReferenciaPedidos;
         }
         catch (Exception ex)
@@ -1968,16 +1937,7 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
         AppSettingsReader settings = new AppSettingsReader();
         string _URLGateway = parametros.ValorParametro(Convert.ToSByte(settings.GetValue("Modulo", typeof(sbyte))), "URLGateway");
         Cliente cliente = objApp.Cliente.CrearObjeto();
-        //tblPedidos = new DataTable("ReferenciasInternas");
-        //tblPedidos.Columns.Add("Pedido", typeof(int));
-        //tblPedidos.Columns.Add("PedidoReferencia", typeof(int));
-        //tblPedidos.Columns.Add("AñoPed", typeof(int));
-        //tblPedidos.Columns.Add("Celula", typeof(int));
-        //tblPedidos.Columns.Add("Cliente", typeof(string));
-        //tblPedidos.Columns.Add("Nombre", typeof(string));
-        //tblPedidos.Columns.Add("FSuministro", typeof(DateTime));
-        //tblPedidos.Columns.Add("Total", typeof(decimal));
-        //tblPedidos.Columns.Add("Concepto", typeof(string));
+
         tblPedidos = new DataTable("ReferenciasInternas");
         tblPedidos.Columns.Add("Pedido", typeof(int));
         tblPedidos.Columns.Add("PedidoReferencia", typeof(string));
@@ -1989,15 +1949,14 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
         tblPedidos.Columns.Add("Nombre", typeof(string));
         tblPedidos.Columns.Add("Concepto", typeof(string));
         tblPedidos.Columns.Add("Cliente", typeof(string));
-        tblPedidos.Columns.Add("Celula", typeof(int));
-        tblPedidos.Columns.Add("AñoPed", typeof(int));
+        tblPedidos.Columns.Add("AñoCargo", typeof(int));
 
         foreach (
             ReferenciaNoConciliadaPedido rc in
                 listaReferenciaPedidos)
         {
             tblPedidos.Rows.Add(
-                rc.Pedido,
+                rc.IdCargo,
                 rc.PedidoReferencia,
                 rc.RemisionPedido,
                 rc.FolioSat,
@@ -2007,8 +1966,8 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
                 rc.Nombre,
                 rc.Concepto,
                 rc.Cliente,
-                rc.CelulaPedido,
-                rc.AñoPedido
+                0, //rc.CelulaPedido,
+                rc.AñoCargo
                 );
         }
         HttpContext.Current.Session["TAB_PEDIDOS"] = tblPedidos;
@@ -2090,6 +2049,8 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
     }
     protected void btnBuscarPedido_Click(object sender, System.Web.UI.ImageClickEventArgs e)
     {
+        return;
+
         try
         {
             ImageButton btnBuscarCliente = sender as ImageButton;
@@ -2390,6 +2351,8 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
 
     protected void btnConciliarFACT_Click(object sender, EventArgs e)
     {
+        return;
+
         decimal montoFacturas = 0M;
         bool conciliacionFactura = false;
         bool registraConciliacion = false;
@@ -2471,6 +2434,8 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
 
     protected void btnGuardar_Click(object sender, EventArgs e)
     {
+        return;
+
         try
         {
             ReferenciaConciliadaCompartida rnc = Session["MOVIMIENTO_SELECCIONADO"] as ReferenciaConciliadaCompartida;
@@ -2508,6 +2473,7 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
     //protected void btnBuscarPedidosCliente_Click(object sender, EventArgs e)
     protected void BuscarPedidosClientes()
     {
+        return;
         try
         {
             string clienteBuscar = hdfClienteBuscar.Value;
@@ -2548,6 +2514,8 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
 
     protected void btnBuscarPedidosCliente_Click(object sender, EventArgs e)
     {
+        return;
+
         try
         {
             string clienteBuscar = hdfClienteBuscar.Value;
@@ -2697,12 +2665,12 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
             foreach (GridViewRow grv in pedidosSeleccionados)
             {
                 int pedido = Convert.ToInt32(grvPedidos.DataKeys[grv.RowIndex].Values["Pedido"]);
-                int celulaPedido = Convert.ToInt32(grvPedidos.DataKeys[grv.RowIndex].Values["Celula"]);
-                int añoPedido = Convert.ToInt32(grvPedidos.DataKeys[grv.RowIndex].Values["AñoPed"]);
+                //int celulaPedido = Convert.ToInt32(grvPedidos.DataKeys[grv.RowIndex].Values["Celula"]);
+                int añoPedido = Convert.ToInt32(grvPedidos.DataKeys[grv.RowIndex].Values["AñoCargo"]);
 
                 ReferenciaNoConciliadaPedido rfPedido =
                 listaReferenciaPedidos.Single(
-                   s => s.Pedido == pedido && s.CelulaPedido == celulaPedido && s.AñoPedido == añoPedido);
+                   s => s.IdCargo == pedido && s.AñoCargo == añoPedido);
                 if (!rfExterna.AgregarReferenciaConciliadaSinVerificacion(rfPedido)) return false;
             }
             Usuario usuario = (SeguridadCB.Public.Usuario)HttpContext.Current.Session["Usuario"];
@@ -2740,6 +2708,7 @@ public partial class ReportesConciliacion_ReporteConciliacionI : System.Web.UI.P
     }
     protected void btnFiltrar_Click(object sender, ImageClickEventArgs e)
     {
+        return;
         try
         {
             short configuracion = ddlFiltrarEn.SelectedItem.Value.Equals("Externos") ? Convert.ToSByte(4) : Convert.ToSByte(5);

@@ -16,9 +16,10 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
         int añoconciliacion;
 
         int celulapedido;
-        int añopedido;
-        int pedido;
+        int añocargo;
+        int idcargo;
         int cliente;
+        //int idcliente;
         string nombre;
 	    int remisionpedido;
 	    string seriepedido;
@@ -53,6 +54,8 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
         int factura;
         DateTime fsuministro;
 
+        int idcontrato;
+
         DetalleSaldoAFavor DetalleSaldo;
 
         //private List<ReferenciaConciliadaPedido> listareferenciaconciliadapedido = new List<ReferenciaConciliadaPedido>();
@@ -60,7 +63,7 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
         #region Constructores
 
         public ReferenciaNoConciliadaPedido(int corporativo, int sucursal, string sucursaldes, int año,int folioconciliacion,
-            short mesconciliacion, int celulapedido,int añopedido, int pedido, string pedidoreferencia, int cliente, string nombre,int remisionpedido, string seriepedido,
+            short mesconciliacion, int celulapedido,int añocargo, int idcargo, string pedidoreferencia, int cliente, string nombre,int remisionpedido, string seriepedido,
             int foliosat, string seriesat, string concepto,decimal total, short formaconciliacion, short statusconcepto, 
                 string statusconciliacion, DateTime foperacion, DateTime fmovimiento, 
             decimal diferencia,MensajesImplementacion implementadorMensajes)
@@ -73,9 +76,9 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             this.corporativo = corporativo;
             this.sucursal = sucursal;
             this.sucursaldes = sucursaldes;
-            this.celulapedido= celulapedido;
-            this.añopedido= añopedido;
-            this.pedido= pedido;
+            //this.celulapedido= celulapedido;
+            this.añocargo= añocargo;
+            this.idcargo= idcargo;
             this.pedidoreferencia = pedidoreferencia;
             this.cliente= cliente;
             this.nombre = nombre;
@@ -112,38 +115,9 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             this.serie = serie;
             this.foliofactura = foliofactura;
         }
-        //public ReferenciaNoConciliadaPedido(int corporativo, int sucursal, string sucursaldes, int año, int folio, int secuencia, string concepto, decimal deposito, decimal retiro, 
-        //    short formaconciliacion, short statusconcepto, string statusconciliacion, DateTime fmovimiento, DateTime foperacion, int folioconciliacion, short mes, 
-        //    decimal diferencia, MensajesImplementacion implementadorMensajes)
-        //{
-        //    this.ImplementadorMensajes = implementadorMensajes;
-
-        //    this.folioconciliacion = folioconciliacion;
-        //    this.mesconciliacion = mes;
-        //    this.folio = folio;
-        //    this.secuencia = secuencia;
-        //    this.corporativo = corporativo;
-        //    this.sucursal = sucursal;
-        //    this.sucursaldes = sucursaldes;
-
-        //    this.concepto = concepto;
-        //    this.deposito = deposito;
-        //    this.retiro = retiro;
-        //    this.monto = retiro + deposito;
-        //    this.formaconciliacion = formaconciliacion;
-        //    this.statusconcepto = statusconcepto;
-        //    this.statusconciliacion = statusconciliacion;
-
-        //    this.foperacion = foperacion;
-        //    this.fmovimiento = fmovimiento;
-
-        //    this.completo = false;
-
-        //    this.diferencia = diferencia;
-        //}
 
         public ReferenciaNoConciliadaPedido(int corporativo, int sucursal, string sucursaldes, int año, int folioconciliacion,
-            short mesconciliacion, int celulapedido, int añopedido, int pedido, string pedidoreferencia, int cliente, string nombre, int remisionpedido, string seriepedido,
+            short mesconciliacion, int celulapedido, int añocargo, int idcargo, string pedidoreferencia, int cliente, string nombre, int remisionpedido, string seriepedido,
             int foliosat, string seriesat, string concepto, decimal total, short formaconciliacion, short statusconcepto,
                 string statusconciliacion, DateTime foperacion, DateTime fmovimiento,
             decimal diferencia, DetalleSaldoAFavor DetalleSaldo, MensajesImplementacion implementadorMensajes)
@@ -156,9 +130,9 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             this.corporativo = corporativo;
             this.sucursal = sucursal;
             this.sucursaldes = sucursaldes;
-            this.celulapedido = celulapedido;
-            this.añopedido = añopedido;
-            this.pedido = pedido;
+            //this.celulapedido = celulapedido;
+            this.añocargo = añocargo;
+            this.idcargo = idcargo;
             this.pedidoreferencia = pedidoreferencia;
             this.cliente = cliente;
             this.nombre = nombre;
@@ -192,8 +166,8 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             this.corporativo = 0;
             this.sucursal = 0;
             this.celulapedido = 0;
-            this.añopedido = 0;
-            this.pedido = 0;
+            this.añocargo = 0;
+            this.idcargo = 0;
             this.cliente = 0;
             this.nombre = "";
             this.remisionpedido = 0;
@@ -309,19 +283,25 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             set { añoconciliacion = value; }
         }
 
-        public int AñoPedido
+        public int AñoCargo
         {
-            get { return añopedido; }
-            set { añopedido = value; }
+            get { return añocargo; }
+            set { añocargo = value; }
         }
 
-        public int Pedido
+        public int IdCargo
         {
-            get { return pedido; }
-            set { pedido = value; }
+            get { return idcargo; }
+            set { idcargo = value; }
         }
 
         public int Cliente
+        {
+            get { return cliente; }
+            set { cliente = value; }
+        }
+
+        public int IdCliente
         {
             get { return cliente; }
             set { cliente = value; }
@@ -394,6 +374,12 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             set { total = value; }
         }
 
+        public decimal Monto
+        {
+            get { return total; }
+            set { total = value; }
+        }
+
         public Boolean Selecciona
         {
             get { return selecciona; }
@@ -412,7 +398,18 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             set { foliofacturaserie = value; }
         }
 
+        public String Seriefactura
+        {
+            get { return foliofacturaserie; }
+            set { foliofacturaserie = value; }
+        }
+
         public DateTime Ffactura
+        {
+            get { return ffactura; }
+            set { ffactura = value; }
+        }
+        public DateTime Ffacturacion
         {
             get { return ffactura; }
             set { ffactura = value; }
@@ -441,10 +438,15 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             get { return celulapedido; }
             set { celulapedido = value; }
         }
-        public int AñoPed
+        public int AñoCar
         {
-            get { return añopedido; }
-            set { añopedido = value; }
+            get { return añocargo; }
+            set { añocargo = value; }
+        }
+        public int IdContrato
+        {
+            get { return idcontrato; }
+            set { idcontrato = value; }
         }
 
         #endregion

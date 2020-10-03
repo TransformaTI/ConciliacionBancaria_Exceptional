@@ -793,7 +793,7 @@
                                         </asp:GridView>
                                         <asp:GridView ID="grvDetallePedidoInterno" runat="server" AutoGenerateColumns="False"
                                             ShowHeader="True" Width="100%" CssClass="grvResultadoConsultaCss" ShowHeaderWhenEmpty="True"
-                                            DataKeyNames="Celula,Pedido,AñoPed">
+                                            DataKeyNames="IdCargo,AñoCargo">
                                             <HeaderStyle HorizontalAlign="Center" />
                                             <Columns>
                                                 <asp:TemplateField>
@@ -813,13 +813,13 @@
                                                     </ItemStyle>
                                                     <HeaderStyle HorizontalAlign="Center" Width="50px"></HeaderStyle>
                                                 </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Celula" SortExpression="Celula">
+<%--                                                <asp:TemplateField HeaderText="Celula" SortExpression="Celula">
                                                     <ItemTemplate>
                                                         <asp:Label ID="lblCelula" runat="server" Text='<%# resaltarBusqueda(Eval("Celula").ToString()) %>' />
                                                     </ItemTemplate>
                                                     <ItemStyle HorizontalAlign="Center" Width="40px"></ItemStyle>
                                                     <HeaderStyle HorizontalAlign="Center" Width="40px"></HeaderStyle>
-                                                </asp:TemplateField>
+                                                </asp:TemplateField>--%>
                                                 <asp:TemplateField HeaderText="Total Pedido" SortExpression="Total">
                                                     <ItemTemplate>
                                                         <asp:Label ID="lblMontoPedido" runat="server" Text='<%# resaltarBusqueda(Eval("Total","{0:c2}").ToString()) %>'></asp:Label>

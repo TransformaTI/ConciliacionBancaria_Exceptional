@@ -727,7 +727,7 @@ namespace Conciliacion.RunTime.DatosSQL
                 List<DetalleReporteEstadoCuentaConciliado> ListaResultado = new List<DetalleReporteEstadoCuentaConciliado>();
                 try
                 {
-                    CultureInfo MyCultureInfo = new CultureInfo("es-MX");
+                    //CultureInfo MyCultureInfo = new CultureInfo("es-MX");
 
                     _conexion.Comando.CommandType = CommandType.StoredProcedure;
                     _conexion.Comando.CommandText = "spCBReporteEstadoDeCuentaConciliado";

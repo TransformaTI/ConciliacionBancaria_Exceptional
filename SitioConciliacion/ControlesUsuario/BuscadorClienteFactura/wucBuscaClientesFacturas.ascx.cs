@@ -21,7 +21,7 @@ public partial class ControlesUsuario_BuscadorClienteFactura_wucBuscaClientesFac
     public string HtmlIdGridCeldaID;
     public string HtmlIdGridCNodoID;
 
-    private string NumeroClienteFiltrar;
+    private string NumeroContratoFiltrar;
     private string NumeroFacturaResaltar;
     private DataTable dtOriginal;
     private DataTable dtFiltado;
@@ -54,9 +54,9 @@ public partial class ControlesUsuario_BuscadorClienteFactura_wucBuscaClientesFac
         set { folioconciliacion = value; }
     }
 
-    public string Cliente {
-        get { return txtCliente.Text.Trim(); }
-        set { NumeroClienteFiltrar = value; }
+    public string IdContrato {
+        get { return txtContrato.Text.Trim(); }
+        set { NumeroContratoFiltrar = value; }
         }
 
     private string _Factura;
@@ -134,19 +134,19 @@ public partial class ControlesUsuario_BuscadorClienteFactura_wucBuscaClientesFac
             Visible = false;
     }
 
-    public DataTable FiltraCliente(GridView GridView)
+    public DataTable FiltraContrato(GridView GridView)
     {
         try
         {
             DataView dv = null;
-            NumeroClienteFiltrar = txtCliente.Text.Trim();
-            if (txtCliente.Text.Trim() != "" && GridView != null && GridView.DataSource != null)
+            NumeroContratoFiltrar = txtContrato.Text.Trim();
+            if (txtContrato.Text.Trim() != "" && GridView != null && GridView.DataSource != null)
             {
                 DataTable dtDatos = (DataTable)GridView.DataSource;
-                if (NumeroClienteFiltrar != string.Empty)
+                if (NumeroContratoFiltrar != string.Empty)
                 {
                     dv = new DataView(dtDatos);
-                    dv.RowFilter = "Cliente = " + NumeroClienteFiltrar;
+                    dv.RowFilter = "IdContrato = " + NumeroContratoFiltrar;
                 }
                 if (dv == null)
                     return dtDatos;
@@ -162,21 +162,21 @@ public partial class ControlesUsuario_BuscadorClienteFactura_wucBuscaClientesFac
         }
     }
 
-    public DataTable BuscaCliente(int corporativo, int sucursal, int mes, int año, int folioconciliacion)
+    public DataTable BuscaContrato(int corporativo, int sucursal, int mes, int año, int folioconciliacion)
     {
         try
         {
             DataTable dtClientePedidos = null;
-            NumeroClienteFiltrar = txtCliente.Text.Trim();
+            NumeroContratoFiltrar = txtContrato.Text.Trim();
 
-            if (txtCliente.Text.Trim() != "")
+            if (txtContrato.Text.Trim() != "")
             {
                 Cliente cliente = objApp.Cliente.CrearObjeto();
 
                 Conexion conexion = new Conexion();
                 conexion.AbrirConexion(true);
 
-                dtClientePedidos = cliente.ObtienePedidosCliente(Convert.ToInt64(NumeroClienteFiltrar), corporativo, sucursal, mes, año, folioconciliacion, conexion);
+                dtClientePedidos = cliente.ObtieneCargosDeContratos(Convert.ToInt64(NumeroContratoFiltrar), corporativo, sucursal, mes, año, folioconciliacion, conexion);
             }
 
             return dtClientePedidos;
@@ -198,7 +198,7 @@ public partial class ControlesUsuario_BuscadorClienteFactura_wucBuscaClientesFac
         BuscarFactura(txtFactura.Text);
     }
 
-    private void BuscarFactura(string NumeroFactura)
+    public DataTable BuscarFactura(string NumeroFactura)
     {
         _Factura = NumeroFactura;
         DataTable tbPedidosPorFactura = null;
@@ -274,7 +274,9 @@ public partial class ControlesUsuario_BuscadorClienteFactura_wucBuscaClientesFac
         //    grvpedidos.DataBind();
         //    grvpedidos.DataBind();
         //}
+        return tbPedidosPorFactura;
     }
+
     private void llenarListaEntrega()
     {
         DataTable tbPedidosPorFactura = ViewState["POR_CONCILIAR"] as DataTable;
@@ -294,17 +296,17 @@ public partial class ControlesUsuario_BuscadorClienteFactura_wucBuscaClientesFac
                     //    item["Nombre"] = "No encontrado";
                     //}
                 }
-                catch(Exception Ex)
+                catch (Exception Ex)
                 {
                     item["Nombre"] = Ex.Message;
                 }
             }
 
-           
+
             Session["CBPedidosPorFactura"] = tbPedidosPorFactura;
             _TablaFacturas = tbPedidosPorFactura;
 
-            if (grvpedidos != null)
+            if (grvpedidos != null )
             {
                 grvpedidos.DataSource = tbPedidosPorFactura;
                 grvpedidos.DataBind();

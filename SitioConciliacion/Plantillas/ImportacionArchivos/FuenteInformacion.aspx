@@ -5,8 +5,12 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ MasterType TypeName="Principal" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="contenidoPrincipal" runat="Server">
-    <asp:ToolkitScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+
+    <asp:ToolkitScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" >
     </asp:ToolkitScriptManager>
+    
+    <script src="/App_Scripts/jQueryScripts/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="/App_Scripts/jQueryScripts/jquery-ui.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="../../App_Scripts/jsUpdateProgress.js"></script>
     <script type="text/javascript" language="javascript">
         function ShowModalPopup() {
@@ -162,14 +166,14 @@
                                             <asp:ImageButton ID="btnDelete" ImageAlign="Middle" runat="server" OnClick="btnDelete_Click"
                                                 OnClientClick='<%# "return confirm(\"¿Desea eliminar el registro  "+ Eval("IdFuenteInformacion").ToString() +  "  ?\");" %>'
                                                 ImageUrl="~/App_Themes/GasMetropolitanoSkin/Iconos/Cerrar.png" CssClass="icono bg-color-rojo"
-                                                EnableViewState="true" Width="15px" Heigth="15px" />
+                                                EnableViewState="false" Width="15px" Heigth="15px" />
                                         </ItemTemplate>
                                         <ItemStyle HorizontalAlign="Center" Width="40px" />
                                     </asp:TemplateField>
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <asp:ImageButton ID="btnModificar" ImageAlign="Middle" runat="server" ImageUrl="~/App_Themes/GasMetropolitanoSkin/Iconos/Editar.png"
-                                                OnClick="btnAdd_Click" EnableViewState="true" CssClass="icono bg-color-azulClaro"
+                                                OnClick="btnAdd_Click" EnableViewState="false" CssClass="icono bg-color-azulClaro"
                                                 Width="15px" Heigth="15px" />
                                         </ItemTemplate>
                                         <ItemStyle HorizontalAlign="Center " Width="40px" />

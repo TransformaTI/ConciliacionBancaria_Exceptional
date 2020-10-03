@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Conciliacion.RunTime;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,22 @@ namespace Conciliacion.Migracion.Runtime.ReglasNegocio
         int idTipoArchivo;
 
         string desTipoFuenteInformacion;
+
+        //private MensajesImplementacion implementadorMensajes_;
+
+        //public MensajesImplementacion ImplementadorMensajes_
+        //{
+        //    get { return this.implementadorMensajes_; }
+        //    set { this.implementadorMensajes_ = value; }
+        //}
+
+        public Conciliacion.RunTime.MensajesImplementacion ImplementadorMensajes { get; set; }
+
+        private string mensaje;
+        public string Mensaje
+        {
+            get { return mensaje; }
+        }
 
         public string DesTipoFuenteInformacion
         {

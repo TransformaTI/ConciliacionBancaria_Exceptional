@@ -554,9 +554,9 @@
                                     <asp:DropDownList ID="ddlSucursal" runat="server" AutoPostBack="False" CssClass="etiqueta dropDownPequeño"
                                         Style="margin-bottom: 3px; margin-right: 3px" Width="115px" Visible="False">
                                     </asp:DropDownList>
-                                    <asp:DropDownList ID="ddlCelula" runat="server" AutoPostBack="False" CssClass="etiqueta dropDownPequeño"
+<%--                                    <asp:DropDownList ID="ddlCelula" runat="server" AutoPostBack="False" CssClass="etiqueta dropDownPequeño"
                                         Style="margin-bottom: 3px; margin-right: 3px" Width="115px" Visible="False">
-                                    </asp:DropDownList>
+                                    </asp:DropDownList>--%>
                                 </td>
                             </tr>
                             <tr class="bg-color-blanco centradoIzquierda">
@@ -878,7 +878,7 @@
                                 <td class="bg-color-grisClaro02" style="width: 64%">
                                     <b>
                                         <asp:Label ID="lblArchivosInternos" Text="Archivos Internos" runat="server" Visible="false"></asp:Label>
-                                        <asp:Label ID="lblPedidos" Text="Pedidos" runat="server" Visible="false"></asp:Label>
+                                        <asp:Label ID="lblPedidos" Text="Documentos" runat="server" Visible="false"></asp:Label>
                                     </b>
                                 </td>
                                 <td class="bg-color-grisClaro fg-color-amarillo" style="width: 1%">
@@ -1402,7 +1402,7 @@
                             AllowPaging='<%# ActivePaging %>' PageSize="10" 
                             AutoGenerateColumns="False" ShowHeader="True"
                             CssClass="grvResultadoConsultaCss" AllowSorting="True" ShowFooter="False" Width="100%"
-                            ShowHeaderWhenEmpty="True" DataKeyNames="Celula,Pedido,AñoPed,Cliente" OnSorting="grvPedidos_Sorting"
+                            ShowHeaderWhenEmpty="True" DataKeyNames="IdCargo,AñoCargo,Cliente" OnSorting="grvPedidos_Sorting"
                             OnPageIndexChanging="grvPedidos_PageIndexChanging"
                             OnRowDataBound="grvPedidos_RowDataBound">
                             <HeaderStyle HorizontalAlign="Center" />
@@ -1415,9 +1415,9 @@
                                     <ItemStyle HorizontalAlign="Center" Width="30px" BackColor="#ebecec"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Center" Width="30px"></HeaderStyle>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Pedido" SortExpression="Pedido">
+                                <asp:TemplateField HeaderText="Cargo" SortExpression="IdCargo">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblPedido" runat="server" Text='<%# resaltarBusqueda(Eval("Pedido").ToString()) %>' />
+                                        <asp:Label ID="lblIdCargo" runat="server" Text='<%# resaltarBusqueda(Eval("IdCargo").ToString()) %>' />
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="70px" BackColor="#ebecec"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Center" Width="70px"></HeaderStyle>
@@ -1631,7 +1631,7 @@
                                 <asp:GridView ID="grvDetallePedidoInterno" runat="server" 
                                     AllowPaging='<%# ActivePaging %>' PageSize="5"
                                     AutoGenerateColumns="False" ShowHeader="True" Width="100%" CssClass="grvResultadoConsultaCss" ShowHeaderWhenEmpty="True"
-                                    DataKeyNames="Celula,Pedido,AñoPed">
+                                    DataKeyNames="IdCargo,AñoCargo">
                                     <HeaderStyle HorizontalAlign="Center" />
                                     <Columns>
                                         <asp:TemplateField>
@@ -1643,21 +1643,21 @@
                                                 Width="30px"></ItemStyle>
                                             <HeaderStyle HorizontalAlign="Center" Width="30px"></HeaderStyle>
                                         </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Ped." SortExpression="Pedido">
+                                        <asp:TemplateField HeaderText="Cargo" SortExpression="IdCargo">
                                             <ItemTemplate>
-                                                <asp:Label ID="lblPedido" runat="server" Text='<%# Eval("Pedido") %>' />
+                                                <asp:Label ID="lblIdCargo" runat="server" Text='<%# Eval("IdCargo") %>' />
                                             </ItemTemplate>
                                             <ItemStyle HorizontalAlign="Center" BackColor="#d9b335" ForeColor="White" Width="50px">
                                             </ItemStyle>
                                             <HeaderStyle HorizontalAlign="Center" Width="50px"></HeaderStyle>
                                         </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Celula" SortExpression="Celula">
+<%--                                        <asp:TemplateField HeaderText="Celula" SortExpression="Celula">
                                             <ItemTemplate>
                                                 <asp:Label ID="lblCelula" runat="server" Text='<%# Eval("Celula") %>' />
                                             </ItemTemplate>
                                             <ItemStyle HorizontalAlign="Center" Width="40px"></ItemStyle>
                                             <HeaderStyle HorizontalAlign="Center" Width="40px"></HeaderStyle>
-                                        </asp:TemplateField>
+                                        </asp:TemplateField>--%>
                                         <asp:TemplateField HeaderText="Total Pedido" SortExpression="Total">
                                             <ItemTemplate>
                                                 <asp:Label ID="lblMontoPedido" runat="server" Text='<%# Eval("Total","{0:c2}") %>'></asp:Label>

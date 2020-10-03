@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Reportecuenta" Language="C#" MasterPageFile="~/Principal.master" AutoEventWireup="true" CodeFile="ReporteEstadoCuenta.aspx.cs" Inherits="ReportesConciliacion_ReporteEstadoCuenta" %>
+﻿    <%@ Page Title="Reportecuenta" Language="C#" MasterPageFile="~/Principal.master" AutoEventWireup="true" CodeFile="ReporteEstadoCuenta.aspx.cs" Inherits="ReportesConciliacion_ReporteEstadoCuenta" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register src="~/ControlesUsuario/wuCuentasBancarias/WUCListadoCuentasBancarias.ascx" tagname="WUCListadoCuentasBancarias" tagprefix="uc1" %>
 
@@ -23,9 +23,9 @@
     <link rel="stylesheet" href="../App_Themes/GasMetropolitanoSkin/Accordion/css/accordion.css" />
 
     <!-- Script se utiliza para el Scroll del GridView-->
-    <link href="../App_Scripts/ScrollGridView/GridviewScroll.css" rel="stylesheet" type="text/css" />
+    <%--<link href="../App_Scripts/ScrollGridView/GridviewScroll.css" rel="stylesheet" type="text/css" />
     <script src="../App_Scripts/ScrollGridView/gridviewScroll.min.js" type="text/javascript"></script>
-    <script src="../App_Scripts/Common.js" type="text/javascript"></script>
+    <script src="../App_Scripts/Common.js" type="text/javascript"></script>--%>
     
     <script type="text/javascript">
         $(document).ready(function () {

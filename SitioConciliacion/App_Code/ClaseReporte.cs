@@ -78,11 +78,16 @@ public class ClaseReporte
                 RepDoc.SetDatabaseLogon(Usuario, PW, Servidor, Base);
                 foreach (CrystalDecisions.CrystalReports.Engine.Table _TablaReporte in RepDoc.Database.Tables)
                 {
+                    
                     _LogonInfo = _TablaReporte.LogOnInfo;
                     _LogonInfo.ConnectionInfo.ServerName = Servidor;
                     _LogonInfo.ConnectionInfo.DatabaseName = Base;
                     _LogonInfo.ConnectionInfo.UserID = Usuario;
                     _LogonInfo.ConnectionInfo.Password = PW;
+                    //_LogonInfo.ConnectionInfo.Attributes.Collection.Add("LANGUAGE=SPANISH");
+
+                    
+
                     try
                     {
                         _TablaReporte.ApplyLogOnInfo(_LogonInfo);
@@ -116,7 +121,12 @@ public class ClaseReporte
                             crParametervalues = crParameterFieldDefinition.CurrentValues;
                             crParameterDiscretValue = new CrystalDecisions.Shared.ParameterDiscreteValue();
                             strValor = Leer_Valor_Parametro(Parametros, par.Name);
-                            crParameterDiscretValue.Value = strValor;
+
+                            //if (strValor.Contains("/") || strValor.Contains("-"))
+                            //    crParameterDiscretValue.Value = DateTime.Parse( strValor );
+                            //else
+                                crParameterDiscretValue.Value = strValor;
+
                             crParametervalues.Add(crParameterDiscretValue);
                             crParameterFieldDefinition.ApplyCurrentValues(crParametervalues);
 

@@ -33,7 +33,7 @@ public partial class Conciliacion_FormasConciliar_Manual : PersistirViewStateEnA
     public List<ReferenciaNoConciliadaPedido> listaReferenciaPedidos = new List<ReferenciaNoConciliadaPedido>();
 
     private List<ListaCombo> listSucursales = new List<ListaCombo>();
-    private List<ListaCombo> listCelulas = new List<ListaCombo>();
+    //private List<ListaCombo> listCelulas = new List<ListaCombo>();
     private List<ListaCombo> listStatusConcepto = new List<ListaCombo>();
     private List<ListaCombo> listFormasConciliacion = new List<ListaCombo>();
     private List<ListaCombo> listMotivosNoConciliados = new List<ListaCombo>();
@@ -169,7 +169,7 @@ public partial class Conciliacion_FormasConciliar_Manual : PersistirViewStateEnA
                 if (tipoConciliacion == 2)
                 {
                     lblSucursalCelula.Text = "Celula Interna";
-                    ddlCelula.Visible = lblPedidos.Visible = lblVer.Visible = rdbTodosMenoresIn.Visible = true;
+                    //ddlCelula.Visible = lblPedidos.Visible = lblVer.Visible = rdbTodosMenoresIn.Visible = true;
                     //btnENPROCESOINTERNO.Visible = btnCANCELARINTERNO.Visible = txtDias.CausesValidation = txtDias.Enabled = ddlSucursal.Enabled = imgExportar.Enabled = tdEtiquetaMontoIn.Visible = tdMontoIn.Visible = false;
                     btnENPROCESOINTERNO.Visible = btnCANCELARINTERNO.Visible = txtDias.CausesValidation = txtDias.Enabled = ddlSucursal.Enabled = tdEtiquetaMontoIn.Visible = tdMontoIn.Visible = false;//imgExportar.Enabled = 
                     //tdExportar.Attributes.Add("class", "iconoOpcion bg-color-grisClaro02");
@@ -479,12 +479,12 @@ public partial class Conciliacion_FormasConciliar_Manual : PersistirViewStateEnA
     {
         try
         {
-            listCelulas = objApp.Consultas.ConsultaCelula(corporativo);
-            this.ddlCelula.DataSource = listCelulas;
-            this.ddlCelula.DataValueField = "Identificador";
-            this.ddlCelula.DataTextField = "Descripcion";
-            this.ddlCelula.DataBind();
-            this.ddlCelula.Dispose();
+            //listCelulas = objApp.Consultas.ConsultaCelula(corporativo);
+            //this.ddlCelula.DataSource = listCelulas;
+            //this.ddlCelula.DataValueField = "Identificador";
+            //this.ddlCelula.DataTextField = "Descripcion";
+            //this.ddlCelula.DataBind();
+            //this.ddlCelula.Dispose();
         }
         catch (SqlException ex)
         {
@@ -701,14 +701,17 @@ public partial class Conciliacion_FormasConciliar_Manual : PersistirViewStateEnA
         }
         else
         {
-            tblDetalleTransaccionConciliada.Columns.Add("Pedido", typeof(int));
-            tblDetalleTransaccionConciliada.Columns.Add("PedidoReferencia", typeof(string));
-            tblDetalleTransaccionConciliada.Columns.Add("AñoPed", typeof(int));
-            tblDetalleTransaccionConciliada.Columns.Add("Celula", typeof(int));
-            tblDetalleTransaccionConciliada.Columns.Add("Cliente", typeof(string));
-            tblDetalleTransaccionConciliada.Columns.Add("Nombre", typeof(string));
+            tblDetalleTransaccionConciliada.Columns.Add("IdContrato", typeof(int));
+            tblDetalleTransaccionConciliada.Columns.Add("FolioFactura", typeof(string));
+            tblDetalleTransaccionConciliada.Columns.Add("SerieFactura", typeof(int));
+            tblDetalleTransaccionConciliada.Columns.Add("FFacturacion", typeof(DateTime));
+            tblDetalleTransaccionConciliada.Columns.Add("AñoCargo", typeof(int));
+            tblDetalleTransaccionConciliada.Columns.Add("IdCargo", typeof(int));
+            tblDetalleTransaccionConciliada.Columns.Add("TipoCargo", typeof(string));
             tblDetalleTransaccionConciliada.Columns.Add("Total", typeof(decimal));
-            tblDetalleTransaccionConciliada.Columns.Add("ConceptoPedido", typeof(string));
+            tblDetalleTransaccionConciliada.Columns.Add("Cliente", typeof(int));
+            tblDetalleTransaccionConciliada.Columns.Add("Nombre", typeof(string));
+
         }
     }
     public void ConsultaDetalleTransaccionConciliada(ReferenciaNoConciliada trConciliada)
@@ -733,10 +736,10 @@ public partial class Conciliacion_FormasConciliar_Manual : PersistirViewStateEnA
                 foreach (ReferenciaConciliadaPedido r in trConciliada.ListaReferenciaConciliada)
                 {
                     tblDetalleTransaccionConciliada.Rows.Add(
-                        r.Pedido,
+                        r.IdCargo,
                         r.PedidoReferencia,
-                        r.AñoPedido,
-                        r.CelulaPedido,
+                        r.AñoCargo,
+                        0, //r.CelulaPedido,
                         r.Cliente,
                         r.Nombre,
                         r.Total,
@@ -1378,7 +1381,7 @@ public partial class Conciliacion_FormasConciliar_Manual : PersistirViewStateEnA
         }
     }
 
-    public void Consulta_Pedidos(int corporativoconciliacion, int sucursalconciliacion, int añoconciliacion, short mesconciliacion, int folioconciliacion, decimal diferencia, int celula)
+    public void Consulta_Pedidos(int corporativoconciliacion, int sucursalconciliacion, int añoconciliacion, short mesconciliacion, int folioconciliacion, decimal diferencia)
     {
         System.Data.SqlClient.SqlConnection connection = seguridad.Conexion;
         if (connection.State == ConnectionState.Closed)
@@ -1388,7 +1391,16 @@ public partial class Conciliacion_FormasConciliar_Manual : PersistirViewStateEnA
         try
         {
             listaReferenciaPedidos =
-                objApp.Consultas.ConciliacionBusquedaPedidoManual(Consultas.BusquedaPedido.Todos, corporativoconciliacion, sucursalconciliacion, añoconciliacion, mesconciliacion, folioconciliacion, 0, 0, 0, celula);
+                objApp.Consultas.ConciliacionBusquedaPedidoManual(
+                    Consultas.BusquedaPedido.Todos, 
+                    corporativoconciliacion, 
+                    sucursalconciliacion, 
+                    añoconciliacion, 
+                    mesconciliacion, 
+                    folioconciliacion, 
+                    0, 
+                    0, 
+                    0);
             Session["POR_CONCILIAR_INTERNO"] = listaReferenciaPedidos;
         }
         catch (SqlException ex)
@@ -1409,7 +1421,7 @@ public partial class Conciliacion_FormasConciliar_Manual : PersistirViewStateEnA
             tblReferenciaInternas.Columns.Add("Pedido", typeof(int));
             tblReferenciaInternas.Columns.Add("PedidoReferencia", typeof(int));
             tblReferenciaInternas.Columns.Add("AñoPed", typeof(int));
-            tblReferenciaInternas.Columns.Add("Celula", typeof(int));
+            //tblReferenciaInternas.Columns.Add("Celula", typeof(int));
             tblReferenciaInternas.Columns.Add("Cliente", typeof(int));
             tblReferenciaInternas.Columns.Add("Nombre", typeof(string));
             tblReferenciaInternas.Columns.Add("FSuministro", typeof(DateTime));
@@ -1421,10 +1433,10 @@ public partial class Conciliacion_FormasConciliar_Manual : PersistirViewStateEnA
             {
                 tblReferenciaInternas.Rows.Add(
                     !rc.Selecciona,
-                    rc.Pedido,
+                    rc.IdCargo,
                     rc.PedidoReferencia,
-                    rc.AñoPedido,
-                    rc.CelulaPedido,
+                    rc.AñoCargo,
+                    //rc.CelulaPedido,
                     rc.Cliente,
                     rc.Nombre,
                     rc.FMovimiento,
@@ -1725,7 +1737,7 @@ public partial class Conciliacion_FormasConciliar_Manual : PersistirViewStateEnA
             cargarInfoConciliacionActual();
 
             ocultarOpciones("INTERNOS");
-            Consulta_Pedidos(corporativo, sucursal, año, mes, folio, Convert.ToDecimal(txtDiferencia.Text), Convert.ToInt32(ddlCelula.SelectedItem.Value));
+            Consulta_Pedidos(corporativo, sucursal, año, mes, folio, Convert.ToDecimal(txtDiferencia.Text));
             GenerarTablaPedidos();
             LlenaGridViewPedidos();
         }
@@ -2305,12 +2317,12 @@ public partial class Conciliacion_FormasConciliar_Manual : PersistirViewStateEnA
     public ReferenciaNoConciliadaPedido leerReferenciaPedidoSeleccionada()
     {
         listaReferenciaPedidos = Session["POR_CONCILIAR_INTERNO"] as List<ReferenciaNoConciliadaPedido>;
-        int celula = Convert.ToInt32(grvPedidos.DataKeys[indiceInternoSeleccionado].Values["Celula"]);
+        //int celula = Convert.ToInt32(grvPedidos.DataKeys[indiceInternoSeleccionado].Values["Celula"]);
         int pedido = Convert.ToInt32(grvPedidos.DataKeys[indiceInternoSeleccionado].Values["Pedido"]);
         int añoPed = Convert.ToInt32(grvPedidos.DataKeys[indiceInternoSeleccionado].Values["AñoPed"]);
         int cliente = Convert.ToInt32(grvPedidos.DataKeys[indiceInternoSeleccionado].Values["Cliente"]);
 
-        return listaReferenciaPedidos.Single(x => x.CelulaPedido == celula && x.Pedido == pedido && x.AñoPedido == añoPed && x.Cliente == cliente);
+        return listaReferenciaPedidos.Single(x => x.IdCargo == pedido && x.AñoCargo == añoPed && x.Cliente == cliente);
     }
 
     protected void btnENPROCESOEXTERNO_Click(object sender, ImageClickEventArgs e)
@@ -2671,9 +2683,9 @@ public partial class Conciliacion_FormasConciliar_Manual : PersistirViewStateEnA
     {
         listaReferenciaPedidos = Session["POR_CONCILIAR_INTERNO"] as List<ReferenciaNoConciliadaPedido>;
         int pedido = Convert.ToInt32(grvPedidos.DataKeys[rowIndex].Values["Pedido"]);
-        int celulaPedido = Convert.ToInt32(grvPedidos.DataKeys[rowIndex].Values["Celula"]);
+        //int celulaPedido = Convert.ToInt32(grvPedidos.DataKeys[rowIndex].Values["Celula"]);
         int añoPedido = Convert.ToInt32(grvPedidos.DataKeys[rowIndex].Values["AñoPed"]);
-        return listaReferenciaPedidos.Single(s => s.Pedido == pedido && s.CelulaPedido == celulaPedido && s.AñoPedido == añoPedido);
+        return listaReferenciaPedidos.Single(s => s.IdCargo == pedido && s.AñoCargo == añoPedido);
     }
     protected void grvExternos_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {

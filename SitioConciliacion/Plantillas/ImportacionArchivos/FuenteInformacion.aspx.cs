@@ -40,11 +40,21 @@ public partial class ImportacionArchivos_FuenteInformacion : System.Web.UI.Page
         {
             LlenarCombos();
         }
+
+        //ScriptManager.RegisterStartupScript(this.uppPrincipal,
+        //                            uppPrincipal.GetType(),
+        //                            Guid.NewGuid().ToString(),
+        //                            "alert('HOLA.);",
+        //                            true);
+
+        //ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), "alert('HOLA 2.');", true);
+
+
     }
 
     private bool ValidarDatos()
     {
-        int prueba;
+        //int prueba;
 
         mensaje = new StringBuilder();
         bool resultado = true;
@@ -143,17 +153,25 @@ public partial class ImportacionArchivos_FuenteInformacion : System.Web.UI.Page
 
     protected void btnGuardarDatos_Click(object sender, EventArgs e)
     {
+        //ScriptManager.RegisterStartupScript(this.uppPrincipal, uppPrincipal.GetType(), Guid.NewGuid().ToString(), "alert('clic guarda);", true);
         if (ValidarDatos())
         {
             string ruta = "~/Plantillas/ImportacionArchivos/Muestras/";
             string RUTA = base.MapPath(ruta);
             string sName = this.cboCorporativo.SelectedItem.Text.Trim().Replace(' ', '_').Replace('.', '_') + "_" + this.cboBancoFinanciero.SelectedItem.Text.Trim().Replace(' ', '_').Replace('.', '_') + "_" + this.cboCuentaFinanciero.SelectedItem.Text.Trim().Replace(' ', '_').Replace('.', '_') + "_" + this.cboTipoFuenteInformacion.SelectedItem.Text.Trim().Replace(' ', '_').Replace('.', '_') + Path.GetExtension(HttpContext.Current.Session["NombreArchivo"].ToString());
             string rutaCompleta = MapPath(ruta) + sName;
+
+            //ScriptManager.RegisterStartupScript(this.uppPrincipal, uppPrincipal.GetType(), Guid.NewGuid().ToString(), "alert('clic " + ruta+");", true);
+            //ScriptManager.RegisterStartupScript(this.uppPrincipal, uppPrincipal.GetType(), Guid.NewGuid().ToString(), "alert('clic " + RUTA + ");", true);
+            //ScriptManager.RegisterStartupScript(this.uppPrincipal, uppPrincipal.GetType(), Guid.NewGuid().ToString(), "alert('clic " + sName + ");", true);
+            //ScriptManager.RegisterStartupScript(this.uppPrincipal, uppPrincipal.GetType(), Guid.NewGuid().ToString(), "alert('clic " + rutaCompleta + ");", true);
+
             if (HttpContext.Current.Session["Archivo"] != null)
             {
                 if (SubirArchivo(rutaCompleta))
                 {
                     FuenteInformacion fuenteInofrmacion = (FuenteInformacion)App.FuenteInformacion.CrearObjeto();
+                    fuenteInofrmacion.ImplementadorMensajes = objApp.ImplementadorMensajes;
                     fuenteInofrmacion.IdFuenteInformacion = Convert.ToInt32(cboTipoFuenteInformacion.SelectedValue); //App.Consultas.ObtieneFuenteInformacionNumeroMaximo(Convert.ToInt32(this.cboBancoFinanciero.SelectedValue.ToString()), cboCuentaFinanciero.SelectedValue.ToString()) + 1;
                     fuenteInofrmacion.BancoFinanciero = Convert.ToInt32(this.cboBancoFinanciero.SelectedValue.ToString());
                     fuenteInofrmacion.CuentaBancoFinanciero = cboCuentaFinanciero.SelectedValue.ToString();
@@ -175,32 +193,34 @@ public partial class ImportacionArchivos_FuenteInformacion : System.Web.UI.Page
                     }
 
                 }
-                else
-                    ScriptManager.RegisterStartupScript(this.uppPrincipal,
-                                                        uppPrincipal.GetType(),
-                                                        Guid.NewGuid().ToString(),
-                                                        "alert('Ocurrierón errores al tratar de cargar el archivo.');",
-                                                        true);
+                //else
+                    //ScriptManager.RegisterStartupScript(this.uppPrincipal,
+                    //                                    uppPrincipal.GetType(),
+                    //                                    Guid.NewGuid().ToString(),
+                    //                                    "alert('Ocurrieron errores al tratar de cargar el archivo.);",
+                    //                                    true);
 
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), "alert('Ocurrierón errores al tratar de cargar el archivo.');", true);
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this.uppPrincipal,
-                                    uppPrincipal.GetType(),
-                                    Guid.NewGuid().ToString(),
-                                    "alert('Seleccione un archivo.');",
-                                    true);
+                //ScriptManager.RegisterStartupScript(this.uppPrincipal,
+                //                    uppPrincipal.GetType(),
+                //                    Guid.NewGuid().ToString(),
+                //                    "alert('Seleccione un archivo.');",
+                //                    true);
+
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), "alert('Seleccione un archivo.');", true);
             }
         }
         else
         {
-            ScriptManager.RegisterStartupScript(this.uppPrincipal,
-                                    uppPrincipal.GetType(),
-                                    Guid.NewGuid().ToString(),
-                                    "alert('" + LimpiarTexto(mensaje.ToString()) + "');",
-                                    true);
+            //ScriptManager.RegisterStartupScript(this.uppPrincipal,
+            //                        uppPrincipal.GetType(),
+            //                        Guid.NewGuid().ToString(),
+            //                        "alert('" + LimpiarTexto(mensaje.ToString()) + "');",
+            //                        true);
+
             //ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), "alert('" + LimpiarTexto(mensaje.ToString()) + "');", true);
         }
 
@@ -235,7 +255,6 @@ public partial class ImportacionArchivos_FuenteInformacion : System.Web.UI.Page
         {
             if (HttpContext.Current.Session["Archivo"] != null)
             {
-             
                 byte[] bytes = (byte[])HttpContext.Current.Session["Archivo"];
                 using (FileStream file = File.Create(ruta))
                 {
@@ -249,7 +268,11 @@ public partial class ImportacionArchivos_FuenteInformacion : System.Web.UI.Page
         catch (Exception ex)
         {
             resultado = false;
-
+            //ScriptManager.RegisterStartupScript(this.uppPrincipal,
+            //                        uppPrincipal.GetType(),
+            //                        Guid.NewGuid().ToString(),
+            //                        "alert('Ocurrieron errores al tratar de cargar el archivo. Detalles: "+ex.Message+");",
+            //                        true);
         }
         return resultado;
     }
@@ -375,6 +398,8 @@ public partial class ImportacionArchivos_FuenteInformacion : System.Web.UI.Page
 
 
         FuenteInformacion fid = (FuenteInformacion)App.FuenteInformacion.CrearObjeto();
+        fid.ImplementadorMensajes = objApp.ImplementadorMensajes;
+
         fid.CuentaBancoFinanciero = lblCuenta.Text;
         fid.BancoFinanciero = Convert.ToInt32(lblBanco.Text);
         fid.IdFuenteInformacion = Convert.ToInt32(lblFuenteInformacion.Text);
@@ -389,8 +414,7 @@ public partial class ImportacionArchivos_FuenteInformacion : System.Web.UI.Page
     {
         this.cboCuentaFinanciero.Items.Insert(0, new ListItem(" ", "0"));
     }
-
-
+    
     protected void Archivo_UploadedComplete(object sender, AjaxControlToolkit.AsyncFileUploadEventArgs e)
     {
         HttpContext.Current.Session["Archivo"] = null;
@@ -436,8 +460,10 @@ public partial class ImportacionArchivos_FuenteInformacion : System.Web.UI.Page
                 if (fuenteInofrmacion.Actualizar())
                 {
                     this.popUpEtiquetas.Hide();
-                    if (columnas != fuenteInofrmacion.NumColumnas)
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), "alert('El número de columnas cambio.Verifique el mapeo de este archivo.');", true);
+
+                    //if (columnas != fuenteInofrmacion.NumColumnas)
+                    //    ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), "alert('El número de columnas cambio.Verifique el mapeo de este archivo.');", true);
+
                     this.grvFuenteInformacion.DataSource = App.Consultas.ObtieneListaFuenteInformacionPorBancoCuenta(Convert.ToInt32(cboBancoFinanciero.SelectedValue), cboCuentaFinanciero.SelectedValue.ToString());
                     this.grvFuenteInformacion.DataBind();
                 }
@@ -445,7 +471,7 @@ public partial class ImportacionArchivos_FuenteInformacion : System.Web.UI.Page
         }
         else
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), "alert('Seleccione un archivo.');", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), "alert('Seleccione un archivo.');", true);
         }
 
     }
@@ -499,6 +525,8 @@ public partial class ImportacionArchivos_FuenteInformacion : System.Web.UI.Page
 
     protected void Archivo_UploadedComplete2(object sender, AjaxControlToolkit.AsyncFileUploadEventArgs e)
     {
+        //ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), "alert('Archivo_UploadedComplete2(...');", true);
+
         HttpContext.Current.Session["Archivo"] = null;
         HttpContext.Current.Session["NombreArchivo"] = null;
         if (this.AsyncFileUpload1.HasFile)

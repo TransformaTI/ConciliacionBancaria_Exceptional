@@ -33,7 +33,7 @@ public partial class Conciliacion_DetalleConciliacion : System.Web.UI.Page
     private List<ListaCombo> listMotivosNoConciliados = new List<ListaCombo>();
 
     private List<ListaCombo> listFormasConciliacion = new List<ListaCombo>();
-    private List<ListaCombo> listCelulas = new List<ListaCombo>();
+    //private List<ListaCombo> listCelulas = new List<ListaCombo>();
     private List<ListaCombo> listSucursales = new List<ListaCombo>();
     private List<ListaCombo> listStatusConcepto = new List<ListaCombo>();
 
@@ -133,13 +133,13 @@ public partial class Conciliacion_DetalleConciliacion : System.Web.UI.Page
             LlenaGridViewExternos();
             if (tipoConciliacion == 2)
             {
-                lblSucursalCelula.Text = "Celula Interna";
-                ddlCelula.Visible = true;
+                //lblSucursalCelula.Text = "Celula Interna";
+                //ddlCelula.Visible = true;
                 lblPedidos.Visible = true;
                 //tdExportar.Attributes.Add("class", "iconoOpcion bg-color-grisClaro02");
                 btnCANCELARINTERNO.Visible = tdEtiquetaMontoIn.Visible = tdMontoIn.Visible = false;//imgExportar.Enabled = 
                 Carga_CelulaCorporativo(corporativoConciliacion);
-                Consulta_Pedidos(corporativoConciliacion, sucursalConciliacion, añoConciliacion, mesConciliacion, folioConciliacion, Convert.ToInt32(ddlCelula.SelectedItem.Value));
+                Consulta_Pedidos(corporativoConciliacion, sucursalConciliacion, añoConciliacion, mesConciliacion, folioConciliacion);
                 GenerarTablaPedidos();
                 LlenaGridViewPedidos();
             }
@@ -321,12 +321,12 @@ public partial class Conciliacion_DetalleConciliacion : System.Web.UI.Page
     {
         //try
         //{
-        listCelulas = objApp.Consultas.ConsultaCelula(corporativo);
-        this.ddlCelula.DataSource = listCelulas;
-        this.ddlCelula.DataValueField = "Identificador";
-        this.ddlCelula.DataTextField = "Descripcion";
-        this.ddlCelula.DataBind();
-        this.ddlCelula.Dispose();
+        //listCelulas = objApp.Consultas.ConsultaCelula(corporativo);
+        //this.ddlCelula.DataSource = listCelulas;
+        //this.ddlCelula.DataValueField = "Identificador";
+        //this.ddlCelula.DataTextField = "Descripcion";
+        //this.ddlCelula.DataBind();
+        //this.ddlCelula.Dispose();
         //}
         //catch (Exception ex)
         //{
@@ -497,10 +497,10 @@ public partial class Conciliacion_DetalleConciliacion : System.Web.UI.Page
         }
         else
         {
-            tblDetalleTransaccionConciliada.Columns.Add("Pedido", typeof(int));
+            tblDetalleTransaccionConciliada.Columns.Add("IdCargo", typeof(int));
             tblDetalleTransaccionConciliada.Columns.Add("PedidoReferencia", typeof(string));
-            tblDetalleTransaccionConciliada.Columns.Add("AñoPed", typeof(int));
-            tblDetalleTransaccionConciliada.Columns.Add("Celula", typeof(int));
+            tblDetalleTransaccionConciliada.Columns.Add("AñoCargo", typeof(int));
+            //tblDetalleTransaccionConciliada.Columns.Add("Celula", typeof(int));
             tblDetalleTransaccionConciliada.Columns.Add("Cliente", typeof(string));
             tblDetalleTransaccionConciliada.Columns.Add("Nombre", typeof(string));
             tblDetalleTransaccionConciliada.Columns.Add("Total", typeof(decimal));
@@ -588,10 +588,9 @@ public partial class Conciliacion_DetalleConciliacion : System.Web.UI.Page
                 {
                     NombreCliente = ObtieneNombreCliente(lstClientes, r.Cliente, r.Nombre);
                     tblDetalleTransaccionConciliada.Rows.Add(
-                        r.Pedido,
+                        r.IdCargo,
                         r.PedidoReferencia,
-                        r.AñoPedido,
-                        r.CelulaPedido,
+                        r.AñoCargo,
                         r.Cliente,
                         NombreCliente, //r.Nombre,
                         r.Total,
@@ -823,7 +822,7 @@ public partial class Conciliacion_DetalleConciliacion : System.Web.UI.Page
         }
     }
 
-    public void Consulta_Pedidos(int corporativoconciliacion, int sucursalconciliacion, int añoconciliacion, short mesconciliacion, int folioconciliacion, int celula)
+    public void Consulta_Pedidos(int corporativoconciliacion, int sucursalconciliacion, int añoconciliacion, short mesconciliacion, int folioconciliacion)
     {
         System.Data.SqlClient.SqlConnection Connection = seguridad.Conexion;
         if (Connection.State == ConnectionState.Closed)
@@ -833,7 +832,7 @@ public partial class Conciliacion_DetalleConciliacion : System.Web.UI.Page
         }
         try
         {
-            listaReferenciaPedidos = objApp.Consultas.ConciliacionBusquedaPedido(Consultas.BusquedaPedido.Todos, corporativoconciliacion, sucursalconciliacion, añoconciliacion, mesconciliacion, folioconciliacion, 0, 0, 0, celula, "-1", false);//@ClientePadre=FALSE : Solo mandar los PEDIDOS del Cliente.
+            listaReferenciaPedidos = objApp.Consultas.ConciliacionBusquedaPedido(Consultas.BusquedaPedido.Todos, corporativoconciliacion, sucursalconciliacion, añoconciliacion, mesconciliacion, folioconciliacion, 0, 0, 0, "-1"/* "-1", false*/);//@ClientePadre=FALSE : Solo mandar los PEDIDOS del Cliente.
             Session["POR_CONCILIAR_INTERNO"] = listaReferenciaPedidos;
         }
         catch (Exception ex)
@@ -857,10 +856,10 @@ public partial class Conciliacion_DetalleConciliacion : System.Web.UI.Page
         foreach (ReferenciaNoConciliadaPedido rc in listaReferenciaPedidos)
         {
             tblReferenciaInternas.Rows.Add(
-                rc.Pedido,
+                rc.IdCargo,
                 rc.PedidoReferencia,
-                rc.AñoPedido,
-                rc.CelulaPedido,
+                rc.AñoCargo,
+                0, //rc.CelulaPedido,
                 rc.Cliente,
                 rc.Nombre,
                 rc.FMovimiento,
@@ -1004,7 +1003,7 @@ public partial class Conciliacion_DetalleConciliacion : System.Web.UI.Page
             case "Internos":
                 if (tipoConciliacion == 2)
                 {
-                    Consulta_Pedidos(corporativoConciliacion, sucursalConciliacion, añoConciliacion, mesConciliacion, folioConciliacion, Convert.ToInt32(ddlCelula.SelectedItem.Value));
+                    Consulta_Pedidos(corporativoConciliacion, sucursalConciliacion, añoConciliacion, mesConciliacion, folioConciliacion);
                     GenerarTablaPedidos();
                     LlenaGridViewPedidos();
                 }
@@ -1451,7 +1450,7 @@ public partial class Conciliacion_DetalleConciliacion : System.Web.UI.Page
             LlenaGridViewExternos();
             if (tipoConciliacion == 2)
             {
-                Consulta_Pedidos(corporativoConciliacion, sucursalConciliacion, añoConciliacion, mesConciliacion, folioConciliacion, Convert.ToInt32(ddlCelula.SelectedItem.Value));
+                Consulta_Pedidos(corporativoConciliacion, sucursalConciliacion, añoConciliacion, mesConciliacion, folioConciliacion);
                 GenerarTablaPedidos();
                 LlenaGridViewPedidos();
             }
@@ -1518,7 +1517,7 @@ public partial class Conciliacion_DetalleConciliacion : System.Web.UI.Page
                 case "Internos":
                     if (tipoConciliacion == 2)
                     {
-                        Consulta_Pedidos(corporativoConciliacion, sucursalConciliacion, añoConciliacion, mesConciliacion, folioConciliacion, Convert.ToInt32(ddlCelula.SelectedItem.Value));
+                        Consulta_Pedidos(corporativoConciliacion, sucursalConciliacion, añoConciliacion, mesConciliacion, folioConciliacion);
                         GenerarTablaPedidos();
                         LlenaGridViewPedidos();
                     }

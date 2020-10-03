@@ -100,17 +100,17 @@ namespace Conciliacion.RunTime.DatosSQL
         {
             _conexion.Comando.CommandType = CommandType.StoredProcedure;
             _conexion.Comando.CommandText = "spCYCPedidoCobranzaAlta";
-
-            foreach (ReferenciaConciliadaPedido referenciaPedidos in ListaPedidos)
-            {
-                _conexion.Comando.Parameters.Clear();
-                _conexion.Comando.Parameters.Add(new SqlParameter("@AñoPed", System.Data.SqlDbType.SmallInt)).Value = referenciaPedidos.AñoPedido;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.TinyInt)).Value = referenciaPedidos.CelulaPedido;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Pedido", System.Data.SqlDbType.Int)).Value = referenciaPedidos.Pedido;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Cobranza", System.Data.SqlDbType.Int)).Value = this.Cobranza;
-                _conexion.Comando.Parameters.Add(new SqlParameter("@Saldo", System.Data.SqlDbType.Money)).Value = referenciaPedidos.Saldo;
-                _conexion.Comando.ExecuteNonQuery();
-            }
+            throw new Exception("si se usa crear spCYCPedidoCobranzaAlta");
+            //foreach (ReferenciaConciliadaPedido referenciaPedidos in ListaPedidos)
+            //{
+            //    _conexion.Comando.Parameters.Clear();
+            //    _conexion.Comando.Parameters.Add(new SqlParameter("@AñoPed", System.Data.SqlDbType.SmallInt)).Value = referenciaPedidos.AñoCargo;
+            //    //_conexion.Comando.Parameters.Add(new SqlParameter("@Celula", System.Data.SqlDbType.TinyInt)).Value = referenciaPedidos.CelulaPedido;
+            //    /_conexion.Comando.Parameters.Add(new SqlParameter("@Pedido", System.Data.SqlDbType.Int)).Value = referenciaPedidos.Pedido;
+            //    _conexion.Comando.Parameters.Add(new SqlParameter("@Cobranza", System.Data.SqlDbType.Int)).Value = this.Cobranza;
+            //    _conexion.Comando.Parameters.Add(new SqlParameter("@Saldo", System.Data.SqlDbType.Money)).Value = referenciaPedidos.Saldo;
+            //    _conexion.Comando.ExecuteNonQuery();
+            //}
 
         }
 
@@ -122,15 +122,16 @@ namespace Conciliacion.RunTime.DatosSQL
                 {
 
                     List<ReferenciaConciliadaPedido> Pedidos =
-                        ObjMovimientoCajaDatos.ListaPedidos.GroupBy(s => new { s.CelulaPedido, s.AñoPedido, s.Pedido })
+                        ObjMovimientoCajaDatos.ListaPedidos.GroupBy(s => new { //s.CelulaPedido,
+                            s.AñoCargo, s.IdCargo })
                         .Select(s => s.First()).ToList();
                     foreach (ReferenciaConciliadaPedido Pedido in Pedidos)
                     {
                         Pedido.Total =
                             ObjMovimientoCajaDatos.ListaPedidos
-                            .Where(y => y.CelulaPedido == Pedido.CelulaPedido)
-                            .Where(y => y.AñoPedido == Pedido.AñoPedido)
-                            .Where(y => y.Pedido == Pedido.Pedido)
+                            //.Where(y => y.CelulaPedido == Pedido.CelulaPedido)
+                            .Where(y => y.AñoCargo == Pedido.IdCargo)
+                            .Where(y => y.IdCargo == Pedido.IdCargo)
                             .Sum(x => x.Saldo);
                         ListaPedidos.Add(Pedido);
                     }

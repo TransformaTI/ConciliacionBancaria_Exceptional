@@ -35,7 +35,7 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
     public List<ReferenciaNoConciliadaPedido> listaReferenciaPedidos = new List<ReferenciaNoConciliadaPedido>();
 
     private List<ListaCombo> listSucursales = new List<ListaCombo>();
-    private List<ListaCombo> listCelulas = new List<ListaCombo>();
+    //private List<ListaCombo> listCelulas = new List<ListaCombo>();
     private List<ListaCombo> listStatusConcepto = new List<ListaCombo>();
     private List<ListaCombo> listFormasConciliacion = new List<ListaCombo>();
     private List<ListaCombo> listMotivosNoConciliados = new List<ListaCombo>();
@@ -304,13 +304,13 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
 
                 if (objSolicitdConciliacion.ConsultaPedido())
                 {
-                    lblSucursalCelula.Text = "Celula Interna";
-                    ddlCelula.Visible = lblPedidos.Visible = lblVer.Visible = rdbTodosMenoresIn.Visible = true;
+                    //lblSucursalCelula.Text = "Celula Interna";
+                    //ddlCelula.Visible = lblPedidos.Visible = lblVer.Visible = rdbTodosMenoresIn.Visible = true;
                     //btnENPROCESOINTERNO.Visible = btnCANCELARINTERNO.Visible = txtDias.CausesValidation = txtDias.Enabled = ddlSucursal.Enabled = imgExportar.Enabled = false;
                     btnENPROCESOINTERNO.Visible = btnCANCELARINTERNO.Visible = txtDias.CausesValidation = txtDias.Enabled = ddlSucursal.Enabled = false;//imgExportar.Enabled = 
                     //tdExportar.Attributes.Add("class", "iconoOpcion bg-color-grisClaro02");
                     tdEtiquetaMontoIn.Visible = tdMontoIn.Visible = false;
-                    Carga_CelulaCorporativo(corporativo);
+                    //Carga_CelulaCorporativo(corporativo);
                     btnActualizarConfig.ValidationGroup = "VariosUnoPedidos";
                     rfvDiferenciaVacio.ValidationGroup = "VariosUnoPedidos";
                     rvDiferencia.ValidationGroup = "VariosUnoPedidos";
@@ -318,7 +318,7 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
 
                 if (objSolicitdConciliacion.ConsultaArchivo())
                 {
-                    lblSucursalCelula.Text = "Sucursal Interna";
+                    //lblSucursalCelula.Text = "Sucursal Interna";
                     btnActualizarConfig.ValidationGroup = "VariosUno";
                     ddlSucursal.Visible = lblArchivosInternos.Visible = true;
                     Carga_SucursalCorporativo(corporativo);
@@ -684,27 +684,27 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
     /// <summary>
     /// Llena el Combo de Formas de Conciliacion
     /// </summary>
-    public void Carga_CelulaCorporativo(int corporativo)
-    {
-        try
-        {
-        listCelulas = objApp.Consultas.ConsultaCelula(corporativo);
-        this.ddlCelula.DataSource = listCelulas;
-        this.ddlCelula.DataValueField = "Identificador";
-        this.ddlCelula.DataTextField = "Descripcion";
-        this.ddlCelula.DataBind();
-        this.ddlCelula.Dispose();
-        }
-        catch (SqlException ex)
-        {
-            throw ex;
-        }
-        catch (Exception ex)
-        {
-            throw ex;
-        }
+    //public void Carga_CelulaCorporativo(int corporativo)
+    //{
+    //    try
+    //    {
+    //    listCelulas = objApp.Consultas.ConsultaCelula(corporativo);
+    //    this.ddlCelula.DataSource = listCelulas;
+    //    this.ddlCelula.DataValueField = "Identificador";
+    //    this.ddlCelula.DataTextField = "Descripcion";
+    //    this.ddlCelula.DataBind();
+    //    this.ddlCelula.Dispose();
+    //    }
+    //    catch (SqlException ex)
+    //    {
+    //        throw ex;
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        throw ex;
+    //    }
 
-    }
+    //}
 
     public void Carga_ComboTiposDeCobro()
     {
@@ -960,7 +960,7 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
             tblDetalleTransaccionConciliada.Columns.Add("Pedido", typeof(int));
             tblDetalleTransaccionConciliada.Columns.Add("PedidoReferencia", typeof(string));
             tblDetalleTransaccionConciliada.Columns.Add("AñoPed", typeof(int));
-            tblDetalleTransaccionConciliada.Columns.Add("Celula", typeof(int));
+            //tblDetalleTransaccionConciliada.Columns.Add("Celula", typeof(int));
             tblDetalleTransaccionConciliada.Columns.Add("Cliente", typeof(string));
             tblDetalleTransaccionConciliada.Columns.Add("Nombre", typeof(string));
             tblDetalleTransaccionConciliada.Columns.Add("Total", typeof(decimal));
@@ -1048,10 +1048,10 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
                 {
                     NombreCliente = ObtieneNombreCliente(lstClientes, r.Cliente, r.Nombre);
                     tblDetalleTransaccionConciliada.Rows.Add(
-                        r.Pedido,
+                        r.IdCargo,
                         r.PedidoReferencia,
-                        r.AñoPedido,
-                        r.CelulaPedido,
+                        r.AñoCargo,
+                        0,//r.CelulaPedido,
                         r.Cliente,
                         NombreCliente, //r.Nombre,
                         r.Total,
@@ -1561,7 +1561,7 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
         }
     }
 
-    public void Consulta_Pedidos(int corporativoconciliacion, int sucursalconciliacion, int añoconciliacion, short mesconciliacion, int folioconciliacion, decimal diferencia, int celula)
+    public void Consulta_Pedidos(int corporativoconciliacion, int sucursalconciliacion, int añoconciliacion, short mesconciliacion, int folioconciliacion, decimal diferencia)
     {
         SeguridadCB.Seguridad seguridad = new SeguridadCB.Seguridad();
         System.Data.SqlClient.SqlConnection connection = seguridad.Conexion;
@@ -1571,7 +1571,7 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
         }
         try
         {
-            listaReferenciaPedidos = objApp.Consultas.ConciliacionBusquedaPedidoVariosUno(Consultas.BusquedaPedido.Todos, corporativoconciliacion, sucursalconciliacion, añoconciliacion, mesconciliacion, folioconciliacion, 0, 0, diferencia, celula);
+            listaReferenciaPedidos = objApp.Consultas.ConciliacionBusquedaPedidoVariosUno(Consultas.BusquedaPedido.Todos, corporativoconciliacion, sucursalconciliacion, añoconciliacion, mesconciliacion, folioconciliacion, 0, 0, diferencia);
             //Session["POR_CONCILIAR_INTERNO"] = listaReferenciaPedidos;
             Session["POR_CONCILIAR_PEDIDO"] = listaReferenciaPedidos;
         }
@@ -1586,7 +1586,7 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
         tblReferenciaInternas.Columns.Add("Pedido", typeof(Int64));
         tblReferenciaInternas.Columns.Add("PedidoReferencia", typeof(Int64));
         tblReferenciaInternas.Columns.Add("AñoPed", typeof(int));
-        tblReferenciaInternas.Columns.Add("Celula", typeof(int));
+        //tblReferenciaInternas.Columns.Add("Celula", typeof(int));
         tblReferenciaInternas.Columns.Add("Cliente", typeof(int));
         tblReferenciaInternas.Columns.Add("Nombre", typeof(string));
         tblReferenciaInternas.Columns.Add("FSuministro", typeof(DateTime));
@@ -1599,10 +1599,10 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
         foreach (ReferenciaNoConciliadaPedido rc in listaReferenciaPedidos)
         {
             tblReferenciaInternas.Rows.Add(
-                rc.Pedido,
+                rc.IdCargo,
                 rc.PedidoReferencia,
-                rc.AñoPedido,
-                rc.CelulaPedido,
+                rc.AñoCargo,
+                //rc.CelulaPedido,
                 rc.Cliente,
                 rc.Nombre,
                 rc.FMovimiento,
@@ -1918,7 +1918,7 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
         tdVerINEX.Attributes.Add("class", "etiqueta lineaVertical centradoMedio bg-color-grisOscuro");
 
         ocultarOpciones("EXTERNO");
-        Consulta_Pedidos(corporativo, sucursal, año, mes, folio, Convert.ToDecimal(txtDiferencia.Text), Convert.ToInt32(ddlCelula.SelectedItem.Value));
+        Consulta_Pedidos(corporativo, sucursal, año, mes, folio, Convert.ToDecimal(txtDiferencia.Text));
         GenerarTablaPedidos();
         LlenaGridViewPedidos();
 
@@ -2476,7 +2476,7 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
         {
             listaReferenciaPedidos = Session["POR_CONCILIAR_PEDIDO"] as List<ReferenciaNoConciliadaPedido>;
 
-            int celula = Convert.ToInt32(grvPedidos.DataKeys[indiceInternoSeleccionado].Values["Celula"]);
+            //int celula = Convert.ToInt32(grvPedidos.DataKeys[indiceInternoSeleccionado].Values["Celula"]);
             int pedido = Convert.ToInt32(grvPedidos.DataKeys[indiceInternoSeleccionado].Values["Pedido"]);
             int añoPed = Convert.ToInt32(grvPedidos.DataKeys[indiceInternoSeleccionado].Values["AñoPed"]);
             int cliente = Convert.ToInt32(grvPedidos.DataKeys[indiceInternoSeleccionado].Values["Cliente"]);
@@ -2485,7 +2485,7 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
             {
                 if (listaReferenciaPedidos.Count > 0)
                 {
-                    return listaReferenciaPedidos.Single(x => x.CelulaPedido == celula && x.Pedido == pedido && x.AñoPedido == añoPed && x.Cliente == cliente);
+                    return listaReferenciaPedidos.Single(x => x.IdCargo == pedido && x.AñoCargo == añoPed && x.Cliente == cliente);
                 }
             }
         }
@@ -2882,9 +2882,9 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
         listaReferenciaPedidos = Session["POR_CONCILIAR_PEDIDO"] as List<ReferenciaNoConciliadaPedido>;
 
         int pedido = Convert.ToInt32(grvPedidos.DataKeys[rowIndex].Values["Pedido"]);
-        int celulaPedido = Convert.ToInt32(grvPedidos.DataKeys[rowIndex].Values["Celula"]);
+        //int celulaPedido = Convert.ToInt32(grvPedidos.DataKeys[rowIndex].Values["Celula"]);
         int añoPedido = Convert.ToInt32(grvPedidos.DataKeys[rowIndex].Values["AñoPed"]);
-        return listaReferenciaPedidos.Single(s => s.Pedido == pedido && s.CelulaPedido == celulaPedido && s.AñoPedido == añoPedido);
+        return listaReferenciaPedidos.Single(s => s.IdCargo == pedido && s.AñoCargo == añoPedido);
     }
     protected void grvExternos_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
@@ -3497,10 +3497,10 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
             if (Convert.ToString(HttpContext.Current.Session["criterioConciliacion"]) == "VariosAUno")
                 grvPrima = (GridView)Session["TABLADEINTERNOS"];
 
-            grvInternos.DataSource = wucBuscaClientesFacturas.FiltraCliente(grvPrima);
+//           grvInternos.DataSource = wucBuscaClientesFacturas.FiltraCliente(grvPrima);
             if (grvInternos.DataSource == null || (grvInternos.DataSource as DataTable).Rows.Count == 0)
             {
-                dtPedidos = wucBuscaClientesFacturas.BuscaCliente(corporativo, sucursal, mes, año, folio);
+//               dtPedidos = wucBuscaClientesFacturas.BuscaCliente(corporativo, sucursal, mes, año, folio);
                 dvExpera.Visible = grvPedidos.Rows.Count == 0;//RRV
                 if (dtPedidos.Rows.Count == 0) return;
                 List<int> listadistintos = new List<int>();
@@ -3577,7 +3577,7 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
         try
         {
             conexion.AbrirConexion(false);
-            dtPedidos = obCliente.ObtienePedidosCliente(cliente, corporativo, sucursal, mes, año, folio, conexion);
+            dtPedidos = obCliente.ObtieneCargosDeContratos(cliente, corporativo, sucursal, mes, año, folio, conexion);
 
             HttpContext.Current.Session["PedidosBuscadosPorUsuario"] = dtPedidos;
             HttpContext.Current.Session["PedidosBuscadosPorUsuario_AX"] = dtPedidos;
@@ -3802,9 +3802,9 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
                 foreach (DataRow tr in dttemp.Rows)
                 {
                     rp = objApp.ReferenciaNoConciliadaPedido.CrearObjeto();
-                    rp.AñoPedido = Convert.ToInt32(tr["AñoPed"]);
-                    rp.CelulaPedido = Convert.ToInt32(tr["Celula"]);
-                    rp.Pedido = Convert.ToInt32(tr["Pedido"]);
+                    rp.AñoCargo = Convert.ToInt32(tr["AñoPed"]);
+                    //rp.CelulaPedido = Convert.ToInt32(tr["Celula"]);
+                    rp.IdCargo = Convert.ToInt32(tr["Pedido"]);
                     rp.Total = Convert.ToDecimal(tr["Total"]);
                     rp.Foliofactura = tr["FolioFactura"].ToString();
                     rp.Cliente = Convert.ToInt32(tr["Cliente"]);
@@ -3846,7 +3846,7 @@ public partial class Conciliacion_FormasConciliar_VariosAUno : System.Web.UI.Pag
         {
             if (lstClientes == null || lstClientes.Count == 0)
             {
-                throw new Exception("No se encontraron pedidos relacionados con su busqueda.");
+                throw new Exception("No se encontraron cargos relacionados con su busqueda.");
             }
             else if (lstClientes.Count > 1)
             {

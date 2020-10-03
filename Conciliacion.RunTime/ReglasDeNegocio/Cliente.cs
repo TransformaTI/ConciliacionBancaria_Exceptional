@@ -12,7 +12,7 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
     {
 
 		private int cliente;
-		private byte celula;
+		//private byte celula;
 		private Int16 digitoverificador;
 		private string nombre;
 		private string referencia;
@@ -30,7 +30,7 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
         public Cliente(MensajesImplementacion implementadorMensajes)
         {
             this.implementadorMensajes = implementadorMensajes;
-            this.celula = 0;
+            //this.celula = 0;
             this.digitoverificador = 0;
             this.nombre = "";
             this.referencia = "";
@@ -46,7 +46,7 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             this.tipo = "";
         }
 
-        public Cliente(byte celula, 
+        public Cliente(//byte celula, 
                        short digitoverificador, 
                        string nombre, 
                        string referencia, 
@@ -61,7 +61,7 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
                        string direccion, 
                        string tipo, MensajesImplementacion implementadorMensajes)
         {
-            this.celula = celula;
+            //this.celula = celula;
             this.digitoverificador = digitoverificador;
             this.nombre = nombre;
             this.referencia = referencia;
@@ -84,11 +84,11 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
         //}
 
         #region Propiedades
-        public byte Celula
-        {
-            get { return celula; }
-            set { celula = value; }
-        }
+        //public byte Celula
+        //{
+        //    get { return celula; }
+        //    set { celula = value; }
+        //}
 
         public Int16 DigitoVerificador
         {
@@ -181,7 +181,7 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
 
         public abstract List<ReferenciaNoConciliadaPedido> ObtienePedidosNoConciliadosCliente(cConciliacion Conciliacion, Conexion _conexion);
 
-        public abstract DataTable ObtienePedidosCliente(Int64 Cliente, int Corporativo, int Sucursal, int Mes, int Año, int FolioConciliacion, Conexion _conexion);
+        public abstract DataTable ObtieneCargosDeContratos(Int64 IdContrato, int Corporativo, int Sucursal, int Mes, int Año, int FolioConciliacion, Conexion _conexion);
 
         public abstract DetalleClientePedidoExcel ObtieneDetalleClientePedidoExcel(string PedidoReferencia, Conexion _conexion);
         

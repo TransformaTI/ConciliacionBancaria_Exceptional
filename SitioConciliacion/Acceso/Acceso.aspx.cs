@@ -39,7 +39,7 @@ public partial class Acceso_Acceso : System.Web.UI.Page
         this.Master.MenuVisible = false;
         this.Master.smPathVisible = false;
 
-        this.Master.lblInformacionGeneral = "© 2013 Grupo Metropolitano - Transforma Consultoria";
+        this.Master.lblInformacionGeneral = "© 2020 Transforma Consultoria";
 
     }
 

@@ -31,6 +31,8 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
         int clientepago;
         decimal importecomision;
         decimal ivacomision;
+        int añodocumento;
+        int iddocumento;
 
         private List<ReferenciaConciliadaPedido> listapedidos = new List<ReferenciaConciliadaPedido>();
         
@@ -242,6 +244,19 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
             get { return ivacomision; }
             set { ivacomision = value; }
         }
+
+        public int AñoDocumento
+        {
+            get { return añodocumento; }
+            set { añodocumento = value; }
+        }
+
+        public int IdDocumento
+        {
+            get { return iddocumento; }
+            set { iddocumento = value; }
+        }
+
         #endregion
 
         public abstract bool ChequeTarjetaAltaModifica(Conexion _conexion);

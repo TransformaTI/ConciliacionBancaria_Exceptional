@@ -14,8 +14,14 @@ namespace SeguridadCB.DataLayer
         #region "Propiedades"
         public SeguridadDataLayer()
         {
-            conexion = new SqlConnection();
-            conexion.ConnectionString = (System.Web.HttpContext.Current.Session["AppCadenaConexion"]).ToString();
+            try
+            {
+                conexion = new SqlConnection();
+                conexion.ConnectionString = (System.Web.HttpContext.Current.Session["AppCadenaConexion"]).ToString();
+            }
+            catch
+            {
+            }
         }
 
         public SqlConnection Conexion
@@ -193,7 +199,25 @@ namespace SeguridadCB.DataLayer
             }
         }
 
-        public  DataTable ModulosUsuario(string usuario)
+        public SqlDataReader DatosUsuarioAppTerceros(string usuario)
+        {
+            SqlCommand cmd = new SqlCommand("spSEGDatosUsuarioAppTerceros", this.conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataReader res;
+            cmd.Parameters.Add("@Usuario", SqlDbType.VarChar, 15).Value = usuario;
+            try
+            {
+                IniciaConsulta(true, false);
+                res = cmd.ExecuteReader();
+                return res;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable ModulosUsuario(string usuario)
         {
             SqlDataAdapter da = new SqlDataAdapter("spSEGUsuarioModulo", conexion);
             DataTable res = new DataTable("Modulos");

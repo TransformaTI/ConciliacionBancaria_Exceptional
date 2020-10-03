@@ -63,24 +63,24 @@
 <table style="width: 100%">
     <tr>
         <td style="width: 1%; padding-left:3px"> 
-            <asp:Label ID="Label2" runat="server" Text="Factura" CssClass="etiqueta fg-color-blanco centradoMedio"></asp:Label>
+            <asp:Label ID="Label2" runat="server" Text="Factura" CssClass="etiqueta fg-color-blanco centradoMedio" Visible="false"></asp:Label>
         </td>
         <td style="width: 1%;"> 
-            <asp:TextBox ID="txtFactura" runat="server" Width="70px" CssClass="cajaTextoPequeño"></asp:TextBox>
+            <asp:TextBox ID="txtFactura" runat="server" Width="70px" CssClass="cajaTextoPequeño" Visible="false" ></asp:TextBox>
         </td>
         <td style="width: 1%;"> 
             <asp:ImageButton ID="btnBuscaFactura" runat="server" 
                 CssClass="icono bg-color-verdeClaro"
                 Height="25px" ImageUrl="~/App_Themes/GasMetropolitanoSkin/Iconos/Buscar.png"
                 ToolTip="Filtra factura" Width="25px"
-                OnClick="btnBuscaFactura_Click"
+                OnClick="btnBuscaFactura_Click" Visible="false"
                 />
         </td>
         <td style="width: 1%; padding-left:3px">
-            <asp:Label ID="Label1" runat="server" Text="Cliente" CssClass="etiqueta fg-color-blanco centradoMedio"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Contrato" CssClass="etiqueta fg-color-blanco centradoMedio" ></asp:Label>
         </td>
         <td style="width: 1%;">
-            <asp:TextBox ID="txtCliente" runat="server" onkeypress="return ValidNum(event)" Width="70px" CssClass="cajaTextoPequeño"></asp:TextBox>
+            <asp:TextBox ID="txtContrato" runat="server" onkeypress="return ValidNum(event)" Width="70px" CssClass="cajaTextoPequeño" ></asp:TextBox>
         </td>
     </tr>
 </table>

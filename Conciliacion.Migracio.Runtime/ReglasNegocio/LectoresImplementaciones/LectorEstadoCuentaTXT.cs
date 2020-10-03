@@ -51,7 +51,7 @@ namespace Conciliacion.Migracion.Runtime.ReglasNegocio.LectoresImplementaciones
                     string[] fila = esEspecial(fuenteInformacion.TipoArchivo.Separador.Trim()) ? Regex.Split(linea, @fuenteInformacion.TipoArchivo.Separador.Trim()) : linea.Split(Convert.ToChar(fuenteInformacion.TipoArchivo.Separador.Trim()));
                     if (index != 0)
                     {
-                        if (fila.Length == fuenteInformacion.NumColumnas)
+                        if (fila.Length <= fuenteInformacion.NumColumnas)//if (fila.Length == fuenteInformacion.NumColumnas)
                             contenido.Rows.Add(fila);
                     }
                     index++;
