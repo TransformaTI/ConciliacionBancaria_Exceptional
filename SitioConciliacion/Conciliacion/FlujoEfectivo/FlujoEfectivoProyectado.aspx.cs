@@ -16,7 +16,7 @@ using Conciliacion.Migracion.Runtime.ReglasNegocio;
 using Conciliacion.RunTime;
 using Conciliacion.RunTime.ReglasDeNegocio;
 using SeguridadCB.Public;
-using WebGridViewTemplateField;
+//using WebGridViewTemplateField;
 using Consultas = Conciliacion.RunTime.ReglasDeNegocio.Consultas;
 using DataGrid = System.Web.UI.WebControls.DataGrid;
 using TextBox = System.Web.UI.WebControls.TextBox;

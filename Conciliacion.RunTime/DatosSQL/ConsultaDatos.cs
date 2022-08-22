@@ -5709,7 +5709,62 @@ namespace Conciliacion.RunTime.DatosSQL
             }
             return tipoCobro;
         }
-    }
 
+        public override bool ValidaRegimenesFiscalesDeConciliacion(int corporativo, int sucursal, int año, int mes, int folio)
+        {
+            bool resultado = false;
+            string IdRegimen;
+            string RegimenesFiscales;
+
+            using (SqlConnection cnn = new SqlConnection(objApp.CadenaConexion))
+            {
+                try
+                {
+                    cnn.Open();
+                    SqlCommand comando = new SqlCommand("spValidaRegimenesFiscalesDeConciliacion", cnn);
+                    comando.Parameters.Add("@Corporativo", System.Data.SqlDbType.Int).Value = corporativo;
+                    comando.Parameters.Add("@Sucursal", System.Data.SqlDbType.Int).Value = sucursal;
+                    comando.Parameters.Add("@AñoConciliacion", System.Data.SqlDbType.Int).Value = año;
+                    comando.Parameters.Add("@MesConciliacion", System.Data.SqlDbType.Int).Value = mes;
+                    comando.Parameters.Add("@FolioConciliacion", System.Data.SqlDbType.Int).Value = folio;
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlDataReader reader = comando.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            if (reader["IdRegimenFiscal"].ToString() != "" && reader["RegimenesFiscales"].ToString() != "")
+                            {
+                                IdRegimen = reader["IdRegimenFiscal"].ToString();
+                                RegimenesFiscales = reader["RegimenesFiscales"].ToString();
+                                resultado = (RegimenesFiscales.Contains(IdRegimen));
+                                if (!resultado)
+                                    break;
+                            }
+                            else
+                            {
+                                resultado = false;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                        resultado = false;
+                }
+                catch (Exception ex)
+                {
+                    stackTrace = new StackTrace();
+                    this.ImplementadorMensajes.MostrarMensaje("Erros al consultar la informacion.\n\rClase :" +
+                                                              this.GetType().Name + "\n\r" + "Metodo :" +
+                                                              stackTrace.GetFrame(0).GetMethod().Name + "\n\r" +
+                                                              "Error :" + ex.Message);
+                    stackTrace = null;
+                }
+            }
+
+            return resultado;
+        }
+
+    }
 }
 

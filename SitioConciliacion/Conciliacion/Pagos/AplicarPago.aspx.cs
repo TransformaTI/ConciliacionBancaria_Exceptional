@@ -198,7 +198,7 @@ public partial class Conciliacion_Pagos_AplicarPago : System.Web.UI.Page
                 
                 tdExportar.Attributes.Add("class", "iconoOpcion bg-color-grisClaro02");
                 imgExportar.Enabled = false;
-            }
+            }            
         }
         catch (Exception ex) { objApp.ImplementadorMensajes.MostrarMensaje(ex.Message); }
     }
@@ -1056,6 +1056,12 @@ private string TipoCobroDescripcion(int tipoCobro)
             if (valor.Equals(""))
             {
                 throw new Exception("Parámetro NumeroDocumentosTRANSBAN no dado de alta");
+            }
+
+            if (!objApp.Consultas.ValidaRegimenesFiscalesDeConciliacion(corporativoConciliacion, sucursalConciliacion, añoConciliacion, mesConciliacion, folioConciliacion))
+            {
+                objApp.ImplementadorMensajes.MostrarMensaje("Uno o más contratos no tienen regimen fiscal.");
+                return;
             }
 
             int MaxDocumentos = Convert.ToInt16(valor);

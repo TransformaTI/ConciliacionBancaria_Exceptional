@@ -407,7 +407,9 @@ namespace Conciliacion.RunTime.ReglasDeNegocio
         }
 
         //MCC 26-04-2018
-        public abstract List<Cuenta> ConsultaCuentasUsuario
-       (string Usuario);
+        public abstract List<Cuenta> ConsultaCuentasUsuario(string Usuario);
+
+        public abstract bool ValidaRegimenesFiscalesDeConciliacion(int corporativo, int sucursal, int año, int mes, int folio);
+
     }
 }
