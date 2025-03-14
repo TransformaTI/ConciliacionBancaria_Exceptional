@@ -8,8 +8,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contenidoPrincipal" runat="Server">
-    <asp:ToolkitScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
-    </asp:ToolkitScriptManager>
+
+    <%--<asp:ToolkitScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+    </asp:ToolkitScriptManager>--%>
+
+    
+		<add tagPrefix="ajaxToolkit" assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" />
+
     <script src="../App_Scripts/jsUpdateProgress.js" type="text/javascript"></script>
     <script type="text/javascript" language="javascript">
         function ShowModalPopup() {
@@ -281,13 +286,18 @@
     <asp:ModalPopupExtender ID="popUpEtiquetas" runat="server" PopupControlID="pnlPopUpEtiquetas"
         TargetControlID="hfEditarEtiquetas" BehaviorID="ModalBehaviour" BackgroundCssClass="ModalBackground">
     </asp:ModalPopupExtender>
-    <asp:UpdateProgress ID="panelBloqueo" runat="server" AssociatedUpdatePanelID="upStatusConcepto">
-        <ProgressTemplate>
-            <asp:Image ID="imgLoad" runat="server" CssClass="icono bg-color-blanco" Height="40px"
-                ImageUrl="~/App_Themes/GasMetropolitanoSkin/Imagenes/LoadPage.gif" Width="40px" />
-        </ProgressTemplate>
-    </asp:UpdateProgress>
-    <asp:ModalPopupExtender ID="ModalProgress" runat="server" PopupControlID="panelBloqueo"
-        BackgroundCssClass="ModalBackground" TargetControlID="panelBloqueo">
+    
+    <asp:Panel ID="panelContainer" runat="server" CssClass="modal-panel">
+        <asp:UpdateProgress ID="panelBloqueo" runat="server" AssociatedUpdatePanelID="upStatusConcepto">
+            <ProgressTemplate>
+                <asp:Image ID="imgLoad" runat="server" CssClass="icono bg-color-blanco" Height="40px"
+                    ImageUrl="~/App_Themes/GasMetropolitanoSkin/Imagenes/LoadPage.gif" Width="40px" />
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </asp:Panel>
+
+    <asp:ModalPopupExtender ID="ModalProgress" runat="server" PopupControlID="panelContainer"
+        BackgroundCssClass="ModalBackground" TargetControlID="panelContainer">
     </asp:ModalPopupExtender>
+
 </asp:Content>

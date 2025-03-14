@@ -13,6 +13,7 @@ using OfficeOpenXml.Drawing;
 using System.Diagnostics;
 using System.Drawing;
 using OfficeOpenXml.Style;
+using OfficeOpenXml.Drawing.Style;
 
 namespace Conciliacion.RunTime
 {

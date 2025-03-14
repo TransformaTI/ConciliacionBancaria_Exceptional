@@ -19,7 +19,7 @@ Copyright (C) Microsoft Corporation. Todos los derechos reservados.
     <ProjectGuid>{d18ddaa1-f17c-4e2a-8eff-f027938e2d55}</ProjectGuid>
     <SourceWebPhysicalPath>$(MSBuildThisFileDirectory)</SourceWebPhysicalPath>
     <SourceWebVirtualPath>/SitioConciliacion</SourceWebVirtualPath>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <SourceWebProject>
     </SourceWebProject>
     <SourceWebMetabasePath>
@@ -44,6 +44,10 @@ Copyright (C) Microsoft Corporation. Todos los derechos reservados.
     </AssemblyAttributes>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CatalogoConciliacion\CatalogoConciliacion.csproj">
+      <Project>{F77FCEA1-5442-48A2-8FE4-43A655788CDD}</Project>
+      <Name>CatalogoConciliacion</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Conciliacion.Migracio.Runtime\Conciliacion.Migracion.Runtime.csproj">
       <Project>{76A968E3-B770-48FA-B4E1-30EB653757E7}</Project>
       <Name>Conciliacion.Migracion.Runtime</Name>
@@ -51,6 +55,18 @@ Copyright (C) Microsoft Corporation. Todos los derechos reservados.
     <ProjectReference Include="..\Conciliacion.RunTime\Conciliacion.RunTime.csproj">
       <Project>{7124EB10-FCCD-40DD-90E3-3DFECA7EF535}</Project>
       <Name>Conciliacion.RunTime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Locker\Locker.csproj">
+      <Project>{FF1A3892-58A9-416F-80F7-DD4FC02EDDC2}</Project>
+      <Name>Locker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SeguridadCB\SeguridadCB.csproj">
+      <Project>{C924B2CB-B08E-4786-9E41-77F9278A8372}</Project>
+      <Name>SeguridadCB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SeguridadWeb\SeguridadWeb.csproj">
+      <Project>{3A19B75E-4312-4871-8368-72562FE91241}</Project>
+      <Name>SeguridadWeb</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(_WebPublishTargetsPath)\Web\Microsoft.WebSite.Publishing.targets" />

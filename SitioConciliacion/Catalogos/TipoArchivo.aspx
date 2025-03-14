@@ -5,8 +5,13 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ MasterType TypeName="Principal" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="contenidoPrincipal" runat="Server">
-    <asp:ToolkitScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
-    </asp:ToolkitScriptManager>
+
+    <%--<asp:ToolkitScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+    </asp:ToolkitScriptManager>--%>
+
+    
+		<add tagPrefix="ajaxToolkit" assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" />
+
     <script type="text/javascript" src="../App_Scripts/jsUpdateProgress.js"></script>
     <script type="text/javascript" src="../App_Scripts/FuncionesGenerales.js"></script>
     <script type="text/javascript" language="javascript">
@@ -140,13 +145,18 @@
             </table>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <asp:UpdateProgress ID="panelBloqueo" runat="server" AssociatedUpdatePanelID="uppPrincipal">
-        <ProgressTemplate>
-            <asp:Image ID="imgLoad" runat="server" CssClass="icono bg-color-blanco" Height="40px"
-                ImageUrl="~/App_Themes/GasMetropolitanoSkin/Imagenes/LoadPage.gif" Width="40px" />
-        </ProgressTemplate>
-    </asp:UpdateProgress>
-    <asp:ModalPopupExtender ID="ModalProgress" runat="server" PopupControlID="panelBloqueo"
-        BackgroundCssClass="ModalBackground" TargetControlID="panelBloqueo">
+
+    <asp:Panel ID="panelContainer" runat="server" CssClass="modal-panel">
+        <asp:UpdateProgress ID="panelBloqueo" runat="server" AssociatedUpdatePanelID="uppPrincipal">
+            <ProgressTemplate>
+                <asp:Image ID="imgLoad" runat="server" CssClass="icono bg-color-blanco" Height="40px"
+                    ImageUrl="~/App_Themes/GasMetropolitanoSkin/Imagenes/LoadPage.gif" Width="40px" />
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </asp:Panel>
+    
+    <asp:ModalPopupExtender ID="ModalProgress" runat="server" PopupControlID="panelContainer"
+        BackgroundCssClass="ModalBackground" TargetControlID="panelContainer">
     </asp:ModalPopupExtender>
+
 </asp:Content>

@@ -29,7 +29,7 @@ public partial class Acceso_Login : System.Web.UI.UserControl
             btnEntrar_Click1(this, null);
         }
         else
-            Response.Redirect("http://40.118.227.251:8082/");
+            Response.Redirect("http://187.188.181.106:8082/");
     }
     #region "Variables globales"
     string servidor = string.Empty, baseDatos = string.Empty, modulo = string.Empty;

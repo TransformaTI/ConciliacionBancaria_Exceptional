@@ -1846,13 +1846,18 @@
     <%--FIN POPUP BUSCADORPAGOESTADO DE CUENTA--%>
 
     <%--No puede ser manejado desde JavaScript--%>
+<asp:Panel ID="panelContainer" runat="server" CssClass="modal-panel">
     <asp:UpdateProgress ID="panelBloqueo" runat="server">
         <ProgressTemplate>
             <asp:Image ID="imgLoad" runat="server" CssClass="icono bg-color-blanco" Height="40px"
                 ImageUrl="~/App_Themes/GasMetropolitanoSkin/Imagenes/LoadPage.gif" Width="40px" />
         </ProgressTemplate>
     </asp:UpdateProgress>
-    <asp:ModalPopupExtender ID="mpeLoading" runat="server" BackgroundCssClass="ModalBackground"
-        PopupControlID="panelBloqueo" TargetControlID="panelBloqueo">
-    </asp:ModalPopupExtender>
+</asp:Panel>
+
+<asp:ModalPopupExtender ID="mpeLoading" runat="server" BackgroundCssClass="ModalBackground"
+    PopupControlID="panelContainer" TargetControlID="panelContainer">
+</asp:ModalPopupExtender>
+
+
 </asp:Content>

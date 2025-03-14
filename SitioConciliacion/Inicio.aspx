@@ -101,9 +101,11 @@
     <asp:ScriptManager ID="smActualizar" runat="server">
     </asp:ScriptManager>
     <script src="App_Scripts/jsUpdateProgress.js" type="text/javascript"></script>
+    
     <script type="text/javascript" language="javascript">
         var ModalProgress = '<%= mpeLoading.ClientID %>';        
     </script>
+
     <asp:UpdatePanel runat="server" ID="upInicio" UpdateMode="Always" >
         <ContentTemplate>
             <script type="text/javascript">
@@ -723,14 +725,18 @@
 
     <%--FIN POPUP BUSCADORPAGOESTADO DE CUENTA--%>
 
+    <asp:Panel ID="panelContainer" runat="server" CssClass="modal-panel">
+        <asp:UpdateProgress ID="panelBloqueo" runat="server" AssociatedUpdatePanelID="upInicio">
+            <ProgressTemplate>
+                <asp:Image ID="imgLoad" runat="server" CssClass="icono bg-color-blanco" Height="40px"
+                    ImageUrl="~/App_Themes/GasMetropolitanoSkin/Imagenes/LoadPage.gif" Width="40px" />
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </asp:Panel>
 
-    <asp:UpdateProgress ID="panelBloqueo" runat="server" AssociatedUpdatePanelID="upInicio">
-        <ProgressTemplate>
-            <asp:Image ID="imgLoad" runat="server" CssClass="icono bg-color-blanco" Height="40px"
-                ImageUrl="~/App_Themes/GasMetropolitanoSkin/Imagenes/LoadPage.gif" Width="40px" />
-        </ProgressTemplate>
-    </asp:UpdateProgress>
     <asp:ModalPopupExtender ID="mpeLoading" runat="server" BackgroundCssClass="ModalBackground"
-        PopupControlID="panelBloqueo" TargetControlID="panelBloqueo">
+        PopupControlID="panelContainer" TargetControlID="panelContainer">
     </asp:ModalPopupExtender>
+
+
 </asp:Content>

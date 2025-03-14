@@ -1192,13 +1192,16 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </asp:Panel>
-    <asp:UpdateProgress ID="panelBloqueo" runat="server" AssociatedUpdatePanelID="upCopiaConciliacion">
-        <ProgressTemplate>
-            <asp:Image ID="imgLoad" runat="server" CssClass="icono bg-color-blanco" Height="40px"
-                ImageUrl="~/App_Themes/GasMetropolitanoSkin/Imagenes/LoadPage.gif" Width="40px" />
-        </ProgressTemplate>
-    </asp:UpdateProgress>
+    
+    <asp:Panel ID="panelContainer" runat="server" CssClass="modal-panel">
+        <asp:UpdateProgress ID="panelBloqueo" runat="server" AssociatedUpdatePanelID="upCopiaConciliacion">
+            <ProgressTemplate>
+                <asp:Image ID="imgLoad" runat="server" CssClass="icono bg-color-blanco" Height="40px"
+                    ImageUrl="~/App_Themes/GasMetropolitanoSkin/Imagenes/LoadPage.gif" Width="40px" />
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </asp:Panel>
     <asp:ModalPopupExtender ID="mpeLoading" runat="server" BackgroundCssClass="ModalBackground"
-        PopupControlID="panelBloqueo" TargetControlID="panelBloqueo">
+        PopupControlID="panelContainer" TargetControlID="panelContainer">
     </asp:ModalPopupExtender>
 </asp:Content>
